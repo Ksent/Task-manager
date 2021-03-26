@@ -1,0 +1,6 @@
+*.psd
+*.css
+gulpfile.js
+node_modules/
+*.json
+build/
