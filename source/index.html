@@ -8,13 +8,57 @@
     <link rel="stylesheet" href="css/style.min.css">
   </head>
   <body>
-    <header class="page-header">
-      <label for="enter-task"></label>
-      <input class="page-header__new-task" type="text" name="enter-task" id="enter-task" placeholder="Добавить задачу">
-      <button class="page-header__task-btn"></button>
-    </header>
-    <section class="page-main">
-      <ul class="page-main__task-list"></ul>
+
+    <svg style="display:none">
+      <symbol viewBox="0 0 16 16" id="icon-delete">
+        <line x1="4" x2="12" y1="4" y2="12"></line>
+        <line x1="4" x2="12" y1="12" y2="4"></line>
+      </symbol>
+    </svg>
+
+    <section class="tasker">
+
+      <header class="tasker__header">
+        <label for="enter-task"></label>
+        <input class="tasker__new-task" type="text" name="enter-task" id="enter-task" placeholder="Добавить задачу">
+        <button class="tasker__add-btn">
+          <svg width="46" height="46" fill="#7dc4a3">
+            <rect x="21" y="15" width="4" height="16"></rect>
+            <rect x="15" y="21" width="16" height="4"></rect>
+          </svg>
+        </button>
+      </header>
+
+      <section class="tasker__main">
+        <ul class="tasker__task-list">
+          <li class="tasker__task-item">
+            <a href="#" class="tasker__task-text">Завтрак</a>
+            <button class="tasker__task-btn">
+              <svg width="16" height="16" stroke="#c9cbcc" stroke-width="2">
+                <use xlink:href="#icon-delete"></use>
+              </svg>
+            </button>
+          </li>
+          <li class="tasker__task-item">
+            <a href="#" class="tasker__task-text">Обед</a>
+            <button class="tasker__task-btn">
+              <svg width="16" height="16" stroke="#c9cbcc" stroke-width="2">
+                <use xlink:href="#icon-delete"></use>
+              </svg>
+            </button>
+          </li>
+          <li class="tasker__task-item">
+            <a href="#" class="tasker__task-text">Ужин</a>
+            <button class="tasker__task-btn">
+              <svg width="16" height="16" stroke="#c9cbcc" stroke-width="2">
+                <use xlink:href="#icon-delete"></use>
+              </svg>
+            </button>
+          </li>
+        </ul>
+      </section>
+
     </section>
+
   </body>
 </html>

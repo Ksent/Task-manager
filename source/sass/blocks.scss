@@ -1,0 +1,88 @@
+.tasker {
+  margin-top: 5%;
+}
+
+.tasker__header {
+  width: 45%;
+  min-width: 280px;
+  display: flex;
+  position: relative;
+  margin: 0 auto;
+}
+
+.tasker__new-task {
+  width: 100%;
+  padding: 13px 59px 13px 13px;
+  background-color: #6199b3;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  &:focus {
+    outline: 3px solid #ffffff;
+  }
+}
+
+.tasker__new-task::placeholder {
+  color: #7dc4a3;
+}
+
+.tasker__add-btn {
+  width: 46px;
+  height: 46px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0;
+  background-color: #8fdab7;
+  border: none;
+  outline: none;
+  &:focus {
+    outline: 3px solid #ffffff;
+  }
+}
+
+.tasker__add-btn:focus svg {
+  fill: #ffffff;
+}
+
+.tasker__main {
+  width: 45%;
+  min-width: 280px;
+  margin: 0 auto;
+}
+
+.tasker__task-list {
+  padding: 0;
+  margin: 0;
+  background-color: #ffffff;  
+}
+
+.tasker__task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 15px;
+  border-top: 2px solid #f1e6e4;
+}
+
+.tasker__task-text {
+  color: #494a4b;
+  outline: none;
+  &:focus, &:hover {
+    text-decoration: line-through wavy #6199b3;
+  }
+}
+
+.tasker__task-btn {
+  width: 16px;
+  height: 16px;
+  margin-left: 15px;
+  padding: 0;
+  background-color: #ffffff;
+  border: none;
+  outline: none;
+  &:focus svg, &:hover svg {
+    stroke: #d81b15;
+  }
+}
+
