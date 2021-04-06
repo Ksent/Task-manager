@@ -19,20 +19,22 @@
     <section class="tasker">
 
       <header class="tasker__header">
-        <label for="enter-task"></label>
-        <input class="tasker__new-task" type="text" name="enter-task" id="enter-task" placeholder="Добавить задачу">
-        <button class="tasker__add-btn">
-          <svg width="46" height="46" fill="#7dc4a3">
-            <rect x="21" y="15" width="4" height="16"></rect>
-            <rect x="15" y="21" width="16" height="4"></rect>
-          </svg>
-        </button>
+        <form class="tasker__task-form">
+          <label for="enter-task"></label>
+          <input class="tasker__new-task" type="text" name="enter-task" id="enter-task" placeholder="Добавить задачу" required>
+          <button class="tasker__add-btn">
+            <svg width="46" height="46" fill="#7dc4a3">
+              <rect x="21" y="15" width="4" height="16"></rect>
+              <rect x="15" y="21" width="16" height="4"></rect>
+            </svg>
+          </button>
+        </form>
       </header>
 
       <section class="tasker__main">
         <ul class="tasker__task-list">
           <li class="tasker__task-item">
-            <a href="#" class="tasker__task-text">Завтрак</a>
+            <a class="tasker__task-text" href="#">Завтрак</a>
             <button class="tasker__task-btn">
               <svg width="16" height="16" stroke="#c9cbcc" stroke-width="2">
                 <use xlink:href="#icon-delete"></use>
@@ -40,7 +42,7 @@
             </button>
           </li>
           <li class="tasker__task-item">
-            <a href="#" class="tasker__task-text">Обед</a>
+            <a class="tasker__task-text" href="#">Обед</a>
             <button class="tasker__task-btn">
               <svg width="16" height="16" stroke="#c9cbcc" stroke-width="2">
                 <use xlink:href="#icon-delete"></use>
@@ -48,7 +50,7 @@
             </button>
           </li>
           <li class="tasker__task-item">
-            <a href="#" class="tasker__task-text">Ужин</a>
+            <a class="tasker__task-text" href="#">Ужин</a>
             <button class="tasker__task-btn">
               <svg width="16" height="16" stroke="#c9cbcc" stroke-width="2">
                 <use xlink:href="#icon-delete"></use>

@@ -5,9 +5,12 @@
 .tasker__header {
   width: 45%;
   min-width: 280px;
+  margin: 0 auto;
+}
+
+.tasker__task-form {
   display: flex;
   position: relative;
-  margin: 0 auto;
 }
 
 .tasker__new-task {
