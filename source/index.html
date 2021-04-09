@@ -10,22 +10,40 @@
   <body>
 
     <svg style="display:none">
+
       <symbol viewBox="0 0 16 16" id="icon-delete">
-        <line x1="4" x2="12" y1="4" y2="12"></line>
-        <line x1="4" x2="12" y1="12" y2="4"></line>
+        <g>
+          <line x1="4" x2="12" y1="4" y2="12"></line>
+          <line x1="4" x2="12" y1="12" y2="4"></line>
+        </g>
       </symbol>
+
+      <symbol viewBox="0 0 16 16" id="icon-toggle">
+        <rect x="0" y="0" width="16" height="16"></rect>
+      </symbol>
+
+      <symbol viewBox="0 0 22 22" id="icon-checkmark">
+        <g>
+          <line stroke-width="3" stroke-linecap="round" x1="5" x2="8" y1="9" y2="14"></line>
+          <line stroke-width="2" stroke-linecap="round" x1="8" x2="17" y1="15" y2="1"></line>
+        </g>  
+      </symbol>
+
     </svg>
 
     <section class="tasker">
 
       <header class="tasker__header">
+        <h1 class="tasker__title">Список задач</h1>
         <form class="tasker__task-form">
           <label for="enter-task"></label>
           <input class="tasker__new-task" type="text" name="enter-task" id="enter-task" placeholder="Добавить задачу" required>
           <button class="tasker__add-btn">
             <svg width="46" height="46" fill="#7dc4a3">
-              <rect x="21" y="15" width="4" height="16"></rect>
-              <rect x="15" y="21" width="16" height="4"></rect>
+              <g>
+                <rect x="21" y="15" width="4" height="16"></rect>
+                <rect x="15" y="21" width="16" height="4"></rect>
+              </g>
             </svg>
           </button>
         </form>
@@ -34,7 +52,16 @@
       <section class="tasker__main">
         <ul class="tasker__task-list">
           <li class="tasker__task-item">
-            <a class="tasker__task-text" href="#">Завтрак</a>
+            <p class="tasker__task-text">
+              <input class="tasker__toggle" type="checkbox" name="toggle-task-1" id="toggle-task-1">
+              <label class="tasker__subtitle" for="toggle-task-1">Завтрак Завтрак Завтрак Завтрак Завтрак Завтрак Завтрак Завтрак Завтрак Завтрак Завтрак Завтрак Завтрак Завтрак Завтрак Завтрак Завтрак Завтрак Завтрак Завтрак Завтрак Завтрак Завтрак Завтрак Завтрак Завтрак Завтрак Завтрак Завтрак Завтрак Завтрак Завтрак Завтрак Завтрак Завтрак Завтрак Завтрак Завтрак </label>
+              <svg class="tasker__toggle-icon" width="16" height="16" fill="#ffffff" stroke="#494a4b">
+                <use xlink:href="#icon-toggle"></use>
+              </svg>
+              <svg class="tasker__checkmark-icon" width="22" height="22" stroke="#8fdab7">
+                <use xlink:href="#icon-checkmark"></use>                
+              </svg>
+            </p>
             <button class="tasker__task-btn">
               <svg width="16" height="16" stroke="#c9cbcc" stroke-width="2">
                 <use xlink:href="#icon-delete"></use>
@@ -42,7 +69,16 @@
             </button>
           </li>
           <li class="tasker__task-item">
-            <a class="tasker__task-text" href="#">Обед</a>
+            <p class="tasker__task-text">
+              <input class="tasker__toggle" type="checkbox" name="toggle-task-2" id="toggle-task-2">
+              <label class="tasker__subtitle" for="toggle-task-2">Обед</label>
+              <svg class="tasker__toggle-icon" width="16" height="16" fill="#ffffff" stroke="#494a4b">
+                <use xlink:href="#icon-toggle"></use>
+              </svg>
+              <svg class="tasker__checkmark-icon" width="22" height="22" stroke="#8fdab7">
+                <use xlink:href="#icon-checkmark"></use>                
+              </svg>
+            </p>
             <button class="tasker__task-btn">
               <svg width="16" height="16" stroke="#c9cbcc" stroke-width="2">
                 <use xlink:href="#icon-delete"></use>
@@ -50,7 +86,16 @@
             </button>
           </li>
           <li class="tasker__task-item">
-            <a class="tasker__task-text" href="#">Ужин</a>
+            <p class="tasker__task-text">
+              <input class="tasker__toggle" type="checkbox" name="toggle-task-3" id="toggle-task-3">
+              <label class="tasker__subtitle" for="toggle-task-3">Ужин</label>
+              <svg class="tasker__toggle-icon" width="16" height="16" fill="#ffffff" stroke="#494a4b">
+                <use xlink:href="#icon-toggle"></use>
+              </svg>
+              <svg class="tasker__checkmark-icon" width="22" height="22" stroke="#8fdab7">
+                <use xlink:href="#icon-checkmark"></use>                
+              </svg>
+            </p>
             <button class="tasker__task-btn">
               <svg width="16" height="16" stroke="#c9cbcc" stroke-width="2">
                 <use xlink:href="#icon-delete"></use>

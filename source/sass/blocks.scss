@@ -1,11 +1,30 @@
 .tasker {
-  margin-top: 5%;
+  margin-bottom: 5%;
 }
 
 .tasker__header {
   width: 45%;
   min-width: 280px;
   margin: 0 auto;
+}
+
+.tasker__title {
+  margin: 5% 0;
+  text-align: center;
+  color: #54849b;
+  text-shadow: 
+  -1px -1px #ffffff,
+  -2px -2px #ffffff,
+  -1px 1px #ffffff,
+  -2px 2px #ffffff,
+  1px 1px #ffffff,
+  2px 2px #ffffff,
+  1px -1px #ffffff,
+  2px -2px #ffffff,
+  -3px -3px 2px #c9cbcc,
+  -3px 3px 2px #c9cbcc,
+  3px 3px 2px #c9cbcc,
+  3px -3px 2px #c9cbcc;
 }
 
 .tasker__task-form {
@@ -58,21 +77,79 @@
   padding: 0;
   margin: 0;
   background-color: #ffffff;  
+  cursor: move;
 }
 
 .tasker__task-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
   padding: 15px 15px;
   border-top: 2px solid #f1e6e4;
 }
 
 .tasker__task-text {
+  display: flex;
+  align-items: center;
+  margin: 0;
   color: #494a4b;
-  outline: none;
-  &:focus, &:hover {
+}
+
+.tasker__toggle {
+  width: 16px;
+  height: 16px;
+  position: absolute;  
+  z-index: 2;
+  opacity: 0;
+  cursor: pointer;
+  &:checked ~ .tasker__subtitle {
+    color: #c9cbcc;
     text-decoration: line-through wavy #6199b3;
+  }
+  &:checked ~ .tasker__toggle-icon {
+    stroke: #c9cbcc;
+  }
+  &:checked ~ .tasker__checkmark-icon {
+    animation: write 20s ease-out forwards;
+    opacity: 1;
+    visibility: visible;
+  }
+  &:focus ~ .tasker__toggle-icon {
+     stroke: #6199b3;
+     stroke-width: 3px; 
+  } 
+}
+
+.tasker__subtitle {
+  margin-left: 31px;
+  cursor: pointer;
+  &:hover {
+    text-decoration: line-through wavy #6199b3;
+  }
+}
+
+.tasker__toggle-icon {
+  position: absolute;  
+  z-index: 0;
+  cursor: pointer;
+}
+
+.tasker__checkmark-icon {
+  position: absolute;  
+  z-index: 1;
+  opacity: 0;
+  visibility: hidden;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+}
+
+@keyframes write {
+  from {
+    stroke-dashoffset: 1000;
+  }
+  to {
+    stroke-dashoffset: 0;
   }
 }
 
@@ -86,6 +163,7 @@
   outline: none;
   &:focus svg, &:hover svg {
     stroke: #d81b15;
+    transition: 0.6s ease-out;
   }
 }
 
