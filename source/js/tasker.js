@@ -6,66 +6,66 @@ let enterTask = document.querySelector('.tasker__new-task');
 let taskerList = document.querySelector('.tasker__task-list');
 
 function createTask() {
-  let taskerItem = document.createElement('li');
-  taskerItem.setAttribute('class', 'tasker__task-item');
-  taskerList.append(taskerItem);
+  let newTaskItem = document.createElement('li');
+  newTaskItem.setAttribute('class', 'tasker__task-item');
+  taskerList.append(newTaskItem);
   
-  let taskerText = document.createElement('p');
-  taskerText.setAttribute('class', 'tasker__task-text');
-  taskerItem.prepend(taskerText);
+  let newTaskText = document.createElement('p');
+  newTaskText.setAttribute('class', 'tasker__task-text');
+  newTaskItem.prepend(newTaskText);
   
-  let taskerToggle = document.createElement('input');
-  taskerToggle.setAttribute('class', 'tasker__toggle');
-  taskerToggle.setAttribute('type', 'checkbox');
-  taskerText.prepend(taskerToggle);
+  let newTaskToggle = document.createElement('input');
+  newTaskToggle.setAttribute('class', 'tasker__toggle');
+  newTaskToggle.setAttribute('type', 'checkbox');
+  newTaskText.prepend(newTaskToggle);
   
-  let taskerSubtitle = document.createElement('label');
-  taskerSubtitle.setAttribute('class', 'tasker__subtitle');
-  taskerSubtitle.textContent = enterTask.value;
-  taskerToggle.after(taskerSubtitle);
+  let newTaskSubtitle = document.createElement('label');
+  newTaskSubtitle.setAttribute('class', 'tasker__subtitle');
+  newTaskSubtitle.textContent = enterTask.value;
+  newTaskToggle.after(newTaskSubtitle);
   
-  let toggleIcon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-  toggleIcon.setAttribute('class', 'tasker__toggle-icon');
-  toggleIcon.setAttribute('width', '16');
-  toggleIcon.setAttribute('height', '16');
-  toggleIcon.setAttribute('fill', '#ffffff');
-  toggleIcon.setAttribute('stroke', '#494a4b');
-  taskerSubtitle.after(toggleIcon);
+  let newToggleIcon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  newToggleIcon.setAttribute('class', 'tasker__toggle-icon');
+  newToggleIcon.setAttribute('width', '16');
+  newToggleIcon.setAttribute('height', '16');
+  newToggleIcon.setAttribute('fill', '#ffffff');
+  newToggleIcon.setAttribute('stroke', '#494a4b');
+  newTaskSubtitle.after(newToggleIcon);
   
-  let toggleImg = document.createElementNS('http://www.w3.org/2000/svg', 'use');
-  toggleImg.setAttributeNS('http://www.w3.org/1999/xlink', 'href', '#icon-toggle');
-  toggleIcon.prepend(toggleImg);
+  let newToggleImg = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+  newToggleImg.setAttributeNS('http://www.w3.org/1999/xlink', 'href', '#icon-toggle');
+  newToggleIcon.prepend(newToggleImg);
   
-  let checkmarkIcon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-  checkmarkIcon.setAttribute('class', 'tasker__checkmark-icon');
-  checkmarkIcon.setAttribute('width', '22');
-  checkmarkIcon.setAttribute('height', '22');
-  checkmarkIcon.setAttribute('stroke', '#8fdab7');
-  toggleIcon.after(checkmarkIcon);
+  let newCheckmarkIcon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  newCheckmarkIcon.setAttribute('class', 'tasker__checkmark-icon');
+  newCheckmarkIcon.setAttribute('width', '22');
+  newCheckmarkIcon.setAttribute('height', '22');
+  newCheckmarkIcon.setAttribute('stroke', '#8fdab7');
+  newToggleIcon.after(newCheckmarkIcon);
   
-  let checkmarkImg = document.createElementNS('http://www.w3.org/2000/svg', 'use');
-  checkmarkImg.setAttributeNS('http://www.w3.org/1999/xlink', 'href', '#icon-checkmark');
-  checkmarkIcon.prepend(checkmarkImg);
+  let newCheckmarkImg = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+  newCheckmarkImg.setAttributeNS('http://www.w3.org/1999/xlink', 'href', '#icon-checkmark');
+  newCheckmarkIcon.prepend(newCheckmarkImg);
   
-  let deleteBtn = document.createElement('button');
-  deleteBtn.setAttribute('class', 'tasker__delete-btn');
-  taskerText.after(deleteBtn);
+  let newDeleteBtn = document.createElement('button');
+  newDeleteBtn.setAttribute('class', 'tasker__delete-btn');
+  newTaskText.after(newDeleteBtn);
   
-  let deleteIcon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-  deleteIcon.setAttribute('width', '16');
-  deleteIcon.setAttribute('height', '16');
-  deleteIcon.setAttribute('stroke', '#c9cbcc');
-  deleteIcon.setAttribute('stroke-width', '2');
-  deleteBtn.prepend(deleteIcon);
+  let newDeleteIcon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  newDeleteIcon.setAttribute('width', '16');
+  newDeleteIcon.setAttribute('height', '16');
+  newDeleteIcon.setAttribute('stroke', '#c9cbcc');
+  newDeleteIcon.setAttribute('stroke-width', '2');
+  newDeleteBtn.prepend(newDeleteIcon);
   
-  let deleteImg = document.createElementNS('http://www.w3.org/2000/svg', 'use');
-  deleteImg.setAttributeNS('http://www.w3.org/1999/xlink', 'href', '#icon-delete');
-  deleteIcon.prepend(deleteImg);
+  let newDeleteImg = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+  newDeleteImg.setAttributeNS('http://www.w3.org/1999/xlink', 'href', '#icon-delete');
+  newDeleteIcon.prepend(newDeleteImg);
 }
 
 function bindingInputLabel(selectorAll, newName) {
-  for (let i = 0; i < selectorAll.length; i++) {
-    selectorAll[i].setAttribute(newName, 'toggle-task-' + i);
+  for (let i = 0; i < selectorAll.length;) {
+    selectorAll[i].setAttribute(newName, 'toggle-task-' + ++i);
   }
 }
 
@@ -79,16 +79,16 @@ taskerAddBtn.addEventListener('click', function(evt) {
     
     let taskerToggleAll = document.querySelectorAll('.tasker__toggle');
     let taskerSubtitleAll = document.querySelectorAll('.tasker__subtitle');
-    let nameforInput = 'id';
-    let nameforLabel = 'for';
+    let nameForInput = 'id';
+    let nameForLabel = 'for';
 
-    bindingInputLabel(taskerToggleAll, nameforInput);
-    bindingInputLabel(taskerSubtitleAll, nameforLabel);
+    bindingInputLabel(taskerToggleAll, nameForInput);
+    bindingInputLabel(taskerSubtitleAll, nameForLabel);
 
-    enterTask.value = '';     
+    enterTask.value = '';         
   }
 
-  });
+});
 
 taskerList.addEventListener('click', function(evt) {
   let target = evt.target;
