@@ -5,7 +5,13 @@ let enterTask = document.querySelector('.tasker__new-task');
 
 let taskerList = document.querySelector('.tasker__task-list');
 
-function createTask() {
+function bindingInputLabel(selectorAll, newName) {
+  for (let i = 0; i < selectorAll.length;) {
+    selectorAll[i].setAttribute(newName, 'toggle-task-' + ++i);
+  }
+}
+
+function createTask(textTask) {
   let newTaskItem = document.createElement('li');
   newTaskItem.setAttribute('class', 'tasker__task-item');
   taskerList.append(newTaskItem);
@@ -21,8 +27,16 @@ function createTask() {
   
   let newTaskSubtitle = document.createElement('label');
   newTaskSubtitle.setAttribute('class', 'tasker__subtitle');
-  newTaskSubtitle.textContent = enterTask.value;
+  newTaskSubtitle.textContent = textTask;
   newTaskToggle.after(newTaskSubtitle);
+  
+  let taskerToggleAll = document.querySelectorAll('.tasker__toggle');
+  let taskerSubtitleAll = document.querySelectorAll('.tasker__subtitle');
+  let nameForInput = 'id';
+  let nameForLabel = 'for';
+  
+  bindingInputLabel(taskerToggleAll, nameForInput);
+  bindingInputLabel(taskerSubtitleAll, nameForLabel);
   
   let newToggleIcon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
   newToggleIcon.setAttribute('class', 'tasker__toggle-icon');
@@ -63,31 +77,16 @@ function createTask() {
   newDeleteIcon.prepend(newDeleteImg);
 }
 
-function bindingInputLabel(selectorAll, newName) {
-  for (let i = 0; i < selectorAll.length;) {
-    selectorAll[i].setAttribute(newName, 'toggle-task-' + ++i);
-  }
-}
-
 taskerAddBtn.addEventListener('click', function(evt) {
   
   if (enterTask.value === '') {
     return;
   } else {
     evt.preventDefault();
-    createTask();    
-    
-    let taskerToggleAll = document.querySelectorAll('.tasker__toggle');
-    let taskerSubtitleAll = document.querySelectorAll('.tasker__subtitle');
-    let nameForInput = 'id';
-    let nameForLabel = 'for';
-
-    bindingInputLabel(taskerToggleAll, nameForInput);
-    bindingInputLabel(taskerSubtitleAll, nameForLabel);
-
-    enterTask.value = '';         
+    createTask(enterTask.value);  
+    enterTask.value = '';     
   }
-
+  
 });
 
 taskerList.addEventListener('click', function(evt) {
