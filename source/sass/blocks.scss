@@ -28,6 +28,7 @@
 }
 
 .tasker__task-form {
+  height: 46px;
   display: flex;
   position: relative;
 }
@@ -76,8 +77,6 @@
 .tasker__task-list {
   padding: 0;
   margin: 0;
-  background-color: #ffffff;  
-  cursor: move;
 }
 
 .tasker__task-item {
@@ -85,8 +84,14 @@
   justify-content: space-between;
   align-items: center;
   position: relative;
+  margin-top: 2px;
   padding: 15px 15px;
-  border-top: 2px solid #f1e6e4;
+  background-color: #ffffff; 
+  cursor: move;
+}
+
+.selected {
+  opacity: 0.6;  
 }
 
 .tasker__task-text {
@@ -116,8 +121,8 @@
     visibility: visible;
   }
   &:focus ~ .tasker__toggle-icon {
-     stroke: #6199b3;
-     stroke-width: 3px; 
+    stroke: #6199b3;
+    stroke-width: 3px; 
   } 
 }
 

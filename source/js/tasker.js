@@ -14,6 +14,7 @@ function bindingInputLabel(selectorAll, newName) {
 function createTask(textTask) {
   let newTaskItem = document.createElement('li');
   newTaskItem.setAttribute('class', 'tasker__task-item');
+  newTaskItem.setAttribute('draggable', 'true');
   taskerList.append(newTaskItem);
   
   let newTaskText = document.createElement('p');
@@ -91,10 +92,43 @@ taskerAddBtn.addEventListener('click', function(evt) {
 
 taskerList.addEventListener('click', function(evt) {
   let target = evt.target;
-  let taskerItem = document.querySelector('.tasker__task-item');
+  let taskerItemAll = document.querySelectorAll('.tasker__task-item');
 
-  if (target.closest('button')) {
-    taskerItem.remove();
+  for (let i = 0; i < taskerItemAll.length; i++) {
+
+    if (taskerItemAll[i].contains(target.closest('button'))) {
+      taskerItemAll[i].remove();
+    }
+    
+  }
+
+});
+
+taskerList.addEventListener('dragstart', function(evt) {
+  let target = evt.target;
+
+  target.classList.add('selected');
+});
+
+taskerList.addEventListener('dragend', function(evt) {
+  let target = evt.target;
+
+  target.classList.remove('selected');
+});
+
+taskerList.addEventListener('dragover', function(evt) {
+  let target = evt.target;
+  let activeItem = taskerList.querySelector('.selected');
+
+  evt.preventDefault();
+
+  if (activeItem !== target && target.classList.contains('tasker__task-item')) {
+    
+    let nextItem = (target === activeItem.nextElementSibling) ? target.nextElementSibling : target;
+
+    taskerList.insertBefore(activeItem, nextItem);
+  } else {
+    return;
   }
 
 });
