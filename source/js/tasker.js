@@ -1,9 +1,43 @@
 'use strict';
 
-let taskerAddBtn = document.querySelector('.tasker__add-btn');
 let enterTask = document.querySelector('.tasker__new-task');
+let taskerType = document.querySelector('.tasker__type-task');
+let taskerTypeImg = document.querySelector('.tasker__type-img');
+let taskerAddBtn = document.querySelector('.tasker__add-btn');
 
 let taskerList = document.querySelector('.tasker__task-list');
+
+taskerType.addEventListener('change', function() {
+
+  if (taskerType.value == 1) {
+    taskerTypeImg.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', '#icon-type');
+  } else if (taskerType.value == 2) {
+    taskerTypeImg.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', '#icon-home');
+  } else if (taskerType.value == 3) {
+    taskerTypeImg.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', '#icon-work');
+  } else if (taskerType.value == 4) {
+    taskerTypeImg.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', '#icon-shop');
+  }
+  
+});
+
+function listenSelection(valueNumber, strokeColor, newButton, typeIcon) {
+
+  if (taskerType.value == valueNumber) {
+    let newTypeIcon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    newTypeIcon.setAttribute('class', 'tasker__type-icon');
+    newTypeIcon.setAttribute('width', '46');
+    newTypeIcon.setAttribute('height', '46');
+    newTypeIcon.setAttribute('stroke', strokeColor);
+    newTypeIcon.setAttribute('fill', 'transparent');
+    newButton.before(newTypeIcon);
+
+    let newTypeIconImg = document.createElementNS('http://www.w3.org/2000/svg', 'use');
+    newTypeIconImg.setAttributeNS('http://www.w3.org/1999/xlink', 'href', typeIcon);
+    newTypeIcon.prepend(newTypeIconImg);
+  }
+
+}
 
 function bindingInputLabel(selectorAll, newName) {
   for (let i = 0; i < selectorAll.length;) {
@@ -43,7 +77,7 @@ function createTask(textTask) {
   newToggleIcon.setAttribute('class', 'tasker__toggle-icon');
   newToggleIcon.setAttribute('width', '16');
   newToggleIcon.setAttribute('height', '16');
-  newToggleIcon.setAttribute('fill', '#ffffff');
+  newToggleIcon.setAttribute('fill', 'transparent');
   newToggleIcon.setAttribute('stroke', '#494a4b');
   newTaskSubtitle.after(newToggleIcon);
   
@@ -61,10 +95,14 @@ function createTask(textTask) {
   let newCheckmarkImg = document.createElementNS('http://www.w3.org/2000/svg', 'use');
   newCheckmarkImg.setAttributeNS('http://www.w3.org/1999/xlink', 'href', '#icon-checkmark');
   newCheckmarkIcon.prepend(newCheckmarkImg);
+
+  let newTaskIcons = document.createElement('p');
+  newTaskIcons.setAttribute('class', 'tasker__task-icons');
+  newTaskText.after(newTaskIcons);
   
   let newDeleteBtn = document.createElement('button');
   newDeleteBtn.setAttribute('class', 'tasker__delete-btn');
-  newTaskText.after(newDeleteBtn);
+  newTaskIcons.prepend(newDeleteBtn);
   
   let newDeleteIcon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
   newDeleteIcon.setAttribute('width', '16');
@@ -76,6 +114,10 @@ function createTask(textTask) {
   let newDeleteImg = document.createElementNS('http://www.w3.org/2000/svg', 'use');
   newDeleteImg.setAttributeNS('http://www.w3.org/1999/xlink', 'href', '#icon-delete');
   newDeleteIcon.prepend(newDeleteImg);
+
+  listenSelection(2, '#e67428', newDeleteBtn, '#icon-home');
+  listenSelection(3, '#389bc9', newDeleteBtn, '#icon-work');
+  listenSelection(4, '#3bd88f', newDeleteBtn, '#icon-shop');
 }
 
 taskerAddBtn.addEventListener('click', function(evt) {
@@ -85,7 +127,9 @@ taskerAddBtn.addEventListener('click', function(evt) {
   } else {
     evt.preventDefault();
     createTask(enterTask.value);  
-    enterTask.value = '';     
+    enterTask.value = '';   
+    taskerType.value = 1; 
+    taskerTypeImg.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', '#icon-type'); 
   }
   
 });
