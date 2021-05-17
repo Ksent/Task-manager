@@ -17,3 +17,11 @@ button {
 a {
   text-decoration: none;
 }
+
+.selected {
+  opacity: 0.6;  
+}
+
+.events {
+  pointer-events: none;
+}

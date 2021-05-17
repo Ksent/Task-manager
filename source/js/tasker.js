@@ -6,6 +6,7 @@ let taskerTypeImg = document.querySelector('.tasker__type-img');
 let taskerAddBtn = document.querySelector('.tasker__add-btn');
 
 let taskerList = document.querySelector('.tasker__task-list');
+let taskerListAll = taskerList.getElementsByTagName('p');
 
 taskerType.addEventListener('change', function() {
 
@@ -152,13 +153,33 @@ taskerList.addEventListener('dragstart', function(evt) {
   let target = evt.target;
 
   target.classList.add('selected');
+  for (let i = 0; i < taskerListAll.length; i++) {
+    taskerListAll[i].classList.add('events');    
+  }
 });
 
 taskerList.addEventListener('dragend', function(evt) {
   let target = evt.target;
 
   target.classList.remove('selected');
+  for (let i = 0; i < taskerListAll.length; i++) {
+    taskerListAll[i].classList.remove('events');    
+  }
 });
+
+function getNextItem(cursorPosition, target) {
+  let nextItem;
+  let itemCoord = target.getBoundingClientRect();
+  let itemCenter = itemCoord.y + itemCoord.height / 2;
+
+  if (cursorPosition < itemCenter) {
+    nextItem = target;
+  } else {
+    nextItem = target.nextElementSibling;
+  }
+
+  return nextItem;
+}
 
 taskerList.addEventListener('dragover', function(evt) {
   let target = evt.target;
@@ -167,8 +188,11 @@ taskerList.addEventListener('dragover', function(evt) {
   evt.preventDefault();
 
   if (activeItem !== target && target.classList.contains('tasker__task-item')) {
-    
-    let nextItem = (target === activeItem.nextElementSibling) ? target.nextElementSibling : target;
+    let nextItem = getNextItem(evt.clientY, target);
+
+    if (nextItem && activeItem === nextItem.previousElementSibling || activeItem === nextItem) {
+      return;
+    }
 
     taskerList.insertBefore(activeItem, nextItem);
   } else {
@@ -176,3 +200,5 @@ taskerList.addEventListener('dragover', function(evt) {
   }
 
 });
+
+
