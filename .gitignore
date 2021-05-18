@@ -4,3 +4,4 @@ gulpfile.js
 node_modules/
 *.json
 build/
+*.code-workspace
