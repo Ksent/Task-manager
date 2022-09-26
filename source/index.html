@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>To-do List</title>
+    <title>To-do list</title>
     <link rel="stylesheet" href="css/normalize.css">
     <link rel="stylesheet" href="css/style.min.css">
   </head>
@@ -11,7 +11,7 @@
 
     <svg style="display:none">
 
-      <symbol viewBox="0 0 46 46" id="icon-type">
+      <!-- <symbol viewBox="0 0 46 46" id="icon-type">
         <g>
           <line stroke-width="2" stroke-linecap="round" x1="28" x2="23" y1="21" y2="26"></line>
           <line stroke-width="2" stroke-linecap="round" x1="23" x2="18" y1="26" y2="21"></line>
@@ -51,7 +51,7 @@
           <circle fill="#7dc4a3" cx="21.5" cy="30.5" r="1"></circle>
           <circle fill="#7dc4a3" cx="27.5" cy="30.5" r="1"></circle>
         </g>
-      </symbol>
+      </symbol> -->
       
       <symbol viewBox="0 0 16 16" id="icon-toggle">
         <rect x="0" y="0" width="16" height="16"></rect>
@@ -64,6 +64,14 @@
         </g>  
       </symbol>
 
+      <symbol viewBox="0 0 46 46" id="icon-edit">
+        <g>
+          <rect x="29" y="-22" width="10" height="8" rx="2" transform="rotate(45)"></rect>
+          <rect x="29" y="-12" width="10" height="27" rx="2" transform="rotate(45)"></rect>
+          <polygon points="5 43, 15 39, 9 33"></polygon>
+        </g>
+      </symbol>
+
       <symbol viewBox="0 0 16 16" id="icon-delete">
         <g>
           <line x1="4" x2="12" y1="4" y2="12"></line>
@@ -71,7 +79,7 @@
         </g>
       </symbol>
 
-    </svg>
+    </svg> 
 
     <section class="tasker">
 
@@ -82,7 +90,7 @@
           <label for="enter-task"></label>
           <input class="tasker__new-task" type="text" name="enter-task" id="enter-task" placeholder="Добавить задачу" required>
           
-          <label for="type-task"></label>
+          <!-- <label for="type-task"></label>
           <select class="tasker__type-task" name="type-task" id="type-task">
             <option class="tasker__type-option tasker__type-option--color" value="1">Выбрать:</option>
             <option class="tasker__type-option" value="2">Дом</option>
@@ -91,9 +99,9 @@
           </select>
           <svg class="tasker__type-mark" width="46" height="46" stroke="#7dc4a3" fill="transparent"> 
             <use class="tasker__type-img" xlink:href="#icon-type"></use>  
-          </svg>
+          </svg> -->
 
-          <button class="tasker__add-btn">
+          <button class="tasker__add-btn" title="Добавить">
             <svg width="46" height="46" fill="#7dc4a3">
               <g>
                 <rect x="21" y="15" width="4" height="16"></rect>

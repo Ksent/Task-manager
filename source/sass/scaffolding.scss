@@ -1,9 +1,14 @@
+html {
+  height: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
-  background-color: #ffe9da;
   font-family: 'Trebuchet MS', Arial, sans-serif;
   font-size: 18px;
+  background: linear-gradient(to bottom, #ffe0c6, #d3f5f5);
+  background-repeat: no-repeat;
 }
 
 ul {
@@ -25,3 +30,4 @@ a {
 .events {
   pointer-events: none;
 }
+
