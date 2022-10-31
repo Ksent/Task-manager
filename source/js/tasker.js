@@ -1,44 +1,10 @@
 'use strict';
 
 let enterTask = document.querySelector('.tasker__new-task');
-// let taskerType = document.querySelector('.tasker__type-task');
-// let taskerTypeImg = document.querySelector('.tasker__type-img');
 let taskerAddBtn = document.querySelector('.tasker__add-btn');
 
 let taskerList = document.querySelector('.tasker__task-list');
 let taskerListAll = taskerList.getElementsByTagName('p');
-
-// taskerType.addEventListener('change', function() {
-
-//   if (taskerType.value == 1) {
-//     taskerTypeImg.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', '#icon-type');
-//   } else if (taskerType.value == 2) {
-//     taskerTypeImg.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', '#icon-home');
-//   } else if (taskerType.value == 3) {
-//     taskerTypeImg.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', '#icon-work');
-//   } else if (taskerType.value == 4) {
-//     taskerTypeImg.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', '#icon-shop');
-//   }
-  
-// });
-
-// function listenSelection(valueNumber, strokeColor, newButton, typeIcon) {
-
-//   if (taskerType.value == valueNumber) {
-//     let newTypeIcon = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-//     newTypeIcon.setAttribute('class', 'tasker__type-icon');
-//     newTypeIcon.setAttribute('width', '46');
-//     newTypeIcon.setAttribute('height', '46');
-//     newTypeIcon.setAttribute('stroke', strokeColor);
-//     newTypeIcon.setAttribute('fill', 'transparent');
-//     newButton.before(newTypeIcon);
-
-//     let newTypeIconImg = document.createElementNS('http://www.w3.org/2000/svg', 'use');
-//     newTypeIconImg.setAttributeNS('http://www.w3.org/1999/xlink', 'href', typeIcon);
-//     newTypeIcon.prepend(newTypeIconImg);
-//   }
-
-// }
 
 function bindingInputLabel(selectorAll, newName) {
   for (let i = 0; i < selectorAll.length;) {
@@ -132,10 +98,6 @@ function createTask(textTask) {
   let newDeleteImg = document.createElementNS('http://www.w3.org/2000/svg', 'use');
   newDeleteImg.setAttributeNS('http://www.w3.org/1999/xlink', 'href', '#icon-delete');
   newDeleteIcon.prepend(newDeleteImg);
-
-  // listenSelection(2, '#e67428', newDeleteBtn, '#icon-home');
-  // listenSelection(3, '#389bc9', newDeleteBtn, '#icon-work');
-  // listenSelection(4, '#3bd88f', newDeleteBtn, '#icon-shop');
 }
 
 taskerAddBtn.addEventListener('click', function(evt) {
@@ -144,10 +106,8 @@ taskerAddBtn.addEventListener('click', function(evt) {
     return;
   } else {
     evt.preventDefault();
-    createTask(enterTask.value);  
-    enterTask.value = '';   
-    // taskerType.value = 1; 
-    // taskerTypeImg.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', '#icon-type'); 
+    createTask(enterTask.value);
+    enterTask.value = '';
   }
   
 });
@@ -163,17 +123,17 @@ taskerList.addEventListener('click', function(evt) {
 
       if (taskerItemAll[i].contains(target.closest('.tasker__delete-btn'))) {
         taskerItemAll[i].remove();
-      } 
+      }
       
       if (taskerItemAll[i].contains(target.closest('.tasker__edit-btn')) && i === j) {  
         let taskerInput = taskerSubtitleAll[j].previousElementSibling;
 
         if (taskerSubtitleAll[j].getAttribute('contenteditable') == 'false') {
           taskerInput.setAttribute('disabled', true);
-          taskerSubtitleAll[j].setAttribute('contenteditable', true);         
+          taskerSubtitleAll[j].setAttribute('contenteditable', true);
         } else {
           taskerInput.removeAttribute('disabled');
-          taskerSubtitleAll[j].setAttribute('contenteditable', false);   
+          taskerSubtitleAll[j].setAttribute('contenteditable', false);
         }
 
       }
@@ -189,7 +149,7 @@ taskerList.addEventListener('dragstart', function(evt) {
 
   target.classList.add('selected');
   for (let i = 0; i < taskerListAll.length; i++) {
-    taskerListAll[i].classList.add('events');    
+    taskerListAll[i].classList.add('events');
   }
 });
 
@@ -198,7 +158,7 @@ taskerList.addEventListener('dragend', function(evt) {
 
   target.classList.remove('selected');
   for (let i = 0; i < taskerListAll.length; i++) {
-    taskerListAll[i].classList.remove('events');    
+    taskerListAll[i].classList.remove('events');
   }
 });
 
@@ -217,10 +177,10 @@ function getNextItem(cursorPosition, target) {
 }
 
 taskerList.addEventListener('dragover', function(evt) {
+  evt.preventDefault();
+
   let target = evt.target;
   let activeItem = taskerList.querySelector('.selected');
-
-  evt.preventDefault();
 
   if (activeItem !== target && target.classList.contains('tasker__task-item')) {
     let nextItem = getNextItem(evt.clientY, target);
