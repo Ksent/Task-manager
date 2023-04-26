@@ -1,0 +1,40 @@
+.nav {
+  margin: 0;
+  padding: 3px;
+  background-color: #4386a5;
+}
+
+.nav__list {
+  max-width: 900px;
+  min-height: 51px;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.nav__list--display {
+  justify-content: space-around;
+}
+
+.nav__item {
+  position: relative;
+}
+
+.nav__item--position {
+  position: absolute;
+  right: 0;
+  z-index: 10;
+}
+
+.nav__input {
+  width: 18px;
+  height: 18px;
+  margin-left: 15px;
+  position: absolute;
+  opacity: 0;
+  &:checked + .nav__btn {
+    background-color: #6199b3;
+  }
+}

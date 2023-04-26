@@ -1,0 +1,209 @@
+.tasker {
+  min-width: 320px;
+  max-width: 100%;
+}
+
+// .tasker__header {
+//   display: flex;
+//   justify-content: space-between;
+//   background-color: #6199b3;
+// }
+
+// .tasker__title {
+//   margin: 0;
+//   margin: 5% 0;
+//   text-align: center;
+//   text-shadow: -1px -1px #ffffff, -2px -2px #ffffff, -1px 1px #ffffff, -2px 2px #ffffff, 1px 1px #ffffff, 2px 2px #ffffff, 1px -1px #ffffff, 2px -2px #ffffff, -3px -3px 2px #c9cbcc, -3px 3px 2px #c9cbcc, 3px 3px 2px #c9cbcc, 3px -3px 2px #c9cbcc;
+//   color: #54849b;
+// }
+
+// .tasker__nav-list {
+//   min-height: 51px;
+//   margin: 0;
+//   padding: 3px;
+//   display: flex;
+//   align-items: center;
+// }
+
+// .tasker__nav-link {
+//   padding: 15px;
+//   color: #8fdab7;
+//   &:hover {
+//     background-color: #6e9eb4;
+//   }
+// }
+
+// .tasker__task-form {
+//   width: 50%;
+//   // height: 51px;
+//   padding: 3px;
+//   display: flex;
+//   align-items: center;
+//   position: relative;
+// }
+
+// .tasker__new-task {
+//   width: 100%;
+//   min-height: 25px;
+//   padding: 13px 64px 13px 13px;
+//   color: #ffffff;
+//   border: none;
+//   background-color: #6e9eb4;
+//   &:focus {
+//     outline: 2px solid #ffffff;
+//   }
+// }
+
+// .tasker__new-task::placeholder {
+//   color: #7dc4a3;
+// }
+
+// .tasker__add-btn {
+//   width: 51px;
+//   height: 51px;
+//   padding: 0;
+//   position: absolute;
+//   top: 3px;
+//   right: 3px;
+//   bottom: 0;
+//   z-index: 10;
+//   line-height: 0;
+//   border: none;
+//   background-color: #8fdab7;
+//   &:focus {
+//     outline: 2px solid #ffffff;
+//   }
+//   &:focus svg, &:hover svg {
+//     fill: #ffffff;
+//     transition: 0.5s ease-in-out;
+//   }
+// }
+
+.tasker__task-list {
+  max-width: 906px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.tasker__task-item {
+  margin: 3px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px;
+  background-color: #ffffff;
+  cursor: move;
+}
+
+.tasker__task-text {
+  margin: 0 15px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  color: #494a4b;
+}
+
+.tasker__toggle {
+  width: 16px;
+  height: 16px;
+  position: absolute;
+  z-index: 2;
+  opacity: 0;
+  cursor: pointer;
+  &:checked ~ .tasker__subtitle {
+    text-decoration: line-through wavy #6199b3;
+    color: #c9cbcc;
+  }
+  &:checked ~ .tasker__toggle-icon {
+    stroke: #c9cbcc;
+  }
+  &:checked ~ .tasker__checkmark-icon {
+    stroke-dashoffset: 0;
+    transition: stroke-dashoffset 20s ease-out;
+  }
+  &:focus ~ .tasker__toggle-icon {
+    stroke: #6199b3;
+    stroke-width: 2px;
+  }
+}
+
+.tasker__subtitle {
+  margin: 10px 0 10px 31px;
+  padding: 5px 0;
+  word-break: break-all;
+  cursor: pointer;
+  &:hover {
+    text-decoration: line-through wavy #6199b3;
+  }
+}
+
+// .tasker__subtitle[contenteditable="false"] {
+//   cursor: pointer;
+//   &:hover {
+//     text-decoration: line-through wavy #6199b3;
+//   }
+// }
+
+// .tasker__subtitle[contenteditable="true"] {
+//   padding: 5px 10px;
+//   outline: 2px dashed #7dc4a3;
+//   cursor: text;
+// }
+
+.tasker__toggle-icon {
+  position: absolute;
+  z-index: 0;
+  cursor: pointer;
+}
+
+.tasker__checkmark-icon {
+  position: absolute;
+  z-index: 1;
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+}
+
+.tasker__task-icons {
+  margin: 0;
+  display: flex;
+  align-items: center;
+}
+
+.tasker__edit-btn {
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  line-height: 0;
+  border: none;
+  background-color: transparent;
+  &:focus {
+    outline: none;
+  }
+  &:focus svg, &:hover svg {
+    fill: #fcbe16;
+    transition: 0.6s ease-out;
+  }
+}
+
+.tasker__delete-btn {
+  width: 20px;
+  height: 20px;
+  margin: 0 15px;
+  padding: 0;
+  line-height: 0;
+  border: none;
+  background-color: transparent;
+  &:focus {
+    outline: none;
+  }
+  &:focus svg, &:hover svg {
+    stroke: #d81b15;
+    transition: 0.6s ease-out;
+  }
+}
+
+.tasker__footer {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+}

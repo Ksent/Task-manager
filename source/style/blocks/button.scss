@@ -1,0 +1,73 @@
+.button {
+  min-height: 46px;
+  padding: 12.5px;
+  padding-left: 33.5px;
+  margin-right: 3px;
+  position: relative;
+  border: none;
+  border-radius: 5px;
+  background-color: transparent;
+  font-weight: bold;
+  color: #8fdab7;
+  vertical-align: middle;
+  cursor: pointer;
+  &:hover {
+    background-color: #6199b3;
+    transition: 0.5s ease-in-out;
+  }
+  &:focus {
+    outline: 2px solid #ffffff;
+    transition: none;
+  }
+}
+
+.button-add {
+  width: 51px;
+  height: 51px;
+  padding: 0;
+  line-height: 0;
+  border: none;
+  border-radius: 5px;
+  background-color: #8fdab7;
+  vertical-align: middle;
+  &:focus {
+    outline: 2px solid #ffffff;
+  }
+  &:focus svg, &:hover svg {
+    fill: #ffffff;
+    transition: 0.5s ease-in-out;
+  }
+}
+
+.button-close {
+  background-color: transparent;
+  color: #6199b3;
+  &:hover {
+    border: 1px solid #4386a5;
+    background-color: transparent;
+  }
+}
+
+.button-save {
+  background-color: #4386a5;
+}
+
+.button__subtitle {
+  display: none;
+}
+
+.button__icon {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@media (min-width: 615px) {
+  .button {
+    padding-left: 48px;
+  }
+
+  .button__subtitle {
+    display: inherit;
+  }
+}

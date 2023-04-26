@@ -1,7 +1,8 @@
 *.psd
 *.css
 gulpfile.js
+webpack.*config.js
 node_modules/
 *.json
-build/
+js/
 *.code-workspace
