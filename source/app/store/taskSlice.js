@@ -1,21 +1,24 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+let number = 0;
 const taskSlice = createSlice({
   name: 'tasks',
   initialState: {
     tasks: [],
   },
   reducers: {
-    addTask(state, action) {
+    addNewTask(state, action) {
       state.tasks.push({
-        id: new Date().toISOString(),
+        id: ++number,
         text: action.payload.text,
-        completed: false,
+        date: action.payload.date,
+        time: action.payload.time,
+        checked: false,
       });
     },
     toggleComplete(state, action) {
       const toggledTask = state.tasks.find(task => task.id === action.payload.id);
-      toggledTask.completed = !toggledTask.completed;
+      toggledTask.checked = !toggledTask.checked;
     },
     deleteTask(state, action) {
       state.tasks = state.tasks.filter(task => task.id !== action.payload.id);
@@ -23,6 +26,6 @@ const taskSlice = createSlice({
   },
 });
 
-export const {addTask, toggleComplete, deleteTask} = taskSlice.actions;
+export const {addNewTask, toggleComplete, deleteTask} = taskSlice.actions;
 
 export default taskSlice.reducer;

@@ -3,8 +3,10 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import {toggleComplete, deleteTask} from '../store/taskSlice';
 
-function TaskItem({ id, text, checked }) {
+function TaskItem({ id, text, date, time, checked }) {
   const dispatch = useDispatch();
+  const dataToday = new Date().toLocaleDateString();
+  const dataEnter = new Date(date).toLocaleDateString();
 
   return (
     <li 
@@ -16,15 +18,18 @@ function TaskItem({ id, text, checked }) {
         <input 
           className="tasker__toggle" 
           type="checkbox" 
-          id="toggle-task"
+          id={"toggle-task-" + id}
           checked={checked}
           onChange={() => dispatch(toggleComplete({ id }))}
         />
         <label 
           className="tasker__subtitle" 
-          htmlFor="toggle-task"
+          htmlFor={"toggle-task-" + id}
         >
           {text}
+          <span className="tasker__datetime">
+            {dataToday == dataEnter ? 'сегодня' : dataEnter} в {time}
+          </span>
         </label>
         <svg 
           className="tasker__toggle-icon" 

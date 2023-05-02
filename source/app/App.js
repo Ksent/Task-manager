@@ -6,7 +6,7 @@ import Footer from './components/Footer';
 import Modal from './components/Modal';
 
 function App() {
-  const [modalShow, setModalShow] = useState(true);
+  const [modalShow, setModalShow] = useState(false);
 
   return (
     <div className="tasker">
@@ -16,8 +16,8 @@ function App() {
       <TaskList />
       <Footer />
       <Modal 
-        show = {modalShow}
-        setShow = {setModalShow}
+        show={modalShow}
+        setShow={setModalShow}
       />
     </div>
   );

@@ -8,15 +8,15 @@
   border-radius: 5px;
   background-color: transparent;
   font-weight: bold;
-  color: #8fdab7;
+  color: $button-color;
   vertical-align: middle;
   cursor: pointer;
   &:hover {
-    background-color: #6199b3;
+    background-color: $hover-color;
     transition: 0.5s ease-in-out;
   }
   &:focus {
-    outline: 2px solid #ffffff;
+    outline: 2px solid $button-color;
     transition: none;
   }
 }
@@ -28,28 +28,38 @@
   line-height: 0;
   border: none;
   border-radius: 5px;
-  background-color: #8fdab7;
+  background-color: $highlight-color;
   vertical-align: middle;
   &:focus {
-    outline: 2px solid #ffffff;
+    outline: 2px solid $button-color;
   }
   &:focus svg, &:hover svg {
-    fill: #ffffff;
+    fill: $button-color;
     transition: 0.5s ease-in-out;
   }
 }
 
 .button-close {
   background-color: transparent;
-  color: #6199b3;
+  color: $basis-color;
   &:hover {
-    border: 1px solid #4386a5;
+    border: 1px solid $hover-color;
     background-color: transparent;
+    transition: 0.5s ease-in-out;
+  }
+  &:focus {
+    border: 1px solid $hover-color;
   }
 }
 
 .button-save {
-  background-color: #4386a5;
+  background-color: $basis-color;
+  &:hover {
+    background-color: $highlight-color;
+  }
+  &:focus {
+    background-color: $highlight-color;
+  }
 }
 
 .button__subtitle {
@@ -62,7 +72,7 @@
   left: 0;
 }
 
-@media (min-width: 615px) {
+@media (min-width: $tablet-width) {
   .button {
     padding-left: 48px;
   }

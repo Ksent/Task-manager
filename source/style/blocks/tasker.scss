@@ -91,7 +91,7 @@
   justify-content: space-between;
   align-items: center;
   border-radius: 5px;
-  background-color: #ffffff;
+  background-color: $block-bg;
   cursor: move;
 }
 
@@ -100,7 +100,7 @@
   display: flex;
   align-items: center;
   position: relative;
-  color: #494a4b;
+  color: $text-color;
 }
 
 .tasker__toggle {
@@ -111,18 +111,18 @@
   opacity: 0;
   cursor: pointer;
   &:checked ~ .tasker__subtitle {
-    text-decoration: line-through wavy #6199b3;
-    color: #c9cbcc;
+    text-decoration: line-through wavy $basis-color;
+    color: $disabled-color;
   }
   &:checked ~ .tasker__toggle-icon {
-    stroke: #c9cbcc;
+    stroke: $disabled-color;
   }
   &:checked ~ .tasker__checkmark-icon {
     stroke-dashoffset: 0;
     transition: stroke-dashoffset 20s ease-out;
   }
   &:focus ~ .tasker__toggle-icon {
-    stroke: #6199b3;
+    stroke: $basis-color;
     stroke-width: 2px;
   }
 }
@@ -130,11 +130,19 @@
 .tasker__subtitle {
   margin: 10px 0 10px 31px;
   padding: 5px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   word-break: break-all;
   cursor: pointer;
   &:hover {
-    text-decoration: line-through wavy #6199b3;
+    text-decoration: line-through wavy $basis-color;
   }
+}
+
+.tasker__datetime {
+  margin-top: 6px;
+  font-size: 14px;
 }
 
 // .tasker__subtitle[contenteditable="false"] {

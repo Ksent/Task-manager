@@ -18,7 +18,7 @@
   background-color: transparent;
   cursor: pointer;
   &:focus {
-    outline: 2px solid #ffffff;
+    outline: 2px solid $button-color;
     transition: none;
   }
 }
@@ -30,13 +30,13 @@
   padding-left: 46px;
   border: none;
   border-radius: 5px;
-  background-color: #6199b3;
-  color: #ffffff;
+  background-color: $hover-color;
+  color: $button-color;
   &::placeholder {
     font-weight: bold;
-    color: #8fdab7;
+    color: $highlight-color;
   }
   &:focus {
-    outline: 2px solid #ffffff;
+    outline: 2px solid $button-color;
   }
 }
