@@ -41,6 +41,7 @@ function ModalForm({ closeModal }) {
         <input
           className="modal__enter"
           type="text"
+          name="text"
           id="text"
           value={text}
           onChange={(e) => setText(e.target.value)}
@@ -58,6 +59,7 @@ function ModalForm({ closeModal }) {
         <input
           className="modal__enter"
           type="date"
+          name="date"
           id="date"
           value={date}
           onChange={(e) => setDate(e.target.value)}
@@ -75,6 +77,7 @@ function ModalForm({ closeModal }) {
         <input
           className="modal__enter"
           type="time"
+          name="time"
           id="time"
           value={time}
           onChange={(e) => setTime(e.target.value)}

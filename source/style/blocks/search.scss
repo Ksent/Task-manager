@@ -4,7 +4,6 @@
 }
 
 .search__form {
-  width: 93%;
   position: relative;
 }
 
@@ -24,8 +23,8 @@
 }
 
 .search__enter {
-  width: calc(100% - 46px);
-  height: 40px;
+  width: 100%;
+  height: 46px;
   padding: 3px 12.5px;
   padding-left: 46px;
   border: none;

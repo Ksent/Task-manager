@@ -21,7 +21,7 @@ function SearchForm() {
         </label>
         <input 
           className="search__enter"
-          type="text"
+          type="search"
           name="enter-search"
           id="enter-search"
           placeholder="Поиск"
