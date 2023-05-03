@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import TaskItem from './TaskItem';
 
-function TaskList() {
+function TaskList({ setShow }) {
   const tasks = useSelector(state => state.tasks.tasks);
 
   return (
@@ -14,6 +14,7 @@ function TaskList() {
           <TaskItem 
             key={task.id}
             {...task}
+            setShow={setShow}
           />
         ))}
 

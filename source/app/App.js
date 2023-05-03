@@ -11,9 +11,11 @@ function App() {
   return (
     <div className="tasker">
       <Header 
-        setShow = {setModalShow}
+        setShow={setModalShow}
       />
-      <TaskList />
+      <TaskList 
+        setShow={setModalShow}
+      />
       <Footer />
       <Modal 
         show={modalShow}

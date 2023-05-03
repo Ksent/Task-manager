@@ -17,7 +17,6 @@ function Header({ setShow }) {
           />
         </ul>
       </nav>
-
     </header>
 
   );

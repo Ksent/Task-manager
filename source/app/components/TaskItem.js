@@ -1,9 +1,9 @@
 import React from 'react';
 
 import { useDispatch } from 'react-redux';
-import {toggleComplete, deleteTask} from '../store/taskSlice';
+import { toggleComplete, deleteTask } from '../store/taskSlice';
 
-function TaskItem({ id, text, date, time, checked }) {
+function TaskItem({ setShow, id, text, date, time, checked }) {
   const dispatch = useDispatch();
   const dataToday = new Date().toLocaleDateString();
   const dataEnter = new Date(date).toLocaleDateString();
@@ -28,7 +28,7 @@ function TaskItem({ id, text, date, time, checked }) {
         >
           {text}
           <span className="tasker__datetime">
-            {dataToday == dataEnter ? 'сегодня' : dataEnter} в {time}
+            {dataToday == dataEnter ? "сегодня" : dataEnter} в {time}
           </span>
         </label>
         <svg 
@@ -54,6 +54,7 @@ function TaskItem({ id, text, date, time, checked }) {
         <button 
           className="tasker__edit-btn"
           title="Редактировать"
+          onClick={() => setShow(true)}
         >
           <svg 
             width="18" 

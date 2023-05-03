@@ -3,28 +3,32 @@ import { useDispatch } from 'react-redux';
 
 import { addNewTask } from '../store/taskSlice';
 
-function ModalForm({ closeModal }) {
+function ModalForm({ closeModal, title, defaultText }) {
   const [text, setText] = useState('');
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
   const dispatch = useDispatch();
 
-  function sendTask(e) {
-    e.preventDefault();
-    dispatch(addNewTask({ text, date, time }));
+  function resetTask() {
     closeModal();
     setText('');
     setDate('');
     setTime('');
   }
 
+  function sendTask(e) {
+    e.preventDefault();
+    dispatch(addNewTask({ text, date, time }));
+    resetTask();
+  }
+
   return (
     <div 
       className="modal__wrapper"
-      onClick={e => e.stopPropagation()}
+      onClick={(e) => e.stopPropagation()}
     >
 
-      <h1 className="modal__title">Добавить задачу</h1>
+      <h1 className="modal__title">{title}</h1>
 
       <form 
         className="modal__form"
@@ -43,7 +47,7 @@ function ModalForm({ closeModal }) {
           type="text"
           name="text"
           id="text"
-          value={text}
+          value={title == "Редактировать задачу" ? defaultText : text}
           onChange={(e) => setText(e.target.value)}
           required
         />
@@ -89,7 +93,7 @@ function ModalForm({ closeModal }) {
           <button 
             className="modal__button button button-close"
             type="reset"
-            onClick={closeModal}
+            onClick={resetTask}
           >
             Отмена
           </button>
