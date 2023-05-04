@@ -1,16 +1,65 @@
 import React from 'react';
-
 import { useDispatch } from 'react-redux';
+
 import { toggleComplete, deleteTask } from '../store/taskSlice';
 
 function TaskItem({ setShow, id, text, date, time, checked }) {
   const dispatch = useDispatch();
-  const dataToday = new Date().toLocaleDateString();
-  const dataEnter = new Date(date).toLocaleDateString();
+  const dateToday = new Date().toLocaleDateString();
+  const dateEnter = new Date(date).toLocaleDateString();
+
+  function dragStart(e) {
+    let target = e.target;
+
+    target.classList.add('selected');
+  }
+
+  function dragEnd(e) {
+    let target = e.target;
+
+    target.classList.remove('selected');
+  }
+
+  function dragOver(e) {
+    e.preventDefault();
+
+    let target = e.target;
+    let taskerList = document.querySelector('.tasker__task-list');
+    let activeItem = taskerList.querySelector('.selected');
+
+    if (activeItem !== target && target.classList.contains('tasker__task-item')) {
+      let nextItem = getNextItem(e.clientY, target);
+  
+      if (nextItem && activeItem === nextItem.previousElementSibling || activeItem === nextItem) {
+        return;
+      }
+  
+      taskerList.insertBefore(activeItem, nextItem);
+    } else {
+      return;
+    }
+  }
+
+  function getNextItem(cursorPosition, target) {
+    let nextItem;
+    let itemCoord = target.getBoundingClientRect();
+    let itemCenter = itemCoord.y + itemCoord.height / 2;
+  
+    if (cursorPosition < itemCenter) {
+      nextItem = target;
+    } else {
+      nextItem = target.nextElementSibling;
+    }
+  
+    return nextItem;
+  }
 
   return (
     <li 
-      className="tasker__task-item" 
+      className="tasker__task-item"
+      onDragStart={dragStart}
+      onDragEnd={dragEnd}
+      onDragOver={dragOver}
       draggable="true"
     >
 
@@ -28,7 +77,7 @@ function TaskItem({ setShow, id, text, date, time, checked }) {
         >
           {text}
           <span className="tasker__datetime">
-            {dataToday == dataEnter ? "сегодня" : dataEnter} в {time}
+            {dateToday == dateEnter ? "сегодня" : dateEnter} в {time}
           </span>
         </label>
         <svg 

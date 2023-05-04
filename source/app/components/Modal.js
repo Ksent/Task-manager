@@ -19,11 +19,10 @@ function Modal({ show, setShow }) {
         setShow={setShow}
         closeModal={closeModal}
         title="Редактировать задачу"
-        value={text}
       /> */}
       <ModalForm 
-        show={show}
-        setShow={setShow}
+        // show={show}
+        // setShow={setShow}
         closeModal={closeModal}
         title="Добавить задачу"
       />

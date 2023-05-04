@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import { addNewTask } from '../store/taskSlice';
 
-function ModalForm({ closeModal, title, defaultText }) {
+function ModalForm({ closeModal, title }) {
   const [text, setText] = useState('');
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
@@ -47,7 +47,7 @@ function ModalForm({ closeModal, title, defaultText }) {
           type="text"
           name="text"
           id="text"
-          value={title == "Редактировать задачу" ? defaultText : text}
+          value={title == "Редактировать задачу" ? taskText : text}
           onChange={(e) => setText(e.target.value)}
           required
         />

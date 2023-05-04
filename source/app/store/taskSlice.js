@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const task = localStorage.getItem('tasks') !== null ? JSON.parse(localStorage.getItem('tasks')) : [];
-let number = 0;
 
 const taskSlice = createSlice({
   name: 'tasks',
@@ -11,7 +10,7 @@ const taskSlice = createSlice({
   reducers: {
     addNewTask(state, action) {
       state.tasks.push({
-        id: number++,
+        id: Date.now(),
         text: action.payload.text,
         date: action.payload.date,
         time: action.payload.time,
@@ -27,7 +26,7 @@ const taskSlice = createSlice({
     deleteTask(state, action) {
       state.tasks = state.tasks.filter(task => task.id !== action.payload.id);
       localStorage.setItem('tasks', JSON.stringify(state.tasks.map(task => task)));
-    }
+    },
   },
 });
 
