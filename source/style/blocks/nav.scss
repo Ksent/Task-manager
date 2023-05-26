@@ -1,40 +1,54 @@
 .nav {
   margin: 0;
-  padding: 3px;
-  background-color: $basis-color;
+  padding: 10.5px;
+  background-color: $background-color;
 }
 
 .nav__list {
   max-width: 900px;
-  min-height: 51px;
+  min-height: 50px;
   margin: 0 auto;
   padding: 0;
   display: flex;
+  justify-content: space-around;
   align-items: center;
   position: relative;
-}
-
-.nav__list--display {
-  justify-content: space-around;
 }
 
 .nav__item {
   position: relative;
 }
 
-.nav__item--position {
-  position: absolute;
-  right: 0;
-  z-index: 10;
-}
-
 .nav__input {
   width: 18px;
   height: 18px;
+  margin-top: 2px;
   margin-left: 15px;
   position: absolute;
   opacity: 0;
   &:checked + .nav__button {
-    background-color: $hover-color;
+    color: $basis-color;
+  }
+  &:checked + .nav__button::after {
+    width: 100%;
+  }
+  &:checked + .nav__button .nav__icon {
+    stroke: $hover-color;
   }
 }
+
+.nav__button {
+  position: relative;
+  overflow: hidden;
+  &::after {
+    content: '';
+    width: 0;
+    height: 1px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: $hover-color;
+    transition: opacity 0.5s, width 0.5s;
+  }
+}
+

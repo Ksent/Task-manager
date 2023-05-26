@@ -6,9 +6,9 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: #ddecec;
+  background-color: $background-color;
   font-family: 'Trebuchet MS', Arial, sans-serif;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 #root {
@@ -37,4 +37,10 @@ a {
 
 .hidden {
   display: none;
+}
+
+.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

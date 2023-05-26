@@ -1,24 +1,45 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import { useDispatch, useSelector } from 'react-redux';
 
+import { dragEndTask } from '../store/taskSlice';
 import TaskItem from './TaskItem';
 
 function TaskList({ setShow }) {
   const tasks = useSelector(state => state.tasks.tasks);
+  const dispatch = useDispatch();
+
+  function dragEnd(result) {
+    if (!result.destination) return;
+
+    dispatch(dragEndTask(result));
+  }
 
   return (
     <div className="tasker__main">
-      <ul className="tasker__task-list">
+      <DragDropContext onDragEnd={dragEnd}>
+        <Droppable droppableId="list">
+          {(provided) => (
+            <ul 
+              className="tasker__list"
+              ref={provided.innerRef}
+              {...provided.droppableProps}
+            >
 
-        {tasks.map(task => (
-          <TaskItem 
-            key={task.id}
-            {...task}
-            setShow={setShow}
-          />
-        ))}
+              {tasks.map((task, index) => (
+                <TaskItem 
+                  key={task.id}
+                  {...task}
+                  setShow={setShow}
+                  index={index}
+                />
+              ))}
 
-      </ul>
+              {provided.placeholder}
+            </ul>
+          )}
+        </Droppable>
+      </DragDropContext>
     </div>
   );
 }

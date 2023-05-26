@@ -1,18 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function SearchForm() {
+  const [value, setValue] = useState('');
+
+  function resetValue() {
+    setValue('');
+  }
+
   return (
-    <li className="nav__item search">
+    <li className="tasker__search-item search">
       <form className="search__form">
         <button 
           className="search__button"
         >
           <svg 
-            className="search__icon"
-            width="46"
-            height="46"
+            width="43"
+            height="43"
             fill="transparent"
-            stroke="#ddecec"
+            stroke="#cfdfdf"
           >
             <use href="#icon-search"></use>
           </svg>
@@ -21,12 +26,28 @@ function SearchForm() {
         </label>
         <input 
           className="search__enter"
-          type="search"
+          type="text"
           name="enter-search"
           id="enter-search"
+          value={value}
           placeholder="Поиск"
+          onChange={(e) => setValue(e.target.value)}
           required
         />
+        <button 
+          className={"search__button search__button-delete" + (value ? " active" : " hidden")}
+          type="reset"
+          onClick={resetValue}
+        >
+          <svg 
+            width="20" 
+            height="20" 
+            stroke="#cfdfdf" 
+            strokeWidth="2"
+          >
+            <use href="#icon-delete"></use>
+          </svg>
+        </button>
       </form>
     </li>
   );

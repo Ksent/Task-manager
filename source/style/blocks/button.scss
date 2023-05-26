@@ -1,13 +1,12 @@
 .button {
   min-height: 46px;
-  padding: 12.5px;
-  padding-left: 33.5px;
-  margin-right: 3px;
+  padding: 12.5px 12.5px 12.5px 33.5px;
   position: relative;
   border: none;
-  border-radius: 5px;
-  background-color: transparent;
+  border-radius: 10px;
+  background-color: $basis-color;
   font-weight: bold;
+  line-height: 0;
   color: $button-color;
   vertical-align: middle;
   cursor: pointer;
@@ -16,25 +15,34 @@
     transition: 0.5s ease-in-out;
   }
   &:focus {
-    outline: 2px solid $button-color;
+    background-color: $hover-color;
+    outline: none;
     transition: none;
   }
 }
 
 .button-add {
-  width: 51px;
-  height: 51px;
-  padding: 0;
-  line-height: 0;
-  border: none;
-  border-radius: 5px;
-  background-color: $highlight-color;
-  vertical-align: middle;
-  &:focus {
-    outline: 2px solid $button-color;
+  &:hover {
+    background-color: $highlight-color;
   }
-  &:focus svg, &:hover svg {
-    fill: $button-color;
+  &:focus {
+    background-color: $highlight-color;
+  }
+}
+
+.button-filter {
+  padding: 13.5px 12.5px 13.5px 33.5px;
+  margin-right: 3px;
+  border-radius: 0;
+  background-color: transparent;
+  color: $disabled-color;
+  &:hover {
+    border-radius: 0;
+    background: none;
+    color: $basis-color;
+  }
+  &:hover .button__icon {
+    stroke: $hover-color;
     transition: 0.5s ease-in-out;
   }
 }
@@ -49,16 +57,7 @@
   }
   &:focus {
     border: 1px solid $hover-color;
-  }
-}
-
-.button-save {
-  background-color: $basis-color;
-  &:hover {
-    background-color: $highlight-color;
-  }
-  &:focus {
-    background-color: $highlight-color;
+    background-color: transparent;
   }
 }
 
@@ -74,7 +73,7 @@
 
 @media (min-width: $tablet-width) {
   .button {
-    padding-left: 48px;
+    padding-left: 46px;
   }
 
   .button__subtitle {

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 
 import Header from './components/Header'
 import TaskList from './components/TaskList';
-import Footer from './components/Footer';
 import Modal from './components/Modal';
 
 function App() {
@@ -16,7 +15,6 @@ function App() {
       <TaskList 
         setShow={setModalShow}
       />
-      <Footer />
       <Modal 
         show={modalShow}
         setShow={setModalShow}

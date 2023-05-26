@@ -15,7 +15,7 @@ function FilterBtn(props) {
         defaultChecked={props.checked}
       />
       <label 
-        className="nav__button button" 
+        className="nav__button button button-filter" 
         htmlFor={props.forName}
       >
         <svg 
@@ -23,7 +23,7 @@ function FilterBtn(props) {
           width="46"
           height="46"
           fill="transparent"
-          stroke="#ddecec"
+          stroke="#c4c4c4"
         >
           <use href={props.icon}></use>
         </svg>

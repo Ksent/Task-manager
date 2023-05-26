@@ -2,16 +2,16 @@ import React from 'react';
 
 function AddBtn({ setShow }) {
   return (
-    <li className="nav__item nav__item--position">
+    <li className="nav__item">
       <button 
-        className="nav__add-button button-add" 
-        title="Добавить"
+        className="nav__button button button-add" 
         onClick={() => setShow(true)}
         >
         <svg 
+          className="nav__icon button__icon"
           width="46" 
           height="46" 
-          fill="#7dc4a3"
+          fill="#ffffff"
           >
           <g>
             <rect 
@@ -30,6 +30,9 @@ function AddBtn({ setShow }) {
             </rect>
           </g>
         </svg>
+        <span className="nav__subtitle button__subtitle">
+          Новая задача
+        </span>
       </button>
     </li>
   );

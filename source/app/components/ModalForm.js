@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import { addNewTask } from '../store/taskSlice';
 
-function ModalForm({ closeModal, title }) {
+function ModalForm({ innerRef, closeModal, title }) {
   const [text, setText] = useState('');
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
@@ -50,6 +50,7 @@ function ModalForm({ closeModal, title }) {
           value={title == "Редактировать задачу" ? taskText : text}
           onChange={(e) => setText(e.target.value)}
           required
+          ref={innerRef}
         />
       </div>
 
@@ -98,7 +99,7 @@ function ModalForm({ closeModal, title }) {
             Отмена
           </button>
           <button 
-            className="modal__button button button-save"
+            className="modal__button button button-add"
           >
             Сохранить
           </button>

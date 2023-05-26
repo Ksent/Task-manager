@@ -2,7 +2,7 @@ import React from 'react';
 
 function Calendar() {
   return (
-    <li className="nav__item calendar">
+    <li className="tasker__search-item calendar">
       <button 
         className="calendar__button button"
       >
