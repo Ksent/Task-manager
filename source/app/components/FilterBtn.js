@@ -3,11 +3,11 @@ import React from 'react';
 function FilterBtn(props) {
   return (
     <li 
-      className="nav__item"
+      className="filter__item"
       key={props.id}
     >
       <input 
-        className="nav__input"
+        className="filter__input"
         type="radio" 
         name="filter"
         id={props.forName}
@@ -15,11 +15,11 @@ function FilterBtn(props) {
         defaultChecked={props.checked}
       />
       <label 
-        className="nav__button button button-filter" 
+        className="filter__button button" 
         htmlFor={props.forName}
       >
         <svg 
-          className="nav__icon button__icon"
+          className="filter__icon button__icon"
           width="46"
           height="46"
           fill="transparent"
@@ -27,7 +27,7 @@ function FilterBtn(props) {
         >
           <use href={props.icon}></use>
         </svg>
-        <span className="nav__subtitle button__subtitle">
+        <span className="filter__subtitle button__subtitle">
           {props.subtitle}
         </span>
       </label>

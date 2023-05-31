@@ -2,11 +2,18 @@ import React from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 import { useDispatch } from 'react-redux';
 
-import { toggleComplete, deleteTask } from '../store/taskSlice';
+import { toggleComplete, deleteTask, editTask } from '../store/taskSlice';
+import { openModalWindow } from '../store/modalSlice';
 
 function TaskItem({ index, setShow, id, text, date, time, checked }) {
   const dispatch = useDispatch();
   const dateEnter = new Date(date).toLocaleDateString();
+
+  function editedTask() {
+    setShow(true);
+    dispatch(openModalWindow({ id: 2 }))
+    dispatch(editTask({ id }));
+  }
 
   return (
     <Draggable 
@@ -61,7 +68,7 @@ function TaskItem({ index, setShow, id, text, date, time, checked }) {
             <button 
               className="tasker__edit-btn"
               title="Редактировать"
-              onClick={() => setShow(true)}
+              onClick={editedTask}
             >
               <svg 
                 width="18" 

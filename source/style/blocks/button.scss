@@ -21,46 +21,6 @@
   }
 }
 
-.button-add {
-  &:hover {
-    background-color: $highlight-color;
-  }
-  &:focus {
-    background-color: $highlight-color;
-  }
-}
-
-.button-filter {
-  padding: 13.5px 12.5px 13.5px 33.5px;
-  margin-right: 3px;
-  border-radius: 0;
-  background-color: transparent;
-  color: $disabled-color;
-  &:hover {
-    border-radius: 0;
-    background: none;
-    color: $basis-color;
-  }
-  &:hover .button__icon {
-    stroke: $hover-color;
-    transition: 0.5s ease-in-out;
-  }
-}
-
-.button-close {
-  background-color: transparent;
-  color: $basis-color;
-  &:hover {
-    border: 1px solid $hover-color;
-    background-color: transparent;
-    transition: 0.5s ease-in-out;
-  }
-  &:focus {
-    border: 1px solid $hover-color;
-    background-color: transparent;
-  }
-}
-
 .button__subtitle {
   display: none;
 }

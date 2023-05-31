@@ -1,45 +1,52 @@
-.nav {
+.filter__list {
+  min-height: 54px;
   margin: 0;
-  padding: 10.5px;
-  background-color: $background-color;
-}
-
-.nav__list {
-  max-width: 900px;
-  min-height: 50px;
-  margin: 0 auto;
   padding: 0;
   display: flex;
-  justify-content: space-around;
   align-items: center;
   position: relative;
 }
 
-.nav__item {
+.filter__item {
   position: relative;
 }
 
-.nav__input {
+.filter__input {
   width: 18px;
   height: 18px;
   margin-top: 2px;
   margin-left: 15px;
   position: absolute;
   opacity: 0;
-  &:checked + .nav__button {
+  &:checked + .filter__button {
     color: $basis-color;
   }
-  &:checked + .nav__button::after {
+  &:checked + .filter__button::after {
     width: 100%;
   }
-  &:checked + .nav__button .nav__icon {
+  &:checked + .filter__button .filter__icon {
     stroke: $hover-color;
   }
 }
 
-.nav__button {
+.filter__button {
+  margin-right: 30px;
+  padding-top: 13.5px;
+  padding-bottom: 13.5px;
   position: relative;
+  border-radius: 0;
+  background-color: transparent;
+  color: $disabled-color;
   overflow: hidden;
+  &:hover {
+    border-radius: 0;
+    background: none;
+    color: $basis-color;
+  }
+  &:hover .button__icon {
+    stroke: $hover-color;
+    transition: 0.5s ease-in-out;
+  }
   &::after {
     content: '';
     width: 0;
@@ -51,4 +58,3 @@
     transition: opacity 0.5s, width 0.5s;
   }
 }
-

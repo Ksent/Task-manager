@@ -1,0 +1,38 @@
+.header {
+  background-color: $basis-color;
+}
+
+.header__wrapper {
+  max-width: 1350px;
+  min-height: 49px;
+  margin: 0 auto;
+  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__list {
+  margin: 0;
+  padding: 0;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+
+.header__counter {
+  margin: 0 12.5px;
+  color: $button-color;
+}
+
+.header__counter-text {
+  display: none;
+  font-weight: bold;
+}
+
+@media (min-width: $tablet-width) {
+  .header__counter-text {
+    margin-left: 12.5px;
+    display: inline;
+  }
+}

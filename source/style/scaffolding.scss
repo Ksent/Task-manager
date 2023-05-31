@@ -11,7 +11,7 @@ body {
   font-size: 16px;
 }
 
-#root {
+#root, #app {
   height: 100%;
 }
 
@@ -25,14 +25,6 @@ button {
 
 a {
   text-decoration: none;
-}
-
-.selected {
-  opacity: 0.6;
-}
-
-.events {
-  pointer-events: none;
 }
 
 .hidden {

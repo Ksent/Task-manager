@@ -1,5 +1,7 @@
 .search {
-  width: 64.7%;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 8px;
 }
 
 .search__form {
@@ -25,7 +27,7 @@
   }
 }
 
-.search__button-delete {
+.search__delete-btn {
   right: 0;
 }
 

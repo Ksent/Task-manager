@@ -1,10 +1,10 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 import ModalForm from './ModalForm';
 
-function Modal({ show, setShow }) {
-  const innerRef = useRef();
-  useEffect(() => innerRef.current && innerRef.current.focus());
+function Modal({ show, setShow, innerRef }) {
+  const modalItems = useSelector(state => state.modalItems.modalItems);
 
   function closeModal() {
     setShow(false);
@@ -12,23 +12,17 @@ function Modal({ show, setShow }) {
 
   return (
     <div 
-      className={"tasker__modal modal" + (show ? " modal--show" : "")}
+      className={"modal" + (show ? " modal--show" : "")}
       onClick={closeModal}
     >
-
-      {/* <ModalForm 
-        show={show}
-        setShow={setShow}
-        closeModal={closeModal}
-        title="Редактировать задачу"
-      /> */}
-      <ModalForm 
-        // show={show}
-        // setShow={setShow}
-        innerRef={innerRef}
-        closeModal={closeModal}
-        title="Добавить задачу"
-      />
+      {modalItems.map(modalItem => (
+        <ModalForm 
+          key={modalItem.id}
+          {...modalItem}
+          closeModal={closeModal}
+          innerRef={innerRef}
+        />
+      ))}
     </div>
   );
 }

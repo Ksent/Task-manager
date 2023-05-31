@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { addNewTask } from '../store/taskSlice';
+import { addNewTask, editTask } from '../store/taskSlice';
 
-function ModalForm({ innerRef, closeModal, title }) {
+function ModalForm({ title, innerRef, closeModal }) {
   const [text, setText] = useState('');
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
@@ -18,7 +18,8 @@ function ModalForm({ innerRef, closeModal, title }) {
 
   function sendTask(e) {
     e.preventDefault();
-    dispatch(addNewTask({ text, date, time }));
+    dispatch(editTask({ text, date, time }));
+    // dispatch(addNewTask({ text, date, time }));
     resetTask();
   }
 
@@ -27,7 +28,6 @@ function ModalForm({ innerRef, closeModal, title }) {
       className="modal__wrapper"
       onClick={(e) => e.stopPropagation()}
     >
-
       <h1 className="modal__title">{title}</h1>
 
       <form 
@@ -47,7 +47,7 @@ function ModalForm({ innerRef, closeModal, title }) {
           type="text"
           name="text"
           id="text"
-          value={title == "Редактировать задачу" ? taskText : text}
+          value={text}
           onChange={(e) => setText(e.target.value)}
           required
           ref={innerRef}
@@ -92,14 +92,14 @@ function ModalForm({ innerRef, closeModal, title }) {
 
         <div className="modal__button-wrapper">
           <button 
-            className="modal__button button button-close"
+            className="modal__button modal__close-btn button"
             type="reset"
             onClick={resetTask}
           >
             Отмена
           </button>
           <button 
-            className="modal__button button button-add"
+            className="modal__button modal__add-btn button"
           >
             Сохранить
           </button>

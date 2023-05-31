@@ -1,28 +1,16 @@
 import React from 'react';
 
-import Calendar from './Calendar';
-import SearchForm from './SearchForm';
-import Nav from './Nav';
+import Search from './Search';
+import Counter from './Counter';
 
-function Header({ setShow }) {
+function Header() {
   return (
-    <header className="tasker__header">
-
-      <div className="tasker__search">
-        <ul className="tasker__search-list">
-          <Calendar />
-          <SearchForm />
-        </ul>
+    <header className="header">
+      <div className="header__wrapper">
+        <Search />
+        <Counter />
       </div>
-
-      <nav className="tasker__nav nav">
-        <Nav 
-          setShow={setShow}
-        />
-      </nav>
-
     </header>
-
   );
 }
 

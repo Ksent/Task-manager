@@ -1,23 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
-import Header from './components/Header'
-import TaskList from './components/TaskList';
+import Header from './components/Header';
+import Main from './components/Main';
 import Modal from './components/Modal';
 
 function App() {
   const [modalShow, setModalShow] = useState(false);
+  const innerRef = useRef();
+  useEffect(() => innerRef.current && innerRef.current.focus());
 
   return (
-    <div className="tasker">
-      <Header 
-        setShow={setModalShow}
-      />
-      <TaskList 
+    <div id="app">
+      <Header />
+      <Main 
         setShow={setModalShow}
       />
       <Modal 
         show={modalShow}
         setShow={setModalShow}
+        innerRef={innerRef}
       />
     </div>
   );

@@ -8,7 +8,7 @@ function SearchForm() {
   }
 
   return (
-    <li className="tasker__search-item search">
+    <li className="header__item search">
       <form className="search__form">
         <button 
           className="search__button"
@@ -22,20 +22,19 @@ function SearchForm() {
             <use href="#icon-search"></use>
           </svg>
         </button>
-        <label htmlFor="enter-search">
+        <label>
+          <input 
+            className="search__enter"
+            type="text"
+            name="enter-search"
+            value={value}
+            placeholder="Поиск"
+            onChange={(e) => setValue(e.target.value)}
+            required
+          />
         </label>
-        <input 
-          className="search__enter"
-          type="text"
-          name="enter-search"
-          id="enter-search"
-          value={value}
-          placeholder="Поиск"
-          onChange={(e) => setValue(e.target.value)}
-          required
-        />
         <button 
-          className={"search__button search__button-delete" + (value ? " active" : " hidden")}
+          className={"search__button search__delete-btn" + (value ? " active" : " hidden")}
           type="reset"
           onClick={resetValue}
         >

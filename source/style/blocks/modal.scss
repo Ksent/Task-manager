@@ -87,3 +87,26 @@
   padding-left: 12.5px;
   border: 1px solid transparent;
 }
+
+.modal__close-btn {
+  background-color: transparent;
+  color: $basis-color;
+  &:hover {
+    border: 1px solid $hover-color;
+    background-color: transparent;
+    transition: 0.5s ease-in-out;
+  }
+  &:focus {
+    border: 1px solid $hover-color;
+    background-color: transparent;
+  }
+}
+
+.modal__add-btn {
+  &:hover {
+    background-color: $highlight-color;
+  }
+  &:focus {
+    background-color: $highlight-color;
+  }
+}

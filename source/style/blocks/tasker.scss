@@ -1,108 +1,12 @@
-.tasker {
-  min-width: 320px;
-  max-width: 100%;
-  height: 100%;
-}
-
-// .tasker__header {
-//   display: flex;
-//   justify-content: space-between;
-//   background-color: #6199b3;
-// }
-
-// .tasker__title {
-//   margin: 0;
-//   margin: 5% 0;
-//   text-align: center;
-//   text-shadow: -1px -1px #ffffff, -2px -2px #ffffff, -1px 1px #ffffff, -2px 2px #ffffff, 1px 1px #ffffff, 2px 2px #ffffff, 1px -1px #ffffff, 2px -2px #ffffff, -3px -3px 2px #c9cbcc, -3px 3px 2px #c9cbcc, 3px 3px 2px #c9cbcc, 3px -3px 2px #c9cbcc;
-//   color: #54849b;
-// }
-
-// .tasker__nav-list {
-//   min-height: 51px;
-//   margin: 0;
-//   padding: 3px;
-//   display: flex;
-//   align-items: center;
-// }
-
-// .tasker__nav-link {
-//   padding: 15px;
-//   color: #8fdab7;
-//   &:hover {
-//     background-color: #6e9eb4;
-//   }
-// }
-
-// .tasker__task-form {
-//   width: 50%;
-//   // height: 51px;
-//   padding: 3px;
-//   display: flex;
-//   align-items: center;
-//   position: relative;
-// }
-
-// .tasker__new-task {
-//   width: 100%;
-//   min-height: 25px;
-//   padding: 13px 64px 13px 13px;
-//   color: #ffffff;
-//   border: none;
-//   background-color: #6e9eb4;
-//   &:focus {
-//     outline: 2px solid #ffffff;
-//   }
-// }
-
-// .tasker__new-task::placeholder {
-//   color: #7dc4a3;
-// }
-
-// .tasker__add-btn {
-//   width: 51px;
-//   height: 51px;
-//   padding: 0;
-//   position: absolute;
-//   top: 3px;
-//   right: 3px;
-//   bottom: 0;
-//   z-index: 10;
-//   line-height: 0;
-//   border: none;
-//   background-color: #8fdab7;
-//   &:focus {
-//     outline: 2px solid #ffffff;
-//   }
-//   &:focus svg, &:hover svg {
-//     fill: #ffffff;
-//     transition: 0.5s ease-in-out;
-//   }
-// }
-
-.tasker__search {
-  padding: 6px;
-  background-color: $basis-color;
-}
-
-.tasker__search-list {
-  max-width: 900px;
-  min-height: 49px;
-  margin: 0 auto;
-  padding: 0;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
 .tasker__list {
-  max-width: 906px;
+  max-width: 1366px;
+  min-width: 320px;
   margin: 0 auto;
   padding: 0;
 }
 
 .tasker__item {
-  margin: 3px;
+  margin: 3px 8px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -166,19 +70,6 @@
   color: $disabled-color;
 }
 
-// .tasker__subtitle[contenteditable="false"] {
-//   cursor: pointer;
-//   &:hover {
-//     text-decoration: line-through wavy #6199b3;
-//   }
-// }
-
-// .tasker__subtitle[contenteditable="true"] {
-//   padding: 5px 10px;
-//   outline: 2px dashed #7dc4a3;
-//   cursor: text;
-// }
-
 .tasker__toggle-icon {
   position: absolute;
   z-index: 0;
@@ -191,12 +82,6 @@
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
 }
-
-// .tasker__task-icons {
-//   margin: 0;
-//   display: flex;
-//   align-items: center;
-// }
 
 .tasker__edit-btn {
   width: 18px;

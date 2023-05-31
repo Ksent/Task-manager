@@ -5,7 +5,7 @@ import SearchForm from './SearchForm';
 
 function Search() {
   return (
-    <ul className="search__list">
+    <ul className="header__list">
       <Calendar />
       <SearchForm />
     </ul>

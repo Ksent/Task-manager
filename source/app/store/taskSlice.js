@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const task = localStorage.getItem('tasks') !== null ? JSON.parse(localStorage.getItem('tasks')) : [];
+
 function saveTask(items) {
   localStorage.setItem('tasks', JSON.stringify(items.map(task => task)));
 }
@@ -34,6 +35,13 @@ const taskSlice = createSlice({
 
       saveTask(state.tasks);
     },
+    editTask(state, action) {
+      const editedTask = state.tasks.find(task => task.id === action.payload.id);
+      editedTask.text = action.payload.text;
+      editedTask.date = action.payload.date;
+      editedTask.time = action.payload.time;
+      console.log(editedTask.date);
+    },
     dragEndTask(state, action) {
       const items = Array.from(state.tasks);
       const [reorderedItem] = items.splice(action.payload.source.index, 1);
@@ -46,6 +54,6 @@ const taskSlice = createSlice({
   },
 });
 
-export const { addNewTask, toggleComplete, deleteTask, dragEndTask } = taskSlice.actions;
+export const { addNewTask, toggleComplete, deleteTask, editTask, dragEndTask } = taskSlice.actions;
 
 export default taskSlice.reducer;

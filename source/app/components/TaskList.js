@@ -16,7 +16,7 @@ function TaskList({ setShow }) {
   }
 
   return (
-    <div className="tasker__main">
+    <div className="main__tasker tasker">
       <DragDropContext onDragEnd={dragEnd}>
         <Droppable droppableId="list">
           {(provided) => (
