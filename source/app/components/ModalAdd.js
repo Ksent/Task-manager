@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { addNewTask, editTask } from '../store/taskSlice';
+import { addNewTask } from '../store/taskSlice';
 
-function ModalForm({ title, innerRef, closeModal }) {
+function ModalAdd({ innerRef, closeModal }) {
+  const dispatch = useDispatch();
   const [text, setText] = useState('');
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
-  const dispatch = useDispatch();
 
   function resetTask() {
     closeModal();
+
     setText('');
     setDate('');
     setTime('');
@@ -18,8 +19,8 @@ function ModalForm({ title, innerRef, closeModal }) {
 
   function sendTask(e) {
     e.preventDefault();
-    dispatch(editTask({ text, date, time }));
-    // dispatch(addNewTask({ text, date, time }));
+
+    dispatch(addNewTask({ text, date, time }));
     resetTask();
   }
 
@@ -28,7 +29,7 @@ function ModalForm({ title, innerRef, closeModal }) {
       className="modal__wrapper"
       onClick={(e) => e.stopPropagation()}
     >
-      <h1 className="modal__title">{title}</h1>
+      <h1 className="modal__title">Добавить задачу</h1>
 
       <form 
         className="modal__form"
@@ -111,4 +112,4 @@ function ModalForm({ title, innerRef, closeModal }) {
   );
 }
 
-export default ModalForm;
+export default ModalAdd;

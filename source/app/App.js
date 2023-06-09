@@ -1,25 +1,18 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 import Header from './components/Header';
 import Main from './components/Main';
 import Modal from './components/Modal';
 
 function App() {
-  const [modalShow, setModalShow] = useState(false);
-  const innerRef = useRef();
-  useEffect(() => innerRef.current && innerRef.current.focus());
+  const modalShow = useSelector(state => state.modalWindow.modalShow);
 
   return (
     <div id="app">
       <Header />
-      <Main 
-        setShow={setModalShow}
-      />
-      <Modal 
-        show={modalShow}
-        setShow={setModalShow}
-        innerRef={innerRef}
-      />
+      <Main />
+      {modalShow && <Modal />}
     </div>
   );
 }

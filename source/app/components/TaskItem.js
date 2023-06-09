@@ -2,17 +2,17 @@ import React from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 import { useDispatch } from 'react-redux';
 
-import { toggleComplete, deleteTask, editTask } from '../store/taskSlice';
-import { openModalWindow } from '../store/modalSlice';
+import { toggleComplete, startEditing, deleteTask } from '../store/taskSlice';
+import { openModalWindow, getModalId } from '../store/modalSlice';
 
-function TaskItem({ index, setShow, id, text, date, time, checked }) {
+function TaskItem({ index, id, text, date, time, checked }) {
   const dispatch = useDispatch();
   const dateEnter = new Date(date).toLocaleDateString();
 
   function editedTask() {
-    setShow(true);
-    dispatch(openModalWindow({ id: 2 }))
-    dispatch(editTask({ id }));
+    dispatch(openModalWindow());
+    dispatch(getModalId({ id: 'edit' }));
+    dispatch(startEditing({ id }));
   }
 
   return (

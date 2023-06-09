@@ -19,14 +19,34 @@ const taskSlice = createSlice({
         date: action.payload.date,
         time: action.payload.time,
         checked: false,
+        edited: false,
       });
 
       saveTask(state.tasks);
     },
     toggleComplete(state, action) {
       const toggledTask = state.tasks.find(task => task.id === action.payload.id);
-
       toggledTask.checked = !toggledTask.checked;
+
+      saveTask(state.tasks);
+    },
+    startEditing(state, action) {
+      const editedTask = state.tasks.find(task => task.id === action.payload.id);
+      editedTask.edited = true;
+
+      saveTask(state.tasks);
+    },
+    editTask(state, action) {
+      const editedTask = state.tasks.find(task => task.edited === true);
+      editedTask.text = action.payload.text;
+      editedTask.date = action.payload.date;
+      editedTask.time = action.payload.time;
+
+      saveTask(state.tasks);
+    },
+    endEditing(state) {
+      const editedTask = state.tasks.find(task => task.edited === true);
+      editedTask.edited = false;
 
       saveTask(state.tasks);
     },
@@ -35,17 +55,9 @@ const taskSlice = createSlice({
 
       saveTask(state.tasks);
     },
-    editTask(state, action) {
-      const editedTask = state.tasks.find(task => task.id === action.payload.id);
-      editedTask.text = action.payload.text;
-      editedTask.date = action.payload.date;
-      editedTask.time = action.payload.time;
-      console.log(editedTask.date);
-    },
     dragEndTask(state, action) {
       const items = Array.from(state.tasks);
       const [reorderedItem] = items.splice(action.payload.source.index, 1);
-
       items.splice(action.payload.destination.index, 0, reorderedItem);
       state.tasks = items;
 
@@ -54,6 +66,14 @@ const taskSlice = createSlice({
   },
 });
 
-export const { addNewTask, toggleComplete, deleteTask, editTask, dragEndTask } = taskSlice.actions;
+export const { 
+  addNewTask, 
+  toggleComplete, 
+  startEditing,
+  editTask, 
+  endEditing,
+  deleteTask, 
+  dragEndTask, 
+} = taskSlice.actions;
 
 export default taskSlice.reducer;

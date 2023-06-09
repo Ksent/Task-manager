@@ -1,14 +1,14 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
-import { openModalWindow } from '../store/modalSlice';
+import { openModalWindow, getModalId } from '../store/modalSlice';
 
-function AddBtn({ setShow }) {
+function AddBtn() {
   const dispatch = useDispatch();
 
   function openModal() {
-    dispatch(openModalWindow({ id: 1 }));
-    setShow(true);
+    dispatch(openModalWindow());
+    dispatch(getModalId({ id: 'add' }));
   }
 
   return (

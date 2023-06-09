@@ -4,18 +4,14 @@ import Filter from './Filter';
 import AddBtn from './AddBtn';
 import TaskList from './TaskList';
 
-function Main({ setShow }) {
+function Main() {
   return (
     <div className="main">
       <div className="main__header">
         <Filter />
-        <AddBtn 
-          setShow={setShow}
-        />
+        <AddBtn />
       </div>
-      <TaskList 
-        setShow={setShow}
-      />
+      <TaskList />
     </div>
   );
 }

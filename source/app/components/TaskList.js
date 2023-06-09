@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { dragEndTask } from '../store/taskSlice';
 import TaskItem from './TaskItem';
 
-function TaskList({ setShow }) {
+function TaskList() {
   const tasks = useSelector(state => state.tasks.tasks);
   const dispatch = useDispatch();
 
@@ -30,7 +30,6 @@ function TaskList({ setShow }) {
                 <TaskItem 
                   key={task.id}
                   {...task}
-                  setShow={setShow}
                   index={index}
                 />
               ))}
