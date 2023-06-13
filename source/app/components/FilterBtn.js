@@ -1,22 +1,28 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 
-function FilterBtn(props) {
+import { addFilter } from '../store/filterSlice';
+
+function FilterBtn({ id, forName, value, icon, subtitle, initialValue }) {
+  const dispatch = useDispatch();
+
   return (
     <li 
       className="filter__item"
-      key={props.id}
+      key={id}
     >
       <input 
         className="filter__input"
         type="radio" 
         name="filter"
-        id={props.forName}
-        value={props.value}
-        defaultChecked={props.checked}
+        id={forName}
+        value={value}
+        checked={(initialValue == value ? true : false)}
+        onChange={() => dispatch(addFilter({ value }))}
       />
       <label 
         className="filter__button button" 
-        htmlFor={props.forName}
+        htmlFor={forName}
       >
         <svg 
           className="filter__icon button__icon"
@@ -25,10 +31,10 @@ function FilterBtn(props) {
           fill="transparent"
           stroke="#c4c4c4"
         >
-          <use href={props.icon}></use>
+          <use href={icon}></use>
         </svg>
         <span className="filter__subtitle button__subtitle">
-          {props.subtitle}
+          {subtitle}
         </span>
       </label>
     </li>

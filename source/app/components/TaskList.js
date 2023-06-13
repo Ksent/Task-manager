@@ -6,8 +6,22 @@ import { dragEndTask } from '../store/taskSlice';
 import TaskItem from './TaskItem';
 
 function TaskList() {
-  const tasks = useSelector(state => state.tasks.tasks);
   const dispatch = useDispatch();
+  const tasks = useSelector(state => state.tasks.tasks);
+  const filterValue = useSelector(state => state.filters.filterValue);
+
+  function filteredTasks() {
+
+    switch(filterValue) {
+      case 'all':
+        return tasks;
+      case 'process':
+        return tasks.filter(task => task.checked === false);
+      case 'complete':
+        return tasks.filter(task => task.checked === true);
+    }
+
+  }
 
   function dragEnd(result) {
     if (!result.destination) return;
@@ -26,7 +40,7 @@ function TaskList() {
               {...provided.droppableProps}
             >
 
-              {tasks.map((task, index) => (
+              {filteredTasks().map((task, index) => (
                 <TaskItem 
                   key={task.id}
                   {...task}

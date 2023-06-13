@@ -5,6 +5,7 @@ import FilterBtn from './FilterBtn';
 
 function Nav() {
   const filters = useSelector(state => state.filters.filters);
+  const initialValue = useSelector(state => state.filters.filterValue);
 
   return (
     <ul className="main__filter filter__list">
@@ -13,6 +14,7 @@ function Nav() {
         <FilterBtn 
           key={filter.id}
           {...filter}
+          initialValue={initialValue}
         />
       ))}
 
