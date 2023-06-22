@@ -27,18 +27,21 @@ function Modal() {
       className={"modal" + ((() => dispatch(openModalWindow())) ? " modal--show" : "")}
       onClick={closeModal}
     >
+
       {(modalWindowType.id === 'add') && 
         <ModalAdd 
           innerRef={innerRef}
           closeModal={closeModal}
         />
       }
+
       {(modalWindowType.id === 'edit') && 
         <ModalEdit 
           innerRef={innerRef}
           closeModal={closeModal}
         />
       }
+      
     </div>
   );
 }

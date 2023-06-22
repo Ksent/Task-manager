@@ -1,18 +1,42 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+
+import { startSearch, endSearch } from '../store/searchSlice';
+import { addFilter } from '../store/filterSlice';
 
 function SearchForm() {
+  const dispatch = useDispatch();
   const [value, setValue] = useState('');
 
+  function sendValue(e) {
+    e.preventDefault();
+
+    dispatch(startSearch({ value }));
+    dispatch(addFilter({ value: 'search' }));
+  }
+
   function resetValue() {
+    dispatch(endSearch());
+    dispatch(addFilter({ value: 'all' }));
+
     setValue('');
+  }
+
+  function keyDown(e) {
+
+    if (e.code === 'Backspace' || e.code === 'Delete') {
+      resetValue();
+    }
+
   }
 
   return (
     <li className="header__item search">
-      <form className="search__form">
-        <button 
-          className="search__button"
-        >
+      <form 
+        className="search__form"
+        onSubmit={sendValue}
+      >
+        <button className="search__button">
           <svg 
             width="43"
             height="43"
@@ -30,6 +54,7 @@ function SearchForm() {
             value={value}
             placeholder="Поиск"
             onChange={(e) => setValue(e.target.value)}
+            onKeyDown={keyDown}
             required
           />
         </label>

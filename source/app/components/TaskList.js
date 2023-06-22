@@ -9,6 +9,7 @@ function TaskList() {
   const dispatch = useDispatch();
   const tasks = useSelector(state => state.tasks.tasks);
   const filterValue = useSelector(state => state.filters.filterValue);
+  const searchValue = useSelector(state => state.searchForm.searchValue);
 
   function filteredTasks() {
 
@@ -19,6 +20,12 @@ function TaskList() {
         return tasks.filter(task => task.checked === false);
       case 'complete':
         return tasks.filter(task => task.checked === true);
+      case 'search':
+
+        if (searchValue !== '') {
+          return tasks.filter(task => task.text.toLowerCase().includes(searchValue.toLowerCase()));
+        } else return [];
+
     }
 
   }

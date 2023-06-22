@@ -1,14 +1,16 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import taskReducer from './taskSlice';
-import filterReducer from './filterSlice';
 import modalReducer from './modalSlice';
+import searchReducer from './searchSlice';
+import filterReducer from './filterSlice';
+import taskReducer from './taskSlice';
 
 const store = configureStore({
   reducer: {
-    tasks: taskReducer,
-    filters: filterReducer,
     modalWindow: modalReducer,
+    searchForm: searchReducer,
+    filters: filterReducer,
+    tasks: taskReducer,
   },
 });
 
