@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { startSearch, endSearch } from '../store/searchSlice';
-import { addFilter } from '../store/filterSlice';
+import { startSearch, endSearch } from '../../store/searchSlice';
+import { addFilter } from '../../store/filterSlice';
 
 function SearchForm() {
   const dispatch = useDispatch();
@@ -31,7 +31,7 @@ function SearchForm() {
   }
 
   return (
-    <li className="header__item search">
+    <li className="app-header__item search">
       <form 
         className="search__form"
         onSubmit={sendValue}

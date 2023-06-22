@@ -1,15 +1,18 @@
 import React from 'react';
 
+import Button from '../generic/Button';
+
 function Calendar() {
   return (
-    <li className="header__item calendar">
-      <button 
-        className="calendar__button button"
+    <li className="app-header__item calendar">
+      <Button 
+        tagName="button"
+        buttonClass="calendar__button"
       >
         <svg 
           className="calendar__icon button__icon"
-          width="46"
-          height="46"
+          width="46" 
+          height="46" 
           fill="transparent"
           stroke="#ddecec"
         >
@@ -18,7 +21,7 @@ function Calendar() {
         <span className="calendar__subtitle button__subtitle">
           Календарь
         </span>
-      </button>
+      </Button>
     </li>
   );
 }

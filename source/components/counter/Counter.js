@@ -6,11 +6,11 @@ function Counter() {
   const checkedTasks = tasks.filter(task => task.checked === true);
 
   return (
-    <p className="header__counter">
-      <span className="header__counter-number">
+    <p className="app-header__counter counter">
+      <span className="counter__number">
         {checkedTasks.length}/{tasks.length}
       </span>
-      <span className="header__counter-text">Выполнено</span>
+      <span className="counter__text">Выполнено</span>
     </p>
   );
 }

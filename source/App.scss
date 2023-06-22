@@ -1,0 +1,84 @@
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: $background-color;
+  font-family: 'Trebuchet MS', Arial, sans-serif;
+  font-size: 16px;
+}
+
+#root, #app {
+  height: 100%;
+}
+
+ul {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+.hidden {
+  display: none;
+}
+
+.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.app-header {
+  background-color: $basis-color;
+}
+
+.app-header__wrapper {
+  max-width: 1206px;
+  min-height: 49px;
+  margin: 0 auto;
+  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-header__list {
+  margin: 0;
+  padding: 0;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+
+.app-header__counter {
+  margin: 0 12.5px;
+  color: $button-color;
+}
+
+.app-main__header {
+  max-width: 1206px;
+  margin: 0 auto;
+  margin-top: 3px;
+  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.app-main__add-button {
+  &:hover {
+    background-color: $highlight-color;
+  }
+  &:focus {
+    background-color: $highlight-color;
+  }
+}

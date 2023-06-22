@@ -19,7 +19,7 @@ function Filter() {
   }
 
   return (
-    <ul className="main__filter filter__list">
+    <ul className="app-main__filter filter__list">
 
       {searchOnOff().map(filter => (
         <FilterBtn 

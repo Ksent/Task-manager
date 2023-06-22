@@ -2,7 +2,7 @@ import React from 'react';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { dragEndTask } from '../store/taskSlice';
+import { dragEndTask } from '../../store/taskSlice';
 import TaskItem from './TaskItem';
 
 function TaskList() {
@@ -37,7 +37,7 @@ function TaskList() {
   }
 
   return (
-    <div className="main__tasker tasker">
+    <div className="app-main__tasker tasker">
       <DragDropContext onDragEnd={dragEnd}>
         <Droppable droppableId="list">
           {(provided) => (

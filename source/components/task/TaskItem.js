@@ -2,8 +2,8 @@ import React from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 import { useDispatch } from 'react-redux';
 
-import { toggleComplete, startEditing, deleteTask } from '../store/taskSlice';
-import { openModalWindow, getModalId } from '../store/modalSlice';
+import { openModalWindow, getModalId } from '../../store/modalSlice';
+import { toggleComplete, startEditing, deleteTask } from '../../store/taskSlice';
 
 function TaskItem({ index, id, text, date, time, checked }) {
   const dispatch = useDispatch();
