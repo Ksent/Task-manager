@@ -8,17 +8,6 @@ import TaskItem from './TaskItem';
 function TaskList() {
   const dispatch = useDispatch();
   const tasks = useSelector(state => state.tasks.tasks);
-  const searchValue = useSelector(state => state.searchForm.searchValue);
-  
-  function filteredTasks() {
-    
-    if (searchValue !== '') {
-      const searchTasks = tasks.filter(task => task.text.toLowerCase().includes(searchValue.toLowerCase()));
-
-      return searchTasks;
-    } else return tasks;
-    
-  }
 
   function dragEnd(result) {
     if (!result.destination) return;
@@ -37,7 +26,7 @@ function TaskList() {
               {...provided.droppableProps}
             >
 
-              {filteredTasks().map((task, index) => {
+              {tasks.map((task, index) => {
                 if (task.filtered === false) {
                   return null;
                 }

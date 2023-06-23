@@ -6,7 +6,7 @@ function saveTask(items) {
   localStorage.setItem('tasks', JSON.stringify(items.map(task => task)));
 }
 
-function filterTask(key, items) {
+function filterTask(key, items, value) {
   items.filtered = false;
   
   if (key === 'all') {
@@ -21,7 +21,7 @@ function filterTask(key, items) {
     items.filtered = true;
   }
 
-  if (key === 'search') {
+  if (key === 'search' && (items.text.toLowerCase().includes(value.toLowerCase()))) {
     items.filtered = true;
   }
   
@@ -33,6 +33,7 @@ const taskSlice = createSlice({
   initialState: {
     tasks: task,
     filterValue: 'all',
+    searchValue: '',
   },
   reducers: {
     addNewTask(state, action) {
@@ -92,12 +93,18 @@ const taskSlice = createSlice({
 
       saveTask(state.tasks);
     },
+    startSearch(state, action) {
+      state.searchValue = action.payload.value;
+    },
+    endSearch(state) {
+      state.searchValue = '';
+    },
     addFilter(state, action) {
       state.filterValue = action.payload.value;
       state.tasks = state.tasks.map(task => {
-        return filterTask(state.filterValue, task);
+        return filterTask(state.filterValue, task, state.searchValue);
       });
-    }
+    },
   },
 });
 
@@ -109,7 +116,9 @@ export const {
   endEditing,
   deleteTask, 
   dragEndTask, 
-  addFilter,
+  startSearch,
+  endSearch,
+  addFilter
 } = taskSlice.actions;
 
 export default taskSlice.reducer;

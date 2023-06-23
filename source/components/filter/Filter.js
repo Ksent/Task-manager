@@ -6,7 +6,7 @@ import FilterBtn from './FilterBtn';
 function Filter() {
   const filters = useSelector(state => state.filters.filters);
   const initialValue = useSelector(state => state.tasks.filterValue);
-  const searchValue = useSelector(state => state.searchForm.searchValue);
+  const searchValue = useSelector(state => state.tasks.searchValue);
 
   function searchOnOff() {
 
