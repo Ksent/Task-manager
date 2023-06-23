@@ -8,26 +8,16 @@ import TaskItem from './TaskItem';
 function TaskList() {
   const dispatch = useDispatch();
   const tasks = useSelector(state => state.tasks.tasks);
-  const filterValue = useSelector(state => state.filters.filterValue);
   const searchValue = useSelector(state => state.searchForm.searchValue);
-
+  
   function filteredTasks() {
+    
+    if (searchValue !== '') {
+      const searchTasks = tasks.filter(task => task.text.toLowerCase().includes(searchValue.toLowerCase()));
 
-    switch(filterValue) {
-      case 'all':
-        return tasks;
-      case 'process':
-        return tasks.filter(task => task.checked === false);
-      case 'complete':
-        return tasks.filter(task => task.checked === true);
-      case 'search':
-
-        if (searchValue !== '') {
-          return tasks.filter(task => task.text.toLowerCase().includes(searchValue.toLowerCase()));
-        } else return [];
-
-    }
-
+      return searchTasks;
+    } else return tasks;
+    
   }
 
   function dragEnd(result) {
@@ -47,13 +37,17 @@ function TaskList() {
               {...provided.droppableProps}
             >
 
-              {filteredTasks().map((task, index) => (
-                <TaskItem 
+              {filteredTasks().map((task, index) => {
+                if (task.filtered === false) {
+                  return null;
+                }
+
+                return <TaskItem 
                   key={task.id}
                   {...task}
                   index={index}
-                />
-              ))}
+                />;
+              })}
 
               {provided.placeholder}
             </ul>

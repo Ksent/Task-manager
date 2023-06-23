@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
-import { addFilter } from '../../store/filterSlice';
+import { addFilter } from '../../store/taskSlice';
 import Button from '../generic/Button';
 
 function FilterBtn({ id, forName, value, icon, subtitle, initialValue }) {

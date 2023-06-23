@@ -6,27 +6,56 @@ function saveTask(items) {
   localStorage.setItem('tasks', JSON.stringify(items.map(task => task)));
 }
 
+function filterTask(key, items) {
+  items.filtered = false;
+  
+  if (key === 'all') {
+    items.filtered = true;
+  }
+
+  if (key === 'process' && !items.checked) {
+    items.filtered = true;
+  }
+  
+  if (key === 'complete' && items.checked) {
+    items.filtered = true;
+  }
+
+  if (key === 'search') {
+    items.filtered = true;
+  }
+  
+  return items;
+}
+
 const taskSlice = createSlice({
   name: 'tasks',
   initialState: {
     tasks: task,
+    filterValue: 'all',
   },
   reducers: {
     addNewTask(state, action) {
-      state.tasks.push({
+      const newTask = {
         id: Date.now(),
         text: action.payload.text,
         date: action.payload.date,
         time: action.payload.time,
         checked: false,
         edited: false,
-      });
+        filtered: false,
+      };
+      const modNewTask = filterTask(state.filterValue, newTask);
+
+      state.tasks.push(modNewTask);
 
       saveTask(state.tasks);
     },
     toggleComplete(state, action) {
       const toggledTask = state.tasks.find(task => task.id === action.payload.id);
       toggledTask.checked = !toggledTask.checked;
+
+      filterTask(state.filterValue, toggledTask);
 
       saveTask(state.tasks);
     },
@@ -63,6 +92,12 @@ const taskSlice = createSlice({
 
       saveTask(state.tasks);
     },
+    addFilter(state, action) {
+      state.filterValue = action.payload.value;
+      state.tasks = state.tasks.map(task => {
+        return filterTask(state.filterValue, task);
+      });
+    }
   },
 });
 
@@ -74,6 +109,7 @@ export const {
   endEditing,
   deleteTask, 
   dragEndTask, 
+  addFilter,
 } = taskSlice.actions;
 
 export default taskSlice.reducer;

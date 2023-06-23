@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { startSearch, endSearch } from '../../store/searchSlice';
-import { addFilter } from '../../store/filterSlice';
+import { addFilter } from '../../store/taskSlice';
 
 function SearchForm() {
   const dispatch = useDispatch();
