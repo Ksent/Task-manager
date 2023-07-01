@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Button from '../generic/Button';
+import { IconCalendar } from '../icons/Icons';
 
 function Calendar() {
   return (
@@ -9,15 +10,12 @@ function Calendar() {
         tagName="button"
         buttonClass="calendar__button"
       >
-        <svg 
+        <IconCalendar 
           className="calendar__icon button__icon"
-          width="46" 
-          height="46" 
-          fill="transparent"
+          width="46"
+          height="46"
           stroke="#ddecec"
-        >
-          <use href="#icon-calendar"></use>
-        </svg>
+        />
         <span className="calendar__subtitle button__subtitle">
           Календарь
         </span>

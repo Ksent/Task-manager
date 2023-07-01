@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import { startSearch, endSearch } from '../../store/taskSlice';
 import { addFilter } from '../../store/taskSlice';
+import { IconSearch, IconDelete } from '../icons/Icons';
 
 function SearchForm() {
   const dispatch = useDispatch();
@@ -37,14 +38,11 @@ function SearchForm() {
         onSubmit={sendValue}
       >
         <button className="search__button">
-          <svg 
+          <IconSearch
             width="43"
             height="43"
-            fill="transparent"
             stroke="#cfdfdf"
-          >
-            <use href="#icon-search"></use>
-          </svg>
+          />
         </button>
         <label>
           <input 
@@ -63,14 +61,11 @@ function SearchForm() {
           type="reset"
           onClick={resetValue}
         >
-          <svg 
+          <IconDelete 
             width="20" 
             height="20" 
             stroke="#cfdfdf" 
-            strokeWidth="2"
-          >
-            <use href="#icon-delete"></use>
-          </svg>
+          />
         </button>
       </form>
     </li>

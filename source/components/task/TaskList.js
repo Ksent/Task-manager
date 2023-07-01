@@ -33,8 +33,8 @@ function TaskList() {
 
                 return <TaskItem 
                   key={task.id}
-                  {...task}
                   index={index}
+                  {...task}
                 />;
               })}
 

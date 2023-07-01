@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { addFilter } from '../../store/taskSlice';
 import Button from '../generic/Button';
 
-function FilterBtn({ id, forName, value, icon, subtitle, initialValue }) {
+function FilterBtn({ id, forName, value, initialValue, icon, subtitle }) {
   const dispatch = useDispatch();
 
   return (
@@ -18,7 +18,7 @@ function FilterBtn({ id, forName, value, icon, subtitle, initialValue }) {
         name="filter"
         id={forName}
         value={value}
-        checked={(initialValue == value ? true : false)}
+        checked={(initialValue === value ? true : false)}
         onChange={() => dispatch(addFilter({ value }))}
       />
 
@@ -27,15 +27,7 @@ function FilterBtn({ id, forName, value, icon, subtitle, initialValue }) {
         buttonClass="filter__button"
         forName={forName}
       >
-        <svg 
-          className="filter__icon button__icon"
-          width="46" 
-          height="46" 
-          fill="transparent"
-          stroke="#c4c4c4"
-        >
-          <use href={icon}></use>
-        </svg>
+        {icon}
         <span className="filter__subtitle button__subtitle">
           {subtitle}
         </span>

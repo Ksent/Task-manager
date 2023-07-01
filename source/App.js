@@ -8,6 +8,7 @@ import Search from './components/search/Search';
 import Counter from './components/counter/Counter';
 import Filter from './components/filter/Filter';
 import TaskList from './components/task/TaskList';
+import { IconAdd } from './components/icons/Icons';
 
 function App() {
   const dispatch = useDispatch();
@@ -36,14 +37,11 @@ function App() {
             buttonClass="app-main__add-button"
             handleClick={openModal}
           >
-            <svg 
+            <IconAdd 
               className="app-main__add-icon button__icon"
               width="46" 
               height="46" 
-              fill="#ffffff"
-            >
-              <use href="#icon-add"></use>
-            </svg>
+            />
             <span className="app-main__add-subtitle button__subtitle">
               Новая задача
             </span>

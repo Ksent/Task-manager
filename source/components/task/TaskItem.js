@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import { openModalWindow, getModalId } from '../../store/modalSlice';
 import { toggleComplete, startEditing, deleteTask } from '../../store/taskSlice';
+import { IconToggle, IconCheckmark, IconEdit, IconDelete } from '../icons/Icons';
 
 function TaskItem({ index, id, text, date, time, checked }) {
   const dispatch = useDispatch();
@@ -45,23 +46,19 @@ function TaskItem({ index, id, text, date, time, checked }) {
                 {dateEnter} в {time}
               </span>
             </label>
-            <svg 
+            <IconToggle 
               className="tasker__toggle-icon" 
               width="16" 
               height="16" 
               fill="transparent" 
               stroke="#494a4b"
-            >
-              <use href="#icon-toggle"></use>
-            </svg>
-            <svg 
+            />
+            <IconCheckmark 
               className="tasker__checkmark-icon"
               width="22"
               height="22"
               stroke="#2de294"
-            >
-              <use href="#icon-checkmark"></use>
-            </svg>
+            />
           </p>
 
           <p className="tasker__inner">
@@ -70,27 +67,22 @@ function TaskItem({ index, id, text, date, time, checked }) {
               title="Редактировать"
               onClick={editedTask}
             >
-              <svg 
+              <IconEdit 
                 width="18" 
                 height="18" 
                 fill="#c4c4c4"
-              >
-                <use href="#icon-edit"></use>
-              </svg>
+              />
             </button>
             <button 
               className="tasker__delete-btn" 
               title="Удалить"
               onClick={() => dispatch(deleteTask({ id }))}
             >
-              <svg 
+              <IconDelete 
                 width="20" 
                 height="20" 
                 stroke="#c4c4c4" 
-                strokeWidth="2"
-              >
-                <use href="#icon-delete"></use>
-              </svg>
+              />
             </button>
           </p>
 
