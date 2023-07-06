@@ -7,7 +7,7 @@ import TaskItem from './TaskItem';
 
 function TaskList() {
   const dispatch = useDispatch();
-  const tasks = useSelector(state => state.tasks.tasks);
+  const tasks = useSelector(state => state.tasks.tasksFilter);
 
   function dragEnd(result) {
     if (!result.destination) return;
@@ -26,17 +26,13 @@ function TaskList() {
               {...provided.droppableProps}
             >
 
-              {tasks.map((task, index) => {
-                if (task.filtered === false) {
-                  return null;
-                }
-
-                return <TaskItem 
+              {tasks.map((task, index) => (
+                <TaskItem 
                   key={task.id}
                   index={index}
                   {...task}
-                />;
-              })}
+                />
+              ))}
 
               {provided.placeholder}
             </ul>

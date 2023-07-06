@@ -6,90 +6,100 @@ function saveTask(items) {
   localStorage.setItem('tasks', JSON.stringify(items.map(task => task)));
 }
 
+function sortTask(items, indexFrom, indexTo) {
+  const copyItems = Array.from(items);
+  const [reorderedItem] = copyItems.splice(indexFrom, 1);
+  copyItems.splice(indexTo, 0, reorderedItem);
+  return copyItems;
+}
+
 function filterTask(key, items, value) {
-  items.filtered = false;
-  
-  if (key === 'all') {
-    items.filtered = true;
-  }
+  return items.filter(item => {
 
-  if (key === 'process' && !items.checked) {
-    items.filtered = true;
-  }
+    if (key === 'all') {
+      return true;
+    }
   
-  if (key === 'complete' && items.checked) {
-    items.filtered = true;
-  }
+    if (key === 'process' && !item.checked) {
+      return true;
+    }
+    
+    if (key === 'complete' && item.checked) {
+      return true;
+    }
+  
+    if (key === 'search' && (item.text.toLowerCase().includes(value.toLowerCase()))) {
+      return true;
+    }
 
-  if (key === 'search' && (items.text.toLowerCase().includes(value.toLowerCase()))) {
-    items.filtered = true;
-  }
-  
-  return items;
+  });
+
 }
 
 const taskSlice = createSlice({
   name: 'tasks',
   initialState: {
     tasks: task,
+    tasksFilter: task,
     filterValue: 'all',
     searchValue: '',
   },
   reducers: {
     addNewTask(state, action) {
-      const newTask = {
+      state.tasks.push({
         id: Date.now(),
         text: action.payload.text,
         date: action.payload.date,
         time: action.payload.time,
         checked: false,
         edited: false,
-        filtered: false,
-      };
-      const modNewTask = filterTask(state.filterValue, newTask);
-
-      state.tasks.push(modNewTask);
+      });
+      state.tasksFilter = filterTask(state.filterValue, state.tasks, state.searchValue);
 
       saveTask(state.tasks);
     },
     toggleComplete(state, action) {
       const toggledTask = state.tasks.find(task => task.id === action.payload.id);
       toggledTask.checked = !toggledTask.checked;
-
-      filterTask(state.filterValue, toggledTask);
+      state.tasksFilter = filterTask(state.filterValue, state.tasks, state.searchValue);
 
       saveTask(state.tasks);
     },
     startEditing(state, action) {
       const editedTask = state.tasks.find(task => task.id === action.payload.id);
       editedTask.edited = true;
-
-      saveTask(state.tasks);
     },
     editTask(state, action) {
       const editedTask = state.tasks.find(task => task.edited === true);
       editedTask.text = action.payload.text;
       editedTask.date = action.payload.date;
       editedTask.time = action.payload.time;
-
-      saveTask(state.tasks);
     },
     endEditing(state) {
       const editedTask = state.tasks.find(task => task.edited === true);
       editedTask.edited = false;
+      state.tasksFilter = filterTask(state.filterValue, state.tasks, state.searchValue);
 
       saveTask(state.tasks);
     },
     deleteTask(state, action) {
       state.tasks = state.tasks.filter(task => task.id !== action.payload.id);
+      state.tasksFilter = filterTask(state.filterValue, state.tasks, state.searchValue);
 
       saveTask(state.tasks);
     },
     dragEndTask(state, action) {
-      const items = Array.from(state.tasks);
-      const [reorderedItem] = items.splice(action.payload.source.index, 1);
-      items.splice(action.payload.destination.index, 0, reorderedItem);
-      state.tasks = items;
+      const sourceId = (state.tasksFilter[action.payload.source.index]).id;
+      const sourceItem = state.tasks.find(task => task.id === sourceId);
+      const sourceIndex = state.tasks.indexOf(sourceItem);
+      
+      const destinationId = (state.tasksFilter[action.payload.destination.index]).id;
+      const destinationItem = state.tasks.find(task => task.id === destinationId);
+      const destinationIndex = state.tasks.indexOf(destinationItem);
+
+      state.tasksFilter = sortTask(state.tasksFilter, action.payload.source.index, action.payload.destination.index);
+
+      state.tasks = sortTask(state.tasks, sourceIndex, destinationIndex);
 
       saveTask(state.tasks);
     },
@@ -101,9 +111,7 @@ const taskSlice = createSlice({
     },
     addFilter(state, action) {
       state.filterValue = action.payload.value;
-      state.tasks = state.tasks.map(task => {
-        return filterTask(state.filterValue, task, state.searchValue);
-      });
+      state.tasksFilter = filterTask(state.filterValue, state.tasks, state.searchValue);
     },
   },
 });
