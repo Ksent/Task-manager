@@ -64,6 +64,14 @@ a {
   color: $button-color;
 }
 
+.app-main {
+  transition: margin-top 0.3s ease-in-out 0.2s;
+}
+
+.app-main--calendar {
+  margin-top: 91px;
+}
+
 .app-main__header {
   max-width: 1206px;
   margin: 0 auto;

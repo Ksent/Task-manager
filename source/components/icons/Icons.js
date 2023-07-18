@@ -182,6 +182,21 @@ const IconDelete = ({ width, height, stroke }) => (
   </svg>
 );
 
+const IconArrow = ({ width, height, stroke }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg"
+    width={width} 
+    height={height}
+    viewBox="0 0 16 16" 
+    id="icon-arrow"
+    stroke={stroke}
+  >
+    <g>
+      <line strokeWidth="2" x1="5" x2="10" y1="8" y2="12"></line>
+      <line strokeWidth="2" x1="5" x2="10" y1="8.5" y2="4"></line>
+    </g>
+  </svg>
+);
 
 export {
   IconCalendar,
@@ -193,5 +208,6 @@ export {
   IconToggle,
   IconCheckmark,
   IconEdit,
-  IconDelete
+  IconDelete,
+  IconArrow
 };

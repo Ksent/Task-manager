@@ -13,6 +13,7 @@ import { IconAdd } from './components/icons/Icons';
 function App() {
   const dispatch = useDispatch();
   const modalShow = useSelector(state => state.modalWindow.modalShow);
+  const calendarShow = useSelector(state => state.calendarItems.calendarShow);
 
   function openModal() {
     dispatch(openModalWindow());
@@ -28,7 +29,7 @@ function App() {
         </div>
       </header>
 
-      <div className="app-main">
+      <div className={"app-main" + ((calendarShow === true) ? " app-main--calendar" : "")}>
         <div className="app-main__header">
           <Filter />
 

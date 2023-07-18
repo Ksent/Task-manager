@@ -4,13 +4,12 @@ import { useDispatch } from 'react-redux';
 import { addFilter } from '../../store/taskSlice';
 import Button from '../generic/Button';
 
-function FilterBtn({ id, forName, value, initialValue, icon, subtitle }) {
+function FilterBtn({ forName, value, initialValue, icon, subtitle }) {
   const dispatch = useDispatch();
 
   return (
     <li 
       className="filter__item"
-      key={id}
     >
       <input 
         className="filter__input"
