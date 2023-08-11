@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { openModalWindow, getModalId } from './store/modalSlice';
 import Button from './components/generic/Button';
 import Modal from './components/modal/Modal';
-import Search from './components/search/Search';
+import Calendar from './components/calendar/Calendar';
+import SearchForm from './components/search/SearchForm';
 import Counter from './components/counter/Counter';
 import Filter from './components/filter/Filter';
 import TaskList from './components/task/TaskList';
@@ -24,12 +25,15 @@ function App() {
     <div id="app">
       <header className="app-header">
         <div className="app-header__wrapper">
-          <Search />
+          <ul className="app-header__list">
+            <Calendar />
+            <SearchForm />
+          </ul>
           <Counter />
         </div>
       </header>
 
-      <div className={"app-main" + ((calendarShow === true) ? " app-main--calendar" : "")}>
+      <div className={"app-main" + (calendarShow === true ? " app-main--calendar-open" : "")}>
         <div className="app-main__header">
           <Filter />
 

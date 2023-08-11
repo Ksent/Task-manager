@@ -30,14 +30,12 @@ function Modal() {
 
       {(modalWindowType.id === 'add') && 
         <ModalAdd 
-          innerRef={innerRef}
           closeModal={closeModal}
         />
       }
 
       {(modalWindowType.id === 'edit') && 
         <ModalEdit 
-          innerRef={innerRef}
           closeModal={closeModal}
         />
       }

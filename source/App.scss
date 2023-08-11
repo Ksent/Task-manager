@@ -59,16 +59,11 @@ a {
   align-items: center;
 }
 
-.app-header__counter {
-  margin: 0 12.5px;
-  color: $button-color;
-}
-
 .app-main {
   transition: margin-top 0.3s ease-in-out 0.2s;
 }
 
-.app-main--calendar {
+.app-main--calendar-open {
   margin-top: 91px;
 }
 

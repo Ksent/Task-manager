@@ -5,7 +5,7 @@ import { editTask } from '../../store/taskSlice';
 import ModalInput from './ModalInput';
 import ModalBtns from './ModalBtns';
 
-function ModalForm({ innerRef, closeModal }) {
+function ModalForm({ closeModal }) {
   const dispatch = useDispatch();
   const tasks = useSelector(state => state.tasks.tasks);
   const editedTask = tasks.find(task => task.edited === true);
@@ -44,7 +44,7 @@ function ModalForm({ innerRef, closeModal }) {
           name="text"
           value={text}
           setValue={(e) => setText(e.target.value)}
-          innerRef={innerRef}
+          autoFocus
         />
 
         <ModalInput 

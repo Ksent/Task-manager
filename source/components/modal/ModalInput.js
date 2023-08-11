@@ -1,6 +1,6 @@
 import React from 'react';
 
-function ModalInput({ subtitle, name, value, setValue, innerRef }) {
+function ModalInput({ subtitle, name, value, setValue, autoFocus }) {
   return (
     <div className="modal__form-inner">
       <label 
@@ -16,8 +16,8 @@ function ModalInput({ subtitle, name, value, setValue, innerRef }) {
         id={name}
         value={value}
         onChange={setValue}
+        autoFocus={autoFocus}
         required
-        ref={innerRef}
       />
     </div>
   )

@@ -42,7 +42,7 @@ function ModalAdd({ innerRef, closeModal }) {
           name="text"
           value={text}
           setValue={(e) => setText(e.target.value)}
-          innerRef={innerRef}
+          autoFocus
         />
 
         <ModalInput 

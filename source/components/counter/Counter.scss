@@ -1,6 +1,15 @@
+.counter {
+  margin: 0 12.5px;
+  font-weight: bold;
+}
+
+.counter__number {
+  color: #ddecec;
+}
+
 .counter__text {
   display: none;
-  font-weight: bold;
+  color: $button-color;
 }
 
 @media (min-width: $tablet-width) {
