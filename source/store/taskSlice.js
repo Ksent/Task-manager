@@ -13,7 +13,7 @@ function sortTask(items, indexFrom, indexTo) {
   return copyItems;
 }
 
-function filterTask(key, items, value) {
+function filterTask(key, items, value, date) {
   return items.filter(item => {
 
     if (key === 'all') {
@@ -32,6 +32,10 @@ function filterTask(key, items, value) {
       return true;
     }
 
+    if (key === 'calendar' && (item.date === date)) {
+      return true;
+    }
+
   });
 
 }
@@ -43,6 +47,7 @@ const taskSlice = createSlice({
     tasksFilter: task,
     filterValue: 'all',
     searchValue: '',
+    calendarValue: '',
   },
   reducers: {
     addNewTask(state, action) {
@@ -54,14 +59,14 @@ const taskSlice = createSlice({
         checked: false,
         edited: false,
       });
-      state.tasksFilter = filterTask(state.filterValue, state.tasks, state.searchValue);
+      state.tasksFilter = filterTask(state.filterValue, state.tasks, state.searchValue, state.calendarValue);
 
       saveTask(state.tasks);
     },
     toggleComplete(state, action) {
       const toggledTask = state.tasks.find(task => task.id === action.payload.id);
       toggledTask.checked = !toggledTask.checked;
-      state.tasksFilter = filterTask(state.filterValue, state.tasks, state.searchValue);
+      state.tasksFilter = filterTask(state.filterValue, state.tasks, state.searchValue, state.calendarValue);
 
       saveTask(state.tasks);
     },
@@ -78,13 +83,13 @@ const taskSlice = createSlice({
     endEditing(state) {
       const editedTask = state.tasks.find(task => task.edited === true);
       editedTask.edited = false;
-      state.tasksFilter = filterTask(state.filterValue, state.tasks, state.searchValue);
+      state.tasksFilter = filterTask(state.filterValue, state.tasks, state.searchValue, state.calendarValue);
 
       saveTask(state.tasks);
     },
     deleteTask(state, action) {
       state.tasks = state.tasks.filter(task => task.id !== action.payload.id);
-      state.tasksFilter = filterTask(state.filterValue, state.tasks, state.searchValue);
+      state.tasksFilter = filterTask(state.filterValue, state.tasks, state.searchValue, state.calendarValue);
 
       saveTask(state.tasks);
     },
@@ -109,9 +114,12 @@ const taskSlice = createSlice({
     endSearch(state) {
       state.searchValue = '';
     },
+    addDate(state, action) {
+      state.calendarValue = action.payload.value;
+    },
     addFilter(state, action) {
       state.filterValue = action.payload.value;
-      state.tasksFilter = filterTask(state.filterValue, state.tasks, state.searchValue);
+      state.tasksFilter = filterTask(state.filterValue, state.tasks, state.searchValue, state.calendarValue);
     },
   },
 });
@@ -126,6 +134,7 @@ export const {
   dragEndTask, 
   startSearch,
   endSearch,
+  addDate,
   addFilter
 } = taskSlice.actions;
 

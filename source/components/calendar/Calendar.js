@@ -1,21 +1,39 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { toggleCalendar } from '../../store/calendarSlice';
+import { openCalendar } from '../../store/calendarSlice';
+import { endSearch, addFilter } from '../../store/taskSlice';
 import Button from '../generic/Button';
 import { IconCalendar } from '../icons/Icons';
-import CalendarList from './CalendarList';
+import CalendarSlider from './CalendarSlider';
 
-function Calendar() {
+function Calendar({ setValue, startDate, setStartDate }) {
   const dispatch = useDispatch();
+  const searchValue = useSelector(state => state.tasks.searchValue);
   const calendarShow = useSelector(state => state.calendarItems.calendarShow);
+
+  useEffect(() => {
+
+    if (calendarShow === true) {
+      dispatch(endSearch());
+      dispatch(addFilter({ value: 'calendar' }));
+
+      if (searchValue !== '') {
+        setValue('');
+      }
+
+    } else if (calendarShow === false && searchValue === '') {
+      dispatch(addFilter({ value: 'all' }));
+    }
+    
+  });
 
   return (
     <li className="app-header__item calendar">
       <Button 
         tagName="button"
-        buttonClass={"calendar__button" + ((calendarShow === true) ? " calendar__button--open" : "")}
-        handleClick={() => dispatch(toggleCalendar())}
+        buttonClass={"calendar__button" + (calendarShow === true ? " calendar__button--open" : "")}
+        handleClick={() => dispatch(openCalendar())}
       >
         <IconCalendar 
           className="calendar__icon button__icon"
@@ -27,8 +45,9 @@ function Calendar() {
           Календарь
         </span>
       </Button>
-      <CalendarList 
-        openCalendar={(calendarShow === true)}
+      <CalendarSlider 
+        startDate={startDate}
+        setStartDate={setStartDate}
       />
     </li>
   );

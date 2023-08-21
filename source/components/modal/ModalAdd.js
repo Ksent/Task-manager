@@ -5,7 +5,7 @@ import { addNewTask } from '../../store/taskSlice';
 import ModalInput from './ModalInput';
 import ModalBtns from './ModalBtns';
 
-function ModalAdd({ innerRef, closeModal }) {
+function ModalAdd({ closeModal }) {
   const dispatch = useDispatch();
   const [text, setText] = useState('');
   const [date, setDate] = useState('');

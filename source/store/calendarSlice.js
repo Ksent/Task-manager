@@ -9,9 +9,12 @@ const calendarSlice = createSlice({
     openCalendar(state) {
       state.calendarShow = !state.calendarShow;
     },
+    closeCalendar(state) {
+      state.calendarShow = false;
+    },
   },
 });
 
-export const { openCalendar } = calendarSlice.actions;
+export const { openCalendar, closeCalendar } = calendarSlice.actions;
 
 export default calendarSlice.reducer;

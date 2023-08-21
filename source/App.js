@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { openModalWindow, getModalId } from './store/modalSlice';
@@ -15,6 +15,8 @@ function App() {
   const dispatch = useDispatch();
   const modalShow = useSelector(state => state.modalWindow.modalShow);
   const calendarShow = useSelector(state => state.calendarItems.calendarShow);
+  const [searchValue, setSearchValue] = useState('');
+  const [startDate, setStartDate] = useState(new Date());
 
   function openModal() {
     dispatch(openModalWindow());
@@ -26,8 +28,15 @@ function App() {
       <header className="app-header">
         <div className="app-header__wrapper">
           <ul className="app-header__list">
-            <Calendar />
-            <SearchForm />
+            <Calendar 
+              setValue={setSearchValue}
+              startDate={startDate}
+              setStartDate={setStartDate}
+            />
+            <SearchForm 
+              value={searchValue}
+              setValue={setSearchValue}
+            />
           </ul>
           <Counter />
         </div>
@@ -35,7 +44,9 @@ function App() {
 
       <div className={"app-main" + (calendarShow === true ? " app-main--calendar-open" : "")}>
         <div className="app-main__header">
-          <Filter />
+          <Filter 
+            startDate={startDate}
+          />
 
           <Button 
             tagName="button"

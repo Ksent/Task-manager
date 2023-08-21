@@ -12,11 +12,11 @@
 }
 
 .calendar__slider {
-  width: calc(100% - 16px);
-  max-width: 1206px;
-  height: 72px;
+  width: calc(100% - 32px);
+  max-width: 1190px;
+  height: 250px;
   margin: 0 auto;
-  padding: 8px 0;
+  padding: 15px 8px;
   position: absolute;
   top: 65px;
   z-index: -999;
@@ -27,19 +27,13 @@
   color: $text-color;
   opacity: 0;
   transform: translateY(-1000px);
-  transition: 0.3s ease-in-out 0.2s;
+  transition: 0.2s ease-out 0.1s;
 }
 
 .calendar__slider--open {
   z-index: 0;
   opacity: 1;
   transform: translateY(0);
-}
-
-.calendar__slider-inner {
-  width: 100%;
-  margin: 0 auto;
-  position: relative;
 }
 
 .calendar__toggle {
@@ -84,16 +78,6 @@
   margin-left: 6px;
   font-weight: normal;
   color: $disabled-color;
-}
-
-.calendar__list {
-  width: calc(100% - 8%);
-  margin: 0 auto;
-  padding: 0 4%;
-  padding-top: 10px;
-  display: flex;
-  justify-content: space-around;
-  align-items: flex-start;
 }
 
 .calendar__item {
@@ -143,10 +127,6 @@
 }
 
 @media (min-width: $tablet-width) {
-  .calendar__slider-inner {
-    width: 93%;
-  }
-
   .calendar__toggle {
     top: 40px;
   }

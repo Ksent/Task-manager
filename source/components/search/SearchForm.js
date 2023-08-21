@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
 
-import { startSearch, endSearch } from '../../store/taskSlice';
-import { addFilter } from '../../store/taskSlice';
+import { startSearch, endSearch, addFilter } from '../../store/taskSlice';
+import { closeCalendar } from '../../store/calendarSlice';
 import { IconSearch, IconDelete } from '../icons/Icons';
 
-function SearchForm() {
+function SearchForm({ value, setValue }) {
   const dispatch = useDispatch();
-  const [value, setValue] = useState('');
 
   function sendValue(e) {
     e.preventDefault();
 
+    dispatch(closeCalendar());
     dispatch(startSearch({ value }));
     dispatch(addFilter({ value: 'search' }));
   }
