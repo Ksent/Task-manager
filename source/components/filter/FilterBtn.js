@@ -11,30 +11,6 @@ function FilterBtn({ id, forName, value, initialValue, subtitle, startDate }) {
   const dispatch = useDispatch();
   const iconStyle = useSelector(state => state.filters.iconFilters);
 
-  function addIcon() {
-
-    if (id === 1) {
-      return <IconAll {...iconStyle} />;
-    }
-
-    if (id === 2) {
-      return <IconProcess {...iconStyle} />;
-    }
-
-    if (id === 3) {
-      return <IconComplete {...iconStyle} />;
-    }
-
-    if (id === 4) {
-      return <IconSearch {...iconStyle} />;
-    }
-
-    if (id === 5) {
-      return <IconCalendar {...iconStyle} />;
-    }
-
-  }
-
   return (
     <li 
       className="filter__item"
@@ -54,7 +30,27 @@ function FilterBtn({ id, forName, value, initialValue, subtitle, startDate }) {
         buttonClass="filter__button"
         forName={forName}
       >
-        {addIcon()}
+
+        {(id === 1) && 
+          <IconAll {...iconStyle} />
+        }
+
+        {(id === 2) && 
+          <IconProcess {...iconStyle} />
+        }
+
+        {(id === 3) && 
+          <IconComplete {...iconStyle} />
+        }
+
+        {(id === 4) && 
+          <IconSearch {...iconStyle} />
+        }
+
+        {(id === 5) && 
+          <IconCalendar {...iconStyle} />
+        }
+
         <span className="filter__subtitle button__subtitle">
           {(!subtitle && value === 'calendar') ? format(startDate, 'dd MMMM yyyy', {locale: ru}) : subtitle}
         </span>
