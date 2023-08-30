@@ -17,7 +17,6 @@
   border: none;
   border-radius: 10px;
   background-color: transparent;
-  cursor: pointer;
   &:focus {
     outline: none;
   }
@@ -28,6 +27,9 @@
 }
 
 .search__delete-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   right: 0;
 }
 

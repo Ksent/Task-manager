@@ -1,18 +1,26 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
 import { startSearch, endSearch, addFilter } from '../../store/taskSlice';
 import { closeCalendar } from '../../store/calendarSlice';
 import { IconSearch, IconDelete } from '../icons/Icons';
 
-function SearchForm({ value, setValue }) {
+function SearchForm({ searchValue, setSearchValue }) {
   const dispatch = useDispatch();
+
+  useEffect(() => {
+
+    if(searchValue === '') {
+      resetValue();
+    }
+
+  }, [searchValue]);
 
   function sendValue(e) {
     e.preventDefault();
 
     dispatch(closeCalendar());
-    dispatch(startSearch({ value }));
+    dispatch(startSearch({ searchValue }));
     dispatch(addFilter({ value: 'search' }));
   }
 
@@ -20,15 +28,7 @@ function SearchForm({ value, setValue }) {
     dispatch(endSearch());
     dispatch(addFilter({ value: 'all' }));
 
-    setValue('');
-  }
-
-  function keyDown(e) {
-
-    if (e.code === 'Backspace' || e.code === 'Delete') {
-      resetValue();
-    }
-
+    setSearchValue('');
   }
 
   return (
@@ -49,24 +49,25 @@ function SearchForm({ value, setValue }) {
             className="search__enter"
             type="text"
             name="enter-search"
-            value={value}
+            value={searchValue}
             placeholder="Поиск"
-            onChange={(e) => setValue(e.target.value)}
-            onKeyDown={keyDown}
+            onChange={(e) => setSearchValue(e.target.value)}
             required
           />
         </label>
-        <button 
-          className={"search__button search__delete-btn" + (value ? " active" : " hidden")}
-          type="reset"
-          onClick={resetValue}
-        >
-          <IconDelete 
-            width="20" 
-            height="20" 
-            stroke="#cfdfdf" 
-          />
-        </button>
+        {searchValue && 
+          <button 
+            className="search__button search__delete-btn"
+            type="reset"
+            onClick={resetValue}
+          >
+            <IconDelete 
+              width="20" 
+              height="20" 
+              stroke="#cfdfdf" 
+            />
+          </button>
+        }
       </form>
     </li>
   );

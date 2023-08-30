@@ -7,7 +7,7 @@ import Button from '../generic/Button';
 import { IconCalendar } from '../icons/Icons';
 import CalendarSlider from './CalendarSlider';
 
-function Calendar({ setValue, startDate, setStartDate }) {
+function Calendar({ setSearchValue, startDate, setStartDate }) {
   const dispatch = useDispatch();
   const searchValue = useSelector(state => state.tasks.searchValue);
   const calendarShow = useSelector(state => state.calendarItems.calendarShow);
@@ -19,14 +19,14 @@ function Calendar({ setValue, startDate, setStartDate }) {
       dispatch(addFilter({ value: 'calendar' }));
 
       if (searchValue !== '') {
-        setValue('');
+        setSearchValue('');
       }
 
     } else if (calendarShow === false && searchValue === '') {
       dispatch(addFilter({ value: 'all' }));
     }
     
-  });
+  }, [calendarShow]);
 
   return (
     <li className="app-header__item calendar">
@@ -45,10 +45,12 @@ function Calendar({ setValue, startDate, setStartDate }) {
           Календарь
         </span>
       </Button>
-      <CalendarSlider 
-        startDate={startDate}
-        setStartDate={setStartDate}
-      />
+      {(calendarShow === true) && 
+        <CalendarSlider 
+          startDate={startDate}
+          setStartDate={setStartDate}
+        />
+      }
     </li>
   );
 }

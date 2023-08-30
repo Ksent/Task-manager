@@ -1,40 +1,5 @@
-html {
-  height: 100%;
-}
-
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  background-color: $background-color;
-  font-family: 'Trebuchet MS', Arial, sans-serif;
-  font-size: 16px;
-}
-
 #root, #app {
   height: 100%;
-}
-
-ul {
-  list-style: none;
-}
-
-button {
-  cursor: pointer;
-}
-
-a {
-  text-decoration: none;
-}
-
-.hidden {
-  display: none;
-}
-
-.active {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .app-header {
@@ -60,7 +25,7 @@ a {
 }
 
 .app-main {
-  transition: margin-top 0.2s ease-out 0.1s;
+  transition: margin-top 0.3s ease-in-out;
 }
 
 .app-main--calendar-open {

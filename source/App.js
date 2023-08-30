@@ -29,13 +29,13 @@ function App() {
         <div className="app-header__wrapper">
           <ul className="app-header__list">
             <Calendar 
-              setValue={setSearchValue}
+              setSearchValue={setSearchValue}
               startDate={startDate}
               setStartDate={setStartDate}
             />
             <SearchForm 
-              value={searchValue}
-              setValue={setSearchValue}
+              searchValue={searchValue}
+              setSearchValue={setSearchValue}
             />
           </ul>
           <Counter />
