@@ -2,14 +2,13 @@
 @import "scaffolding";
 
 @import "./components/generic/Button";
-
 @import "./components/modal/Modal";
 
 @import "App";
 
-@import "./components/search/Search";
 @import "./components/calendar/Calendar";
 @import "./components/calendar/React-datepicker";
+@import "./components/search/Search";
 @import "./components/counter/Counter";
 
 @import "./components/filter/Filter";

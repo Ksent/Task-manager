@@ -85,10 +85,6 @@
   }
 }
 
-.react-datepicker__month {
-  transition: 0.3s ease-in-out 0.2s;
-}
-
 .react-datepicker__current-month { 
   font-size: 16px;
   font-weight: bold;
@@ -168,10 +164,6 @@
 
 .react-datepicker__day--outside-month {
   color: $disabled-color;
-}
-
-.react-datepicker__day--keyboard-selected {
-  background-color: $background-color;
 }
 
 @media (min-width: $tablet-width) {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import { openModalWindow, closeModalWindow } from '../../store/modalSlice';
+import { closeModalWindow } from '../../store/modalSlice';
 import { endEditing } from '../../store/taskSlice';
 import ModalAdd from './ModalAdd';
 import ModalEdit from './ModalEdit';
@@ -22,7 +22,7 @@ function Modal() {
 
   return (
     <div 
-      className={"app-modal modal" + ((() => dispatch(openModalWindow())) ? " modal--show" : "")}
+      className="app-modal modal"
       onClick={closeModal}
     >
 

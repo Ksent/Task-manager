@@ -9,12 +9,12 @@
 
 .counter__text {
   display: none;
-  color: $button-color;
 }
 
 @media (min-width: $tablet-width) {
   .counter__text {
     margin-left: 12.5px;
     display: inline;
+    color: $button-color;
   }
 }

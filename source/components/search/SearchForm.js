@@ -41,7 +41,7 @@ function SearchForm({ searchValue, setSearchValue }) {
           <IconSearch
             width="43"
             height="43"
-            stroke="#cfdfdf"
+            stroke="#c8d8d8"
           />
         </button>
         <label>
@@ -64,7 +64,7 @@ function SearchForm({ searchValue, setSearchValue }) {
             <IconDelete 
               width="20" 
               height="20" 
-              stroke="#cfdfdf" 
+              stroke="#c8d8d8" 
             />
           </button>
         }

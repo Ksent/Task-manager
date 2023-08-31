@@ -18,7 +18,7 @@ function App() {
   const [searchValue, setSearchValue] = useState('');
   const [startDate, setStartDate] = useState(new Date());
 
-  function openModal() {
+  function addNewTask() {
     dispatch(openModalWindow());
     dispatch(getModalId({ id: 'add' }));
   }
@@ -51,7 +51,7 @@ function App() {
           <Button 
             tagName="button"
             buttonClass="app-main__add-button"
-            handleClick={openModal}
+            handleClick={addNewTask}
           >
             <IconAdd 
               className="app-main__add-icon button__icon"

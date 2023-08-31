@@ -1,18 +1,11 @@
 .modal {
   width: 100%;
   height: 100%;
-  display: none;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 9999;
   background: rgba(250, 250, 250, 0.7);
-  pointer-events: none;
-}
-
-.modal--show {
-  display: block;
-  pointer-events: auto;
 }
 
 .modal__wrapper {
@@ -66,9 +59,6 @@
   border-radius: 10px;
   color: $text-color;
   cursor: text;
-  &::placeholder {
-    width: 100%;
-  }
   &:focus {
     border: 1px solid transparent;
     outline: 2px solid $hover-color;

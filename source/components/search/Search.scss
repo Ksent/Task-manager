@@ -26,13 +26,6 @@
   }
 }
 
-.search__delete-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  right: 0;
-}
-
 .search__enter {
   width: calc(100% - 86px);
   height: 37px;
@@ -48,3 +41,10 @@
     outline: 2px solid $button-color;
   }
 }
+
+  .search__delete-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 0;
+  }

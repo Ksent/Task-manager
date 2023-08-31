@@ -1,13 +1,13 @@
-.calendar__button--open {
-  background-color: $hover-color;
-}
-
 .calendar__button:hover {
   background-color: $hover-color;
 }
 
 .calendar__button:focus {
   outline: 2px solid $button-color;
+  background-color: $hover-color;
+}
+
+.calendar__button--open {
   background-color: $hover-color;
 }
 

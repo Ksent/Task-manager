@@ -38,6 +38,7 @@
   background-color: transparent;
   color: $disabled-color;
   overflow: hidden;
+  cursor: pointer;
   &:hover {
     border-radius: 0;
     background: none;
