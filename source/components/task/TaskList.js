@@ -1,11 +1,11 @@
 import React from 'react';
-import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import { useDispatch, useSelector } from 'react-redux';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 import { dragEndTask } from '../../store/taskSlice';
 import TaskItem from './TaskItem';
 
-function TaskList() {
+function TaskList({ className }) {
   const dispatch = useDispatch();
   const tasks = useSelector(state => state.tasks.tasksFilter);
 
@@ -16,7 +16,7 @@ function TaskList() {
   }
 
   return (
-    <div className="app-main__tasker tasker">
+    <div className={className}>
       <DragDropContext onDragEnd={dragEnd}>
         <Droppable droppableId="list">
           {(provided) => (

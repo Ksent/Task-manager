@@ -1,14 +1,16 @@
-import React, { useEffect } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import DatePicker from 'react-datepicker';
-import { format } from 'date-fns';
+const DatePicker = React.lazy(() => import('react-datepicker'));
+import format from 'date-fns/format';
 import ru from 'date-fns/locale/ru';
 
 import { addDate, addFilter } from '../../store/taskSlice';
+import Loader from '../loader/Loader';
 
-function CalendarSlider({ startDate, setStartDate }) {
+function CalendarSlider({ openCalendar }) {
   const dispatch = useDispatch();
   const tasks = useSelector(state => state.tasks.tasks);
+  const [startDate, setStartDate] = useState(new Date());
 
   useEffect(() => {
     dispatch(addDate({ value: format(startDate, 'yyyy-MM-dd') }));
@@ -16,15 +18,17 @@ function CalendarSlider({ startDate, setStartDate }) {
   }, [startDate]);
 
   return (
-    <div className="calendar__slider">
-      <DatePicker 
-        selected={startDate}
-        onChange={(date) => setStartDate(date)}
-        highlightDates={tasks.map(date => new Date(date.date))}
-        locale={ru}
-        inline
-        fixedHeight
-      />
+    <div className={"calendar__slider" + (openCalendar ? " calendar__slider--open" : "")}>
+      <Suspense fallback={<Loader />}>
+        <DatePicker 
+          selected={startDate}
+          onChange={(date) => setStartDate(date)}
+          highlightDates={tasks.map(date => new Date(date.date))}
+          locale={ru}
+          inline
+          fixedHeight
+        />
+      </Suspense>
     </div>
   )
 }

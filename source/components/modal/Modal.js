@@ -8,6 +8,7 @@ import ModalEdit from './ModalEdit';
 
 function Modal() {
   const dispatch = useDispatch();
+  const modalShow = useSelector(state => state.modalWindow.modalShow);
   const modalItems = useSelector(state => state.modalWindow.modalItems);
   const modalWindowType = modalItems.find(modalItem => modalItem.id);
 
@@ -22,17 +23,17 @@ function Modal() {
 
   return (
     <div 
-      className="app-modal modal"
+      className={"modal" + ((modalShow === true) ? " modal--show" : "")}
       onClick={closeModal}
     >
 
-      {(modalWindowType.id === 'add') && 
+      {(modalShow && modalWindowType.id === 'add') && 
         <ModalAdd 
           closeModal={closeModal}
         />
       }
 
-      {(modalWindowType.id === 'edit') && 
+      {(modalShow && modalWindowType.id === 'edit') && 
         <ModalEdit 
           closeModal={closeModal}
         />

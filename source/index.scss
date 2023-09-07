@@ -1,10 +1,12 @@
 @import "variables";
-@import "scaffolding";
 
+@import "App";
+
+@import "./components/loader/Loader";
 @import "./components/generic/Button";
 @import "./components/modal/Modal";
 
-@import "App";
+@import "./pages/Pages";
 
 @import "./components/calendar/Calendar";
 @import "./components/calendar/React-datepicker";

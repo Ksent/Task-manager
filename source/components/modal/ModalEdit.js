@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { editTask } from '../../store/taskSlice';
-import ModalInput from './ModalInput';
+import FormField from '../generic/FormField';
 import ModalBtns from './ModalBtns';
 
 function ModalForm({ closeModal }) {
@@ -39,27 +39,42 @@ function ModalForm({ closeModal }) {
         className="modal__form"
         onSubmit={sendTask}
       >
-        <ModalInput 
-          subtitle="Задача"
+        <FormField
+          labelClass="modal__form-inner"
+          inputClass="modal__enter"
+          type="text"
           name="text"
           value={text}
-          setValue={(e) => setText(e.target.value)}
+          handleChange={(e) => setText(e.target.value)}
+          required
           autoFocus
-        />
+        >
+          <span className="modal__subtitle">Задача</span>
+        </FormField> 
 
-        <ModalInput 
-          subtitle="Дата"
+        <FormField
+          labelClass="modal__form-inner"
+          inputClass="modal__enter"
+          type="date"
           name="date"
           value={date}
-          setValue={(e) => setDate(e.target.value)}
-        />
+          handleChange={(e) => setDate(e.target.value)}
+          required
+        >
+          <span className="modal__subtitle">Дата</span>
+        </FormField> 
 
-        <ModalInput 
-          subtitle="Время"
+        <FormField
+          labelClass="modal__form-inner"
+          inputClass="modal__enter"
+          type="time"
           name="time"
           value={time}
-          setValue={(e) => setTime(e.target.value)}
-        />
+          handleChange={(e) => setTime(e.target.value)}
+          required
+        >
+          <span className="modal__subtitle">Время</span>
+        </FormField> 
 
         <ModalBtns 
           resetTask={resetTask}

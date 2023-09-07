@@ -1,15 +1,16 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { format } from 'date-fns';
+import format from 'date-fns/format';
 import ru from 'date-fns/locale/ru';
 
 import { addFilter } from '../../store/taskSlice';
 import Button from '../generic/Button';
 import { IconAll, IconProcess, IconComplete, IconSearch, IconCalendar } from '../icons/Icons';
 
-function FilterBtn({ id, forName, value, initialValue, subtitle, startDate }) {
+function FilterBtn({ id, forName, value, initialValue, subtitle, }) {
   const dispatch = useDispatch();
   const iconStyle = useSelector(state => state.filters.iconFilters);
+  const calendarValue = useSelector(state => state.tasks.calendarValue);
 
   return (
     <li 
@@ -52,7 +53,7 @@ function FilterBtn({ id, forName, value, initialValue, subtitle, startDate }) {
         }
 
         <span className="filter__subtitle button__subtitle">
-          {(!subtitle && value === 'calendar') ? format(startDate, 'dd MMMM yyyy', {locale: ru}) : subtitle}
+          {(!subtitle && value === 'calendar') ? format(new Date(calendarValue), 'dd MMMM yyyy', {locale: ru}) : subtitle}
         </span>
       </Button>
       

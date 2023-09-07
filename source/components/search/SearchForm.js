@@ -1,38 +1,43 @@
 import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { startSearch, endSearch, addFilter } from '../../store/taskSlice';
 import { closeCalendar } from '../../store/calendarSlice';
+import FormField from '../generic/FormField';
 import { IconSearch, IconDelete } from '../icons/Icons';
 
-function SearchForm({ searchValue, setSearchValue }) {
+function SearchForm({ className, searchQuery, setSearchQuery }) {
   const dispatch = useDispatch();
+  const searchValue = useSelector(state => state.tasks.searchValue);
 
   useEffect(() => {
 
-    if(searchValue === '') {
+    if (searchQuery === '') {
       resetValue();
     }
 
-  }, [searchValue]);
+  }, [searchQuery]);
 
   function sendValue(e) {
     e.preventDefault();
 
     dispatch(closeCalendar());
-    dispatch(startSearch({ searchValue }));
+    dispatch(startSearch({ searchQuery }));
     dispatch(addFilter({ value: 'search' }));
   }
 
   function resetValue() {
     dispatch(endSearch());
-    dispatch(addFilter({ value: 'all' }));
 
-    setSearchValue('');
+    if (searchValue !== '') {
+      dispatch(addFilter({ value: 'all' }));
+    }
+
+    setSearchQuery('');
   }
 
   return (
-    <li className="app-header__item search">
+    <li className={className}>
       <form 
         className="search__form"
         onSubmit={sendValue}
@@ -44,30 +49,28 @@ function SearchForm({ searchValue, setSearchValue }) {
             stroke="#c8d8d8"
           />
         </button>
-        <label>
-          <input 
-            className="search__enter"
-            type="text"
-            name="enter-search"
-            value={searchValue}
-            placeholder="Поиск"
-            onChange={(e) => setSearchValue(e.target.value)}
-            required
+
+        <FormField 
+          inputClass="search__enter"
+          type="text"
+          name="enter-search"
+          value={searchQuery}
+          handleChange={(e) => setSearchQuery(e.target.value)}
+          placeholder="Поиск"
+          required
+        />
+        
+        <button 
+          className={"search__button search__delete-btn" + (searchQuery ? " search__delete-btn--show" : "")}
+          type="reset"
+          onClick={resetValue}
+        >
+          <IconDelete 
+            width="20" 
+            height="20" 
+            stroke="#c8d8d8" 
           />
-        </label>
-        {searchValue && 
-          <button 
-            className="search__button search__delete-btn"
-            type="reset"
-            onClick={resetValue}
-          >
-            <IconDelete 
-              width="20" 
-              height="20" 
-              stroke="#c8d8d8" 
-            />
-          </button>
-        }
+        </button>
       </form>
     </li>
   );

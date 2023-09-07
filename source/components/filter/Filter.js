@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 
 import FilterBtn from './FilterBtn';
 
-function Filter({ startDate }) {
+function Filter({ className }) {
   const filters = useSelector(state => state.filters.filters);
   const initialValue = useSelector(state => state.tasks.filterValue);
   const searchValue = useSelector(state => state.tasks.searchValue);
@@ -22,13 +22,12 @@ function Filter({ startDate }) {
   }
 
   return (
-    <ul className="app-main__filter filter__list">
+    <ul className={className}>
 
       {searchOnOff().map(filter => (
         <FilterBtn 
           key={filter.id}
           initialValue={initialValue}
-          startDate={startDate}
           {...filter}
         />
       ))}

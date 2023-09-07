@@ -1,3 +1,4 @@
+
 .search {
   width: 100%;
   max-width: 500px;
@@ -42,9 +43,13 @@
   }
 }
 
-  .search__delete-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    right: 0;
-  }
+.search__delete-btn {
+  display: none;
+}
+
+.search__delete-btn--show {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  right: 0;
+}

@@ -1,12 +1,12 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-function Counter() {
+function Counter({ className }) {
   const tasks = useSelector(state => state.tasks.tasks);
   const checkedTasks = tasks.filter(task => task.checked === true);
 
   return (
-    <p className="app-header__counter counter">
+    <p className={className}>
       <span className="counter__number">
         {checkedTasks.length}/{tasks.length}
       </span>

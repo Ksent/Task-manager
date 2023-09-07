@@ -109,7 +109,7 @@ const taskSlice = createSlice({
       saveTask(state.tasks);
     },
     startSearch(state, action) {
-      state.searchValue = action.payload.searchValue;
+      state.searchValue = action.payload.searchQuery;
     },
     endSearch(state) {
       state.searchValue = '';
