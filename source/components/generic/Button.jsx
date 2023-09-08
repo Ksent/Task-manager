@@ -1,6 +1,13 @@
 import React from 'react';
 
-function Button({ tagName, buttonClass, type, forName, handleClick, children }) {
+function Button({ 
+  tagName, 
+  buttonClass, 
+  type, 
+  forName, 
+  handleClick, 
+  children 
+}) {
   const TagName = `${tagName}`; 
 
   return (

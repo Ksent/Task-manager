@@ -22,7 +22,7 @@ function Filter({ className }) {
   }
 
   return (
-    <ul className={className}>
+    <ul className={className + " filter__list"}>
 
       {searchOnOff().map(filter => (
         <FilterBtn 

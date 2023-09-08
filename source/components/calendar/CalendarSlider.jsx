@@ -1,6 +1,6 @@
-import React, { Suspense, useEffect, useState } from 'react';
+import React, { lazy, Suspense, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-const DatePicker = React.lazy(() => import('react-datepicker'));
+const DatePicker = lazy(() => import('react-datepicker'));
 import format from 'date-fns/format';
 import ru from 'date-fns/locale/ru';
 

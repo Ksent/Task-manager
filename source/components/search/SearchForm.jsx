@@ -37,7 +37,7 @@ function SearchForm({ className, searchQuery, setSearchQuery }) {
   }
 
   return (
-    <li className={className}>
+    <li className={className + " search"}>
       <form 
         className="search__form"
         onSubmit={sendValue}

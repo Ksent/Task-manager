@@ -8,10 +8,10 @@ function Header() {
     <header className="page-header">
       <div className="page-header__wrapper">
         <PageNav
-          className="page-header__list nav__list"
+          className="page-header__list"
         />
         <Counter 
-          className="page-header__counter counter"
+          className="page-header__counter"
         />
       </div>
     </header>

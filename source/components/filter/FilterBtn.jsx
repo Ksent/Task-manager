@@ -7,7 +7,7 @@ import { addFilter } from '../../store/taskSlice';
 import Button from '../generic/Button';
 import { IconAll, IconProcess, IconComplete, IconSearch, IconCalendar } from '../icons/Icons';
 
-function FilterBtn({ id, forName, value, initialValue, subtitle, }) {
+function FilterBtn({ id, forName, value, initialValue, subtitle }) {
   const dispatch = useDispatch();
   const iconStyle = useSelector(state => state.filters.iconFilters);
   const calendarValue = useSelector(state => state.tasks.calendarValue);

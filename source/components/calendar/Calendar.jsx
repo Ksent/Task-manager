@@ -29,7 +29,7 @@ function Calendar({ className, setSearchQuery }) {
   }, [calendarShow]);
 
   return (
-    <li className={className}>
+    <li className={className + " calendar"}>
       <Button 
         tagName="button"
         buttonClass={"calendar__button" + ((calendarShow === true) ? " calendar__button--open" : "")}

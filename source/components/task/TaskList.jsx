@@ -16,7 +16,7 @@ function TaskList({ className }) {
   }
 
   return (
-    <div className={className}>
+    <div className={className + " tasker"}>
       <DragDropContext onDragEnd={dragEnd}>
         <Droppable droppableId="list">
           {(provided) => (

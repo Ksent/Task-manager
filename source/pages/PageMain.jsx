@@ -1,10 +1,10 @@
-import React, { Suspense } from 'react';
+import React, { lazy, Suspense } from 'react';
 import { useSelector } from 'react-redux';
 
 import Filter from '../components/filter/Filter';
 import TaskAddBtn from '../components/task/TaskAddBtn';
 import Loader from '../components/loader/Loader';
-const TaskList = React.lazy(() => import('../components/task/TaskList'));
+const TaskList = lazy(() => import('../components/task/TaskList'));
 
 function PageMain() {
   const calendarShow = useSelector(state => state.calendarItems.calendarShow);
@@ -13,7 +13,7 @@ function PageMain() {
     <div className={"page-main" + (calendarShow === true ? " page-main--calendar-open" : "")}>
       <div className="page-main__header">
         <Filter 
-          className="page-main__filter filter__list"
+          className="page-main__filter"
         />
         <TaskAddBtn 
           className="page-main__add-button"
@@ -21,7 +21,7 @@ function PageMain() {
       </div>
       <Suspense fallback={<Loader />}>
         <TaskList 
-          className="page-main__tasker tasker"
+          className="page-main__tasker"
         />
       </Suspense>
     </div>

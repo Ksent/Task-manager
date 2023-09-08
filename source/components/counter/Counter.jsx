@@ -6,7 +6,7 @@ function Counter({ className }) {
   const checkedTasks = tasks.filter(task => task.checked === true);
 
   return (
-    <p className={className}>
+    <p className={className + " counter"}>
       <span className="counter__number">
         {checkedTasks.length}/{tasks.length}
       </span>

@@ -7,13 +7,13 @@ function PageNav({ className }) {
   const [searchQuery, setSearchQuery] = useState('');
 
   return (
-    <ul className={className}>
+    <ul className={className + " nav__list"}>
       <Calendar 
-        className="nav__item calendar"
+        className="nav__item"
         setSearchQuery={setSearchQuery}
       />
       <SearchForm 
-        className="nav__item search"
+        className="nav__item"
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
       />
