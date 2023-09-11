@@ -41,6 +41,7 @@ function SearchForm({ className, searchQuery, setSearchQuery }) {
       <form 
         className="search__form"
         onSubmit={sendValue}
+        autoComplete="off"
       >
         <button className="search__button">
           <IconSearch
