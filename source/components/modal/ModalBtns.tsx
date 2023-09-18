@@ -1,14 +1,15 @@
 import React from 'react';
 
 import Button from '../generic/Button';
+import { IResetTask } from '../../types/task';
 
-function ModalBtns({ resetTask }) {
+function ModalBtns({ resetTask }: IResetTask) {
   return (
     <div className="modal__button-wrapper">
       <Button
         tagName="button"
         buttonClass="modal__button modal__close-btn"
-        type="reset"
+        buttonType="reset"
         handleClick={resetTask}
       >
         Отмена

@@ -1,19 +1,24 @@
 import React from 'react';
 import { Draggable } from 'react-beautiful-dnd';
-import { useDispatch } from 'react-redux';
 
+import { useAppDispatch } from '../../hooks/hooks';
 import { openModalWindow, getModalId } from '../../store/modalSlice';
 import { toggleComplete, startEditing, deleteTask } from '../../store/taskSlice';
 import { IconToggle, IconCheckmark, IconEdit, IconDelete } from '../icons/Icons';
+import { ITask } from '../../types/task';
 
-function TaskItem({ index, id, text, date, time, checked }) {
-  const dispatch = useDispatch();
+interface IIndexDnd extends ITask {
+  index: number,
+}
+
+function TaskItem({ index, id, text, date, time, checked }: IIndexDnd) {
+  const dispatch = useAppDispatch();
   const dateEnter = new Date(date).toLocaleDateString();
 
   function editedTask() {
     dispatch(openModalWindow());
     dispatch(getModalId({ id: 'edit' }));
-    dispatch(startEditing({ id }));
+    dispatch(startEditing(id));
   }
 
   return (
@@ -35,7 +40,7 @@ function TaskItem({ index, id, text, date, time, checked }) {
               type="checkbox" 
               id={"toggle-task-" + id}
               checked={checked}
-              onChange={() => dispatch(toggleComplete({ id }))}
+              onChange={() => dispatch(toggleComplete(id))}
             />
             <label 
               className="tasker__subtitle" 
@@ -76,7 +81,7 @@ function TaskItem({ index, id, text, date, time, checked }) {
             <button 
               className="tasker__delete-btn" 
               title="Удалить"
-              onClick={() => dispatch(deleteTask({ id }))}
+              onClick={() => dispatch(deleteTask(id))}
             >
               <IconDelete 
                 width="20" 

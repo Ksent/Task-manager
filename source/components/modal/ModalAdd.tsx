@@ -1,31 +1,23 @@
-import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { FormEvent, useState } from 'react';
 
-import { editTask } from '../../store/taskSlice';
+import { useAppDispatch } from '../../hooks/hooks';
+import { addNewTask } from '../../store/taskSlice';
 import FormField from '../generic/FormField';
 import ModalBtns from './ModalBtns';
+import { resetTask } from '../../utils/resetTask';
+import { ICloseModal } from '../../types/modal';
 
-function ModalForm({ closeModal }) {
-  const dispatch = useDispatch();
-  const tasks = useSelector(state => state.tasks.tasks);
-  const editedTask = tasks.find(task => task.edited === true);
-  const [text, setText] = useState(editedTask.text);
-  const [date, setDate] = useState(editedTask.date);
-  const [time, setTime] = useState(editedTask.time);
+function ModalAdd({ closeModal }: ICloseModal) {
+  const dispatch = useAppDispatch();
+  const [text, setText] = useState<string>('');
+  const [date, setDate] = useState<string>('');
+  const [time, setTime] = useState<string>('');
 
-  function resetTask() {
-    closeModal();
-
-    setText('');
-    setDate('');
-    setTime('');
-  }
-
-  function sendTask(e) {
+  function sendTask(e: FormEvent) {
     e.preventDefault();
 
-    dispatch(editTask({ text, date, time }));
-    resetTask();
+    dispatch(addNewTask({ text, date, time }));
+    resetTask(closeModal, setText, setDate, setTime);
   }
 
   return (
@@ -33,12 +25,13 @@ function ModalForm({ closeModal }) {
       className="modal__wrapper"
       onClick={(e) => e.stopPropagation()}
     >
-      <h1 className="modal__title">Редактировать задачу</h1>
+      <h1 className="modal__title">Добавить задачу</h1>
 
       <form 
         className="modal__form"
         onSubmit={sendTask}
       >
+        
         <FormField
           labelClass="modal__form-inner"
           inputClass="modal__enter"
@@ -77,7 +70,7 @@ function ModalForm({ closeModal }) {
         </FormField> 
 
         <ModalBtns 
-          resetTask={resetTask}
+          resetTask={() => resetTask(closeModal, setText, setDate, setTime)}
         />
       </form>
 
@@ -85,4 +78,4 @@ function ModalForm({ closeModal }) {
   );
 }
 
-export default ModalForm;
+export default ModalAdd;

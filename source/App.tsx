@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Modal from './components/modal/Modal';
 import PageHeader from './pages/PageHeader';
 import PageMain from './pages/PageMain';
+import Modal from './components/modal/Modal';
 
 function App() {
   return (

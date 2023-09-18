@@ -1,6 +1,14 @@
 import React from 'react';
 
-const IconCalendar = ({ className, width, height, stroke }) => (
+interface IIcons {
+  className?: string, 
+  width: string, 
+  height: string, 
+  fill?: string, 
+  stroke?: string,
+}
+
+const IconCalendar = ({ className, width, height, stroke }: IIcons) => (
   <svg 
     className={className}
     xmlns="http://www.w3.org/2000/svg"
@@ -26,7 +34,7 @@ const IconCalendar = ({ className, width, height, stroke }) => (
   </svg>
 );
 
-const IconSearch = ({ className, width, height, stroke }) => (
+const IconSearch = ({ className, width, height, stroke }: IIcons) => (
   <svg 
     className={className}
     xmlns="http://www.w3.org/2000/svg"
@@ -44,7 +52,7 @@ const IconSearch = ({ className, width, height, stroke }) => (
   </svg>
 );
 
-const IconAll = ({ className, width, height, stroke }) => (
+const IconAll = ({ className, width, height, stroke }: IIcons) => (
   <svg 
     className={className}
     xmlns="http://www.w3.org/2000/svg"
@@ -63,7 +71,7 @@ const IconAll = ({ className, width, height, stroke }) => (
   </svg>
 );
 
-const IconProcess = ({ className, width, height, stroke }) => (
+const IconProcess = ({ className, width, height, stroke }: IIcons) => (
   <svg 
     className={className}
     xmlns="http://www.w3.org/2000/svg"
@@ -82,7 +90,7 @@ const IconProcess = ({ className, width, height, stroke }) => (
   </svg>
 );
 
-const IconComplete = ({ className, width, height, stroke }) => (
+const IconComplete = ({ className, width, height, stroke }: IIcons) => (
   <svg 
     className={className}
     xmlns="http://www.w3.org/2000/svg"
@@ -100,7 +108,7 @@ const IconComplete = ({ className, width, height, stroke }) => (
   </svg>
 );
 
-const IconAdd = ({ className, width, height }) => (
+const IconAdd = ({ className, width, height }: IIcons) => (
   <svg 
     className={className}
     xmlns="http://www.w3.org/2000/svg"
@@ -117,7 +125,7 @@ const IconAdd = ({ className, width, height }) => (
   </svg>
 );
 
-const IconToggle = ({ className, width, height, fill, stroke }) => (
+const IconToggle = ({ className, width, height, fill, stroke }: IIcons) => (
   <svg 
     className={className}
     xmlns="http://www.w3.org/2000/svg"
@@ -132,7 +140,7 @@ const IconToggle = ({ className, width, height, fill, stroke }) => (
   </svg>
 );
 
-const IconCheckmark = ({ className, width, height, stroke }) => (
+const IconCheckmark = ({ className, width, height, stroke }: IIcons) => (
   <svg 
     className={className}
     xmlns="http://www.w3.org/2000/svg"
@@ -149,7 +157,7 @@ const IconCheckmark = ({ className, width, height, stroke }) => (
   </svg>
 );
 
-const IconEdit = ({ width, height, fill }) => (
+const IconEdit = ({ width, height, fill }: IIcons) => (
   <svg 
     xmlns="http://www.w3.org/2000/svg"
     width={width} 
@@ -166,7 +174,7 @@ const IconEdit = ({ width, height, fill }) => (
   </svg>
 );
 
-const IconDelete = ({ width, height, stroke }) => (
+const IconDelete = ({ width, height, stroke }: IIcons) => (
   <svg 
     xmlns="http://www.w3.org/2000/svg"
     width={width} 

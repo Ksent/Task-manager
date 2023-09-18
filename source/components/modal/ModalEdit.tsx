@@ -1,29 +1,25 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { FormEvent, useState } from 'react';
 
-import { addNewTask } from '../../store/taskSlice';
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
+import { editTask } from '../../store/taskSlice';
 import FormField from '../generic/FormField';
 import ModalBtns from './ModalBtns';
+import { resetTask } from '../../utils/resetTask';
+import { ICloseModal } from '../../types/modal';
 
-function ModalAdd({ closeModal }) {
-  const dispatch = useDispatch();
-  const [text, setText] = useState('');
-  const [date, setDate] = useState('');
-  const [time, setTime] = useState('');
+function ModalEdit({ closeModal }: ICloseModal) {
+  const dispatch = useAppDispatch();
+  const tasks = useAppSelector(state => state.tasks.tasks);
+  const editedTask = tasks.find(task => task.edited === true);
+  const [text, setText] = useState<string>(editedTask ? editedTask.text : '');
+  const [date, setDate] = useState<string>(editedTask ? editedTask.date : '');
+  const [time, setTime] = useState<string>(editedTask ? editedTask.time : '');
 
-  function resetTask() {
-    closeModal();
-
-    setText('');
-    setDate('');
-    setTime('');
-  }
-
-  function sendTask(e) {
+  function sendTask(e: FormEvent) {
     e.preventDefault();
-
-    dispatch(addNewTask({ text, date, time }));
-    resetTask();
+    
+    dispatch(editTask({ text, date, time }));
+    resetTask(closeModal, setText, setDate, setTime);
   }
 
   return (
@@ -31,13 +27,12 @@ function ModalAdd({ closeModal }) {
       className="modal__wrapper"
       onClick={(e) => e.stopPropagation()}
     >
-      <h1 className="modal__title">Добавить задачу</h1>
+      <h1 className="modal__title">Редактировать задачу</h1>
 
       <form 
         className="modal__form"
         onSubmit={sendTask}
       >
-        
         <FormField
           labelClass="modal__form-inner"
           inputClass="modal__enter"
@@ -76,7 +71,7 @@ function ModalAdd({ closeModal }) {
         </FormField> 
 
         <ModalBtns 
-          resetTask={resetTask}
+          resetTask={() => resetTask(closeModal, setText, setDate, setTime)}
         />
       </form>
 
@@ -84,4 +79,4 @@ function ModalAdd({ closeModal }) {
   );
 }
 
-export default ModalAdd;
+export default ModalEdit;

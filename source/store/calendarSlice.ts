@@ -1,10 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+import { ICalendarState } from '../types/calendar';
+
+const initialState: ICalendarState = {
+  calendarShow: false,
+}
+
 const calendarSlice = createSlice({
   name: 'calendarItems',
-  initialState: {
-    calendarShow: false,
-  },
+  initialState,
   reducers: {
     openCalendar(state) {
       state.calendarShow = !state.calendarShow;

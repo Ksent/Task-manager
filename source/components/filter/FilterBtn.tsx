@@ -1,16 +1,21 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import format from 'date-fns/format';
 import ru from 'date-fns/locale/ru';
 
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { addFilter } from '../../store/taskSlice';
 import Button from '../generic/Button';
 import { IconAll, IconProcess, IconComplete, IconSearch, IconCalendar } from '../icons/Icons';
+import { IFilter } from '../../types/filter';
 
-function FilterBtn({ id, forName, value, initialValue, subtitle }) {
-  const dispatch = useDispatch();
-  const iconStyle = useSelector(state => state.filters.iconFilters);
-  const calendarValue = useSelector(state => state.tasks.calendarValue);
+interface IInitialValue extends IFilter {
+  initialValue: string,
+}
+
+function FilterBtn({ id, forName, value, subtitle, initialValue }: IInitialValue) {
+  const dispatch = useAppDispatch();
+  const iconStyle = useAppSelector(state => state.filters.iconFilters);
+  const calendarValue = useAppSelector(state => state.tasks.calendarValue);
 
   return (
     <li 

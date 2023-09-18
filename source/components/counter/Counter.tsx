@@ -1,8 +1,10 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 
-function Counter({ className }) {
-  const tasks = useSelector(state => state.tasks.tasks);
+import { useAppSelector } from '../../hooks/hooks';
+import { IClassName } from '../../types/class';
+
+function Counter({ className }: IClassName) {
+  const tasks = useAppSelector(state => state.tasks.tasks);
   const checkedTasks = tasks.filter(task => task.checked === true);
 
   return (

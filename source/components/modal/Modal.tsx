@@ -1,23 +1,23 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { closeModalWindow } from '../../store/modalSlice';
 import { endEditing } from '../../store/taskSlice';
 import ModalAdd from './ModalAdd';
 import ModalEdit from './ModalEdit';
 
 function Modal() {
-  const dispatch = useDispatch();
-  const modalShow = useSelector(state => state.modalWindow.modalShow);
-  const modalItems = useSelector(state => state.modalWindow.modalItems);
+  const dispatch = useAppDispatch();
+  const modalShow = useAppSelector(state => state.modalWindow.modalShow);
+  const modalItems = useAppSelector(state => state.modalWindow.modalItems);
   const modalWindowType = modalItems.find(modalItem => modalItem.id);
 
   function closeModal() {
     dispatch(closeModalWindow());
 
-    if (modalWindowType.id === 'edit') {
-      dispatch(endEditing());
-    } else return;
+      if (modalWindowType && modalWindowType.id === 'edit') {
+        dispatch(endEditing());
+      } else return;
 
   }
 
@@ -27,13 +27,13 @@ function Modal() {
       onClick={closeModal}
     >
 
-      {(modalShow && modalWindowType.id === 'add') && 
+      {(modalShow && modalWindowType && modalWindowType.id === 'add') && 
         <ModalAdd 
           closeModal={closeModal}
         />
       }
 
-      {(modalShow && modalWindowType.id === 'edit') && 
+      {(modalShow && modalWindowType && modalWindowType.id === 'edit') && 
         <ModalEdit 
           closeModal={closeModal}
         />

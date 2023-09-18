@@ -4,8 +4,9 @@ import { useDispatch } from 'react-redux';
 import { openModalWindow, getModalId } from '../../store/modalSlice';
 import Button from '../generic/Button';
 import { IconAdd } from '../icons/Icons';
+import { IClassName } from '../../types/class';
 
-function TaskAddBtn({ className }) {
+function TaskAddBtn({ className }: IClassName) {
   const dispatch = useDispatch();
 
   function addNewTask() {
@@ -28,7 +29,7 @@ function TaskAddBtn({ className }) {
         Новая задача
       </span>
     </Button>
-  )
+  );
 }
 
 export default TaskAddBtn;

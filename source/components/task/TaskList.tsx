@@ -1,19 +1,21 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
 
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { dragEndTask } from '../../store/taskSlice';
 import TaskItem from './TaskItem';
+import { IClassName } from '../../types/class';
 
-function TaskList({ className }) {
-  const dispatch = useDispatch();
-  const tasks = useSelector(state => state.tasks.tasksFilter);
+function TaskList({ className }: IClassName) {
+  const dispatch = useAppDispatch();
+  const tasks = useAppSelector(state => state.tasks.tasksFilter);
 
-  function dragEnd(result) {
+  function dragEnd(result: DropResult) {
     if (!result.destination) return;
 
     dispatch(dragEndTask(result));
   }
+
 
   return (
     <div className={className + " tasker"}>

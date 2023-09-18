@@ -1,14 +1,20 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { Dispatch, FormEvent, SetStateAction, useEffect } from 'react';
 
+import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { startSearch, endSearch, addFilter } from '../../store/taskSlice';
 import { closeCalendar } from '../../store/calendarSlice';
 import FormField from '../generic/FormField';
 import { IconSearch, IconDelete } from '../icons/Icons';
+import { IClassName } from '../../types/class';
 
-function SearchForm({ className, searchQuery, setSearchQuery }) {
-  const dispatch = useDispatch();
-  const searchValue = useSelector(state => state.tasks.searchValue);
+interface ISearchState extends IClassName {
+  searchQuery: string,
+  setSearchQuery: Dispatch<SetStateAction<string>>,
+}
+
+function SearchForm({ className, searchQuery, setSearchQuery }: ISearchState) {
+  const dispatch = useAppDispatch();
+  const searchValue = useAppSelector(state => state.tasks.searchValue);
 
   useEffect(() => {
 
@@ -18,11 +24,11 @@ function SearchForm({ className, searchQuery, setSearchQuery }) {
 
   }, [searchQuery]);
 
-  function sendValue(e) {
+  function sendValue(e: FormEvent) {
     e.preventDefault();
 
     dispatch(closeCalendar());
-    dispatch(startSearch({ searchQuery }));
+    dispatch(startSearch(searchQuery));
     dispatch(addFilter({ value: 'search' }));
   }
 

@@ -1,13 +1,14 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 
+import { useAppSelector } from '../../hooks/hooks';
 import FilterBtn from './FilterBtn';
+import { IClassName } from '../../types/class';
 
-function Filter({ className }) {
-  const filters = useSelector(state => state.filters.filters);
-  const initialValue = useSelector(state => state.tasks.filterValue);
-  const searchValue = useSelector(state => state.tasks.searchValue);
-  const calendarShow = useSelector(state => state.calendarItems.calendarShow);
+function Filter({ className }: IClassName) {
+  const filters = useAppSelector(state => state.filters.filters);
+  const initialValue = useAppSelector(state => state.tasks.filterValue);
+  const searchValue = useAppSelector(state => state.tasks.searchValue);
+  const calendarShow = useAppSelector(state => state.calendarItems.calendarShow);
 
   function searchOnOff() {
 
