@@ -1,12 +1,12 @@
-export interface IModalState {
-  modalShow: boolean,
-  modalItems: IModalItems[],
+type ModalItems = {
+  id: string;
 }
 
-export interface IModalItems {
-  id: string,
+export type ModalState = {
+  modalShow: boolean;
+  modalItems: ModalItems[];
 }
 
 export interface ICloseModal {
-  closeModal: () => void,
+  closeModal: () => void;
 }

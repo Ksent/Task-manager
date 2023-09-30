@@ -1,11 +1,13 @@
 import React, { FormEvent, useState } from 'react';
 
-import { useAppDispatch } from '../../hooks/hooks';
+import { ICloseModal } from '../../types/modal';
+import { useAppDispatch } from '../../hooks/reduxHooks';
+
 import { addNewTask } from '../../store/taskSlice';
+import { resetTask } from '../../utils/taskUtils';
+
 import FormField from '../generic/FormField';
 import ModalBtns from './ModalBtns';
-import { resetTask } from '../../utils/resetTask';
-import { ICloseModal } from '../../types/modal';
 
 function ModalAdd({ closeModal }: ICloseModal) {
   const dispatch = useAppDispatch();
@@ -13,7 +15,7 @@ function ModalAdd({ closeModal }: ICloseModal) {
   const [date, setDate] = useState<string>('');
   const [time, setTime] = useState<string>('');
 
-  function sendTask(e: FormEvent) {
+  function sendTask(e: FormEvent): void {
     e.preventDefault();
 
     dispatch(addNewTask({ text, date, time }));

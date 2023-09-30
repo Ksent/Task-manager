@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { useAppSelector } from '../../hooks/hooks';
-import { IClassName } from '../../types/class';
+import { IClassName } from '../../types/general';
+import { useAppSelector } from '../../hooks/reduxHooks';
 
 function Counter({ className }: IClassName) {
   const tasks = useAppSelector(state => state.tasks.tasks);

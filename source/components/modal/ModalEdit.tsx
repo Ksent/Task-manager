@@ -1,11 +1,13 @@
 import React, { FormEvent, useState } from 'react';
 
-import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
+import { ICloseModal } from '../../types/modal';
+import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
+
 import { editTask } from '../../store/taskSlice';
+import { resetTask } from '../../utils/taskUtils';
+
 import FormField from '../generic/FormField';
 import ModalBtns from './ModalBtns';
-import { resetTask } from '../../utils/resetTask';
-import { ICloseModal } from '../../types/modal';
 
 function ModalEdit({ closeModal }: ICloseModal) {
   const dispatch = useAppDispatch();
@@ -15,7 +17,7 @@ function ModalEdit({ closeModal }: ICloseModal) {
   const [date, setDate] = useState<string>(editedTask ? editedTask.date : '');
   const [time, setTime] = useState<string>(editedTask ? editedTask.time : '');
 
-  function sendTask(e: FormEvent) {
+  function sendTask(e: FormEvent): void {
     e.preventDefault();
     
     dispatch(editTask({ text, date, time }));

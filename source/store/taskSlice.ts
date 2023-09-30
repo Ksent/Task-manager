@@ -1,12 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { DropResult } from 'react-beautiful-dnd';
 
-import { saveTask, task } from '../utils/saveTask';
-import { sortTask } from '../utils/sortTask';
-import { filterTask } from '../utils/filterTask';
-import { ITasksState } from '../types/task';
+import { TasksState } from '../types/task';
 
-const initialState: ITasksState = {
+import { filterTask, saveTask, sortTask, task } from '../utils/taskUtils';
+
+const initialState: TasksState = {
   tasks: task,
   tasksFilter: task,
   filterValue: 'all',

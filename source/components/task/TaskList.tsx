@@ -1,21 +1,40 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { DragDropContext, Droppable, DropResult } from 'react-beautiful-dnd';
 
-import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
+import { IClassName } from '../../types/general';
+import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
+
 import { dragEndTask } from '../../store/taskSlice';
+
 import TaskItem from './TaskItem';
-import { IClassName } from '../../types/class';
+import TaskNotFound from './TaskNotFound';
 
 function TaskList({ className }: IClassName) {
   const dispatch = useAppDispatch();
   const tasks = useAppSelector(state => state.tasks.tasksFilter);
+  const searchValue = useAppSelector(state => state.tasks.searchValue);
+  
+  function showTasks(): ReactNode {
 
-  function dragEnd(result: DropResult) {
+    if (searchValue !== '' && tasks.length === 0) {
+      return <TaskNotFound />
+    } else {
+      return tasks.map((task, index) => (
+        <TaskItem 
+          key={task.id}
+          index={index}
+          {...task}
+        />
+      ));
+    }
+    
+  }
+  
+  function dragEnd(result: DropResult): void {
     if (!result.destination) return;
 
     dispatch(dragEndTask(result));
   }
-
 
   return (
     <div className={className + " tasker"}>
@@ -27,15 +46,7 @@ function TaskList({ className }: IClassName) {
               ref={provided.innerRef}
               {...provided.droppableProps}
             >
-
-              {tasks.map((task, index) => (
-                <TaskItem 
-                  key={task.id}
-                  index={index}
-                  {...task}
-                />
-              ))}
-
+              {showTasks()}
               {provided.placeholder}
             </ul>
           )}

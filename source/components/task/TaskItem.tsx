@@ -1,21 +1,23 @@
 import React from 'react';
 import { Draggable } from 'react-beautiful-dnd';
 
-import { useAppDispatch } from '../../hooks/hooks';
+import { ITask } from '../../types/task';
+import { useAppDispatch } from '../../hooks/reduxHooks';
+
 import { openModalWindow, getModalId } from '../../store/modalSlice';
 import { toggleComplete, startEditing, deleteTask } from '../../store/taskSlice';
-import { IconToggle, IconCheckmark, IconEdit, IconDelete } from '../icons/Icons';
-import { ITask } from '../../types/task';
 
-interface IIndexDnd extends ITask {
-  index: number,
+import { IconToggle, IconCheckmark, IconEdit, IconDelete } from '../icons/Icons';
+
+interface ITaskDnd extends ITask {
+  index: number;
 }
 
-function TaskItem({ index, id, text, date, time, checked }: IIndexDnd) {
+function TaskItem({ index, id, text, date, time, checked }: ITaskDnd) {
   const dispatch = useAppDispatch();
   const dateEnter = new Date(date).toLocaleDateString();
 
-  function editedTask() {
+  function editedTask(): void {
     dispatch(openModalWindow());
     dispatch(getModalId({ id: 'edit' }));
     dispatch(startEditing(id));

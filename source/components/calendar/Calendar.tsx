@@ -1,16 +1,14 @@
-import React, { Dispatch, SetStateAction, useEffect } from 'react';
+import React, { useEffect } from 'react';
 
-import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
-import { openCalendar } from '../../store/calendarSlice';
+import { ISearchQuery } from '../../types/search';
+import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
+
 import { endSearch, addFilter } from '../../store/taskSlice';
+import { openCalendar } from '../../store/calendarSlice';
+
 import Button from '../generic/Button';
 import { IconCalendar } from '../icons/Icons';
 import CalendarSlider from './CalendarSlider';
-import { IClassName } from '../../types/class';
-
-interface ISearchQuery extends IClassName {
-  setSearchQuery: Dispatch<SetStateAction<string>>,
-}
 
 function Calendar({ className, setSearchQuery }: ISearchQuery) {
   const dispatch = useAppDispatch();

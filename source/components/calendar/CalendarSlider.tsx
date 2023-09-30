@@ -3,12 +3,14 @@ const DatePicker = lazy(() => import('react-datepicker'));
 import format from 'date-fns/format';
 import ru from 'date-fns/locale/ru';
 
-import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
+
 import { addDate, addFilter } from '../../store/taskSlice';
+
 import Loader from '../loader/Loader';
 
 interface IOpenCalendar {
-  openCalendar: boolean,
+  openCalendar: boolean;
 }
 
 function CalendarSlider({ openCalendar }: IOpenCalendar) {

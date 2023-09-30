@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { ICalendarState } from '../types/calendar';
+import { CalendarState } from '../types/calendar';
 
-const initialState: ICalendarState = {
+const initialState: CalendarState = {
   calendarShow: false,
 }
 

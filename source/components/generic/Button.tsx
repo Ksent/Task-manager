@@ -1,12 +1,12 @@
 import React, { ReactNode } from 'react';
 
 interface IButton {
-  tagName: string, 
-  buttonClass: string, 
-  buttonType?: "button"| "submit" | "reset", 
-  forName?: string, 
-  handleClick?: () => void, 
-  children: ReactNode, 
+  tagName: string;
+  buttonClass: string;
+  buttonType?: "button" | "submit" | "reset";
+  forName?: string;
+  handleClick?: () => void;
+  children: ReactNode;
 }
 
 function Button({ 

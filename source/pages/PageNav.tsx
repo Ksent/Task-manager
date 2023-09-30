@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 
+import { IClassName } from '../types/general';
+
 import Calendar from '../components/calendar/Calendar';
 import SearchForm from '../components/search/SearchForm';
-import { IClassName } from '../types/class';
 
 function PageNav({ className }: IClassName) {
   const [searchQuery, setSearchQuery] = useState<string>('');

@@ -1,16 +1,16 @@
 import React, { ChangeEvent, ReactNode } from 'react';
 
 interface IFormField {
-  labelClass?: string, 
-  children?: ReactNode, 
-  inputClass: string, 
-  type: string, 
-  name: string, 
-  value: string, 
-  handleChange: (e: ChangeEvent<HTMLInputElement>) => void, 
-  placeholder?: string, 
-  required: boolean, 
-  autoFocus?: boolean, 
+  labelClass?: string;
+  children?: ReactNode;
+  inputClass: string;
+  type: string;
+  name: string;
+  value: string;
+  handleChange: (e: ChangeEvent<HTMLInputElement>) => void;
+  placeholder?: string;
+  required: boolean;
+  autoFocus?: boolean;
 }
 
 function FormField({ 

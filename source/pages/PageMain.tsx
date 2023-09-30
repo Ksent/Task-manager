@@ -1,6 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 
-import { useAppSelector } from '../hooks/hooks';
+import { useAppSelector } from '../hooks/reduxHooks';
+
 import Filter from '../components/filter/Filter';
 import TaskAddBtn from '../components/task/TaskAddBtn';
 import Loader from '../components/loader/Loader';

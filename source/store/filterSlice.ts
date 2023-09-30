@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { IFiltersState } from '../types/filter';
+import { FiltersState } from '../types/filter';
 
-const initialState: IFiltersState = {
+const initialState: FiltersState = {
   filters: [
     {id: 1, forName: 'all-icon', value: 'all', subtitle: 'Все'},
     {id: 2, forName: 'process-icon', value: 'process', subtitle: 'В процессе'},

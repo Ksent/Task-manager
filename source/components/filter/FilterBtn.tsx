@@ -2,17 +2,15 @@ import React from 'react';
 import format from 'date-fns/format';
 import ru from 'date-fns/locale/ru';
 
-import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
+import { IFilter } from '../../types/filter';
+import { useAppDispatch, useAppSelector } from '../../hooks/reduxHooks';
+
 import { addFilter } from '../../store/taskSlice';
+
 import Button from '../generic/Button';
 import { IconAll, IconProcess, IconComplete, IconSearch, IconCalendar } from '../icons/Icons';
-import { IFilter } from '../../types/filter';
 
-interface IInitialValue extends IFilter {
-  initialValue: string,
-}
-
-function FilterBtn({ id, forName, value, subtitle, initialValue }: IInitialValue) {
+function FilterBtn({ id, forName, value, subtitle, initialValue }: IFilter) {
   const dispatch = useAppDispatch();
   const iconStyle = useAppSelector(state => state.filters.iconFilters);
   const calendarValue = useAppSelector(state => state.tasks.calendarValue);

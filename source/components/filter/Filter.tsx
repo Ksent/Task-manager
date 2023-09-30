@@ -1,8 +1,10 @@
 import React from 'react';
 
-import { useAppSelector } from '../../hooks/hooks';
+import { IClassName } from '../../types/general';
+import { IFilter } from '../../types/filter';
+import { useAppSelector } from '../../hooks/reduxHooks';
+
 import FilterBtn from './FilterBtn';
-import { IClassName } from '../../types/class';
 
 function Filter({ className }: IClassName) {
   const filters = useAppSelector(state => state.filters.filters);
@@ -10,7 +12,7 @@ function Filter({ className }: IClassName) {
   const searchValue = useAppSelector(state => state.tasks.searchValue);
   const calendarShow = useAppSelector(state => state.calendarItems.calendarShow);
 
-  function searchOnOff() {
+  function searchOnOff(): IFilter[] {
 
     if (searchValue !== '') {
       return filters.filter(filter => filter.id === 4);

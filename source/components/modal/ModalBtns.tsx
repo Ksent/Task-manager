@@ -1,7 +1,8 @@
 import React from 'react';
 
-import Button from '../generic/Button';
 import { IResetTask } from '../../types/task';
+
+import Button from '../generic/Button';
 
 function ModalBtns({ resetTask }: IResetTask) {
   return (

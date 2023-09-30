@@ -1,15 +1,17 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 
+import { IClassName } from '../../types/general';
+
 import { openModalWindow, getModalId } from '../../store/modalSlice';
+
 import Button from '../generic/Button';
 import { IconAdd } from '../icons/Icons';
-import { IClassName } from '../../types/class';
 
 function TaskAddBtn({ className }: IClassName) {
   const dispatch = useDispatch();
 
-  function addNewTask() {
+  function addNewTask(): void {
     dispatch(openModalWindow());
     dispatch(getModalId({ id: 'add' }));
   }

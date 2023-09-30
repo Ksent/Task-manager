@@ -1,3 +1,3 @@
-export interface ICalendarState {
-  calendarShow: boolean,
+export type CalendarState = {
+  calendarShow: boolean;
 }

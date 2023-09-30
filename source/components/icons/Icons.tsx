@@ -1,11 +1,11 @@
 import React from 'react';
 
 interface IIcons {
-  className?: string, 
-  width: string, 
-  height: string, 
-  fill?: string, 
-  stroke?: string,
+  className?: string;
+  width: string;
+  height: string;
+  fill?: string;
+  stroke?: string;
 }
 
 const IconCalendar = ({ className, width, height, stroke }: IIcons) => (
