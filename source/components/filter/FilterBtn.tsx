@@ -32,6 +32,7 @@ function FilterBtn({ id, forName, value, subtitle, initialValue }: IFilter) {
       <Button 
         tagName="label"
         buttonClass="filter__button"
+        buttonLabel={subtitle}
         forName={forName}
       >
 
@@ -56,7 +57,7 @@ function FilterBtn({ id, forName, value, subtitle, initialValue }: IFilter) {
         }
 
         <span className="filter__subtitle button__subtitle">
-          {(!subtitle && value === 'calendar') ? format(new Date(calendarValue), 'dd MMMM yyyy', {locale: ru}) : subtitle}
+          {(subtitle === 'Календарь') ? format(new Date(calendarValue), 'dd MMMM yyyy', {locale: ru}) : subtitle}
         </span>
       </Button>
       

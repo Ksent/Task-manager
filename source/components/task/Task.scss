@@ -5,7 +5,7 @@
   padding: 0;
 }
 
-.tasker__item {
+.tasker__inner {
   margin: 3px 8px;
   display: flex;
   justify-content: space-between;
@@ -22,12 +22,12 @@
   color: $text-color;
 }
 
-.tasker__inner {
+.tasker__content {
   display: flex;
   align-items: center;
 }
 
-.tasker__inner-text {
+.tasker__content-text {
   margin: 0 15px;
   position: relative;
 }

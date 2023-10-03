@@ -36,6 +36,7 @@ function Calendar({ className, setSearchQuery }: ISearchQuery) {
       <Button 
         tagName="button"
         buttonClass={"calendar__button" + ((calendarShow === true) ? " calendar__button--open" : "")}
+        buttonLabel="Календарь"
         handleClick={() => dispatch(openCalendar())}
       >
         <IconCalendar 

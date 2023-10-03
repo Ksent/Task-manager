@@ -46,7 +46,10 @@ function SearchForm({ className, searchQuery, setSearchQuery }: ISearchState) {
         onSubmit={sendValue}
         autoComplete="off"
       >
-        <button className="search__button">
+        <button 
+          className="search__button"
+          aria-label="Начать поиск"
+        >
           <IconSearch
             width="43"
             height="43"
@@ -66,6 +69,7 @@ function SearchForm({ className, searchQuery, setSearchQuery }: ISearchState) {
         
         <button 
           className={"search__button search__delete-btn" + (searchQuery ? " search__delete-btn--show" : "")}
+          aria-label="Очистить поиск"
           type="reset"
           onClick={resetValue}
         >

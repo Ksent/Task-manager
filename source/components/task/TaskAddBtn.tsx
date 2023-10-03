@@ -20,6 +20,7 @@ function TaskAddBtn({ className }: IClassName) {
     <Button 
       tagName="button"
       buttonClass={className}
+      buttonLabel="Добавить задачу"
       handleClick={addNewTask}
     >
       <IconAdd 

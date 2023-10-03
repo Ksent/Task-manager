@@ -9,7 +9,7 @@ export interface IFilter {
   id: number;
   forName: string;
   value: string;
-  subtitle?: string;
+  subtitle: string;
   initialValue?: string;
 }
 

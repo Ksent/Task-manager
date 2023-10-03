@@ -8,7 +8,7 @@ const initialState: FiltersState = {
     {id: 2, forName: 'process-icon', value: 'process', subtitle: 'В процессе'},
     {id: 3, forName: 'complete-icon', value: 'complete', subtitle: 'Готово'},
     {id: 4, forName: 'search-icon', value: 'search', subtitle: 'Поиск'},
-    {id: 5, forName: 'calendar-icon', value: 'calendar'},
+    {id: 5, forName: 'calendar-icon', value: 'calendar', subtitle: 'Календарь'},
   ],
   iconFilters: {
     className: 'filter__icon button__icon', 
