@@ -1,8 +1,4 @@
 *.psd
-*.css
-gulpfile.js
-webpack.*config.js
 node_modules/
-*.json
-js/
 *.code-workspace
+tasker.js
