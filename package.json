@@ -6,11 +6,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack --watch --config ./webpack.dev.config.js",
-    "build": "webpack --config ./webpack.prod.config.js"
+    "build": "webpack --config ./webpack.prod.config.js",
+    "deploy": "gh-pages -d public"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Ksent"
+    "url": "https://github.com/Ksent/Task-manager"
   },
   "author": "\"Ksent\"",
   "license": "ISC",
@@ -25,6 +26,7 @@
     "autoprefixer": "^10.2.6",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.2.6",
+    "gh-pages": "^3.2.3",
     "mini-css-extract-plugin": "^1.6.0",
     "node-sass": "^6.0.0",
     "postcss": "^8.3.0",
