@@ -2,3 +2,4 @@
 node_modules/
 *.code-workspace
 tasker.js
+public/
