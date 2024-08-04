@@ -27,6 +27,7 @@ function CalendarSlider({ openCalendar }: IOpenCalendar) {
     <div className={"calendar__slider" + (openCalendar ? " calendar__slider--open" : "")}>
       <Suspense fallback={<Loader />}>
         <DatePicker 
+          todayButton="Сегодня"
           selected={startDate}
           onChange={(date: Date) => setStartDate(date)}
           highlightDates={tasks.map(date => new Date(date.date))}
